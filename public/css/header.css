@@ -1,0 +1,151 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+	background: #FFF;
+	font-weight: normal;
+	position: relative;
+	font-size: 14px;
+	font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	color: #252525;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+}
+h1 {
+	font-size: 42px;
+}
+h2 {
+	font-size: 36px;
+}
+h3 {
+	font-size: 30px;
+}
+h4 {
+	font-size: 24px;
+	letter-spacing: 2px;
+}
+h5 {
+	font-size: 20px;
+	letter-spacing: 2px;
+}
+h6 {
+	font-size: 16px;
+	font-weight: bold;
+}
+p {
+	font-weight: 400;
+	line-height: 26px;
+	text-rendering: optimizeLegibility;
+}
+li{
+    list-style: none;
+}
+/*=======================================================
+                     HEADER
+========================================================*/
+
+header {
+	width: 100%;
+	background: #fff;
+}
+.header-top{
+    width: 100%;
+    padding: 10px;
+    background-color:#ffff;
+}
+.container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+.header-top .container .logo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.logo img{
+    margin: 0 auto;
+}
+
+
+.barras-navegacion{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.navegador-principal {
+    display:  none;    
+}
+.navegador1{
+    display: none;
+}
+.navegador-principal ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navegador-principal a {
+    text-decoration: none;
+    color: #222222;
+    display: inline-block;
+    padding: 5px 0;
+    font-size: 16px;
+}
+
+.navegador-secundario ul{
+    margin-top: 1rem;
+    margin-left: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    align-items: flex-start;
+}
+.navegador2{
+    width: 200px;
+    padding: 10px;
+    margin: auto;
+}
+.navegador2 ul { /* Navegador2 centrado no modificar*/
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-left: -28px;
+}
+.navegador2 ul li a i {
+    font-size: 1.3rem;
+    color: #252525;
+    margin-left: 30px;
+}
+.boton-menu{ /* Boton centrado no modificar*/
+    width: 50px;
+    margin: 0 auto;
+}
+.boton-menu i{
+    padding: 7px;
+    color: black;
+    font-size: 1.2rem;
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border: #858683 solid 1.5px;
+    border-radius: 6px;
+    display: block;
+    margin: auto;
+}
