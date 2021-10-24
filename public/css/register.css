@@ -63,7 +63,7 @@
 }
 
 .form-register > form > .row > input[type="submit"]{
-    width: 70%;
+    width: 100%;
     height: 100%;
     border-radius: 3px;
     font-size: 1.2rem;
@@ -86,10 +86,17 @@
     .form-register > form > .divider {
         flex-flow: row;
     }
+    .form-register > form > .row > input[type="submit"]{
+        width: 50%;
+    }
 }
 
 @media (min-width: 769px){
     .form-register > form > .divider {
         flex-flow: row;
+    }
+
+    .form-register > form > .row > input[type="submit"]{
+        width: 50%;
     }
 }
