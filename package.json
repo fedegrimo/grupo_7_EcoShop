@@ -1,12 +1,12 @@
 {
-  "name": "EcoShop",
+  "name": "ecoshop",
   "version": "1.0.0",
   "description": "El sitio Web se especializa en la venta de productos eco design. Destinado a u publico entre 20 y 50 años. El objetivo es los productos se muestren en forma armonica y simplificando la navegación.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "author": "",
+  "author": "Grupo 7",
   "license": "ISC",
   "repository": {
     "type": "git",

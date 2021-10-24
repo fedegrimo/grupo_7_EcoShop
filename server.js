@@ -11,7 +11,7 @@ const SEARCH_PAGE = "views/buscar.html";
 const US_PAGE = "views/nosotros.html";
 const CART_PAGE = "views/carrito.html";
 const REGISTER_PAGE = "views/registro.html";
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 server.get("/mensaje",(req,res)=>{
     res.send("Mensaje desde js");
