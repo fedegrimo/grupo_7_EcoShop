@@ -12,14 +12,10 @@ Soy Ciclista de Montaña, programador autodidacta, tratando de adquirir mejores 
 ### Federico Grimolizzi
 Programador Web y Desarrollador Web en PHP. Actualizando conocimientos. 45 años.
 
-### Florencia Aguirre
-Tengo 28 años. Soy Contadora Publica. El motivo de realizar el curso es porque estoy interesada en aprender a programar.
-
 ## Links templates
 https://demos.webicode.com/html/eco-shop-html/Single_Img_Demo/index.html
 
 https://demos.webicode.com/html/eco-shop-html/html/index-1.html
-
 
 
 https://demos.webicode.com/html/eco-shop-html/html/index-header-4.html
