@@ -1,0 +1,206 @@
+/*=======================================================
+                     BANNER
+========================================================*/
+.homebanner{
+    width: 100%;
+    height: 500px;
+    background-image: url(/public/img/HomeBanner.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 100%;
+}
+.container-banner{
+    width: 100%;
+    margin-top:-1rem;
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+.container-banner h4 {
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+    color: #FFF;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 6px;
+}
+.container-banner p {
+    font-weight: bold;
+    color: black;
+    line-height: 26px;
+    text-rendering: optimizeLegibility;
+}
+.homebanner ol{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    width: 170px;
+    height: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #2d3a4b;
+    border: 2px solid #2d3a4b;
+    border-radius: 20px;
+    margin-top: 40px;
+}
+.homebanner ol li a {
+    color: #FFF;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: normal;
+    text-decoration: none;
+    font-family: monospace;
+}
+.homebanner ol i{
+    color: #FFF;
+    font-size: 14px;
+    margin-top: 3px;
+}
+
+/*=======================================================
+                     HOME PRODUCTOS
+========================================================*/
+.homeproducts{
+    background-color: #fff;
+    width: 100%;
+}
+
+.homeproducts__container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 1270px;
+    min-width: 387px;
+    margin:0 auto;
+}
+.homeproducts__products{
+    width: 80%;
+    height: 600px;
+    background-color: #f0f5f9;
+    min-width: 300px;
+    max-width: 500px;
+    --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    margin: 10px 0;
+}
+.products__img{
+    width: 90%;
+    margin: 20px auto;
+}
+.products__img img{
+    width: 100%;
+}
+.products__info{
+    max-width: 320px;
+    display: inline-block;
+    margin: 0 40px;
+    min-height: 350px;
+}
+.products__info span{
+    font-size: 18px;
+    font-weight: bold;
+    color: #eb437c;
+}
+.products__info h4{
+    font-size: 20px;
+    color: #2d3a4b;
+    margin: 15px 0;
+}
+.products__info p {
+    font-weight: 400;
+    color: #6f6f6f;
+    line-height: 26px;
+    text-rendering: optimizeLegibility;
+}
+.products__info button{
+    font-family:'Montserrat', sans-serif;
+    background: none;
+    border-radius: 25px;
+    border: 1px solid #2d3a4b;
+    color: #2d3a4b;
+    margin-top: 20px;
+    transition: all 0.200s ease;
+    cursor: pointer;
+}
+.products__info button:hover {
+    transform: translate(-2px,-2px);
+    background: #2d3a4b;
+}
+.products__info button:active{
+    transform: translate(1px,1px);
+}
+.products__info button .button__text:hover{
+    color: #FFF;
+}
+.products__info .button__text {
+    color: #2d3a4b;
+    font-size: 14px;
+    line-height: 40px;
+    letter-spacing: 1px;
+    padding: 10px;
+}
+
+/* MEDIA QUERIES */
+
+@media(min-width:481px){
+    .homeproducts__products{
+        width: 90%;
+        height: 700px;
+        background-color: #f0f5f9;
+        
+    }
+}
+@media (min-width: 768px){
+    .homeproducts__container{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0 auto;
+    }
+    .homeproducts__products{
+        width: 47%;
+        margin: 10px 10px;
+    }
+}
+
+@media (min-width: 1279px){
+    .homebanner{
+        width: 100%;
+        height: 600px;
+        margin: 0;
+    }
+    .container-banner{
+        margin-top:7rem;
+        padding: 4rem;
+        text-align: center;
+    }
+    .container-banner h4 {
+        width: 100%;
+        margin-top: 2rem;
+        margin-bottom: 0.8rem;
+        color: #FFF;
+        font-size: 40px;
+        font-weight: bold;
+        letter-spacing: 6px;
+    }
+    .container-banner p {
+        font-weight: bold;
+        color: black;
+        line-height: 26px;
+        text-rendering: optimizeLegibility;
+    }
+    .homeproducts__products{
+        margin: 10px 20px;
+        border-radius: 8px;
+        padding: 10px;
+    }
+}
