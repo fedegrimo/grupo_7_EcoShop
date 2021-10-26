@@ -55,11 +55,17 @@ li{
 ========================================================*/
 
 header {
-	width: 100%;
-	background: #fff;
     position: fixed; 
     z-index: 999;
     top:0;
+	width: 100%;
+	background: #fff;
+    transition: margin-top 300ms ease;
+}
+header.sticky {
+    margin-top: -20px;
+    background-color: #FFE115;
+    padding: 0;
 }
 .header-top{
     width: 100%;
