@@ -64,7 +64,7 @@
                      PRODUCT DETAIL
 ========================================================*/
 .products {
-    width: 100%;
+    width: 95%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -178,6 +178,7 @@ right: 0;
 .selector-color ul li a {
     margin: 4px;
     font-size: 14px;
+    transition: 0.5s all ease;
 }
 .selector-color ul li a .c-1{
     color: brown;
@@ -200,7 +201,9 @@ right: 0;
 .selector-color ul li a .c-7{
     color: #121FE2;
 }
-
+.selector-color ul li a:hover{
+    font-size: 18px;
+}
 /* BOTONES */
 .botones{
     display: flex;
@@ -216,15 +219,28 @@ right: 0;
     font-size: 20px;
     text-transform: uppercase;
     color: #fff;
-    background-color: #2d3a4b;
-    border: 3px solid #2d3a4b;
+    background-color:none;
+    border: 1px solid #2d3a4b;
     border-radius: 0px;
+    color: #2d3a4b;
+    transition: all 0.200s ease;
 }
-
+.boton button:active{
+    transform: translate(1px,1px);
+}
 .botones a i {
     margin: 30px;
     font-size: 20px;
     color: #eed735;
+    transition: 0.5s all ease;
+    
+}
+.botones a i:hover{
+    font-size: 25px;
+    transform: translate(-2px,-2px)
+}
+.botones a i:active{
+    transform: translate(1px,1px)
 }
 
 /* INFORMACION */
@@ -460,6 +476,10 @@ right: 0;
     text-transform: uppercase;
     text-decoration: none;
     }
+    .navegador1 ul li a:hover{
+        padding-bottom:5px;
+        border-bottom: 1px solid #222222;
+    }
     .navegador2{
         width: 50%;
         padding-top: 15px;
@@ -468,15 +488,16 @@ right: 0;
     }
     .navegador2 ul {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         flex-direction: row;
         justify-content: flex-end;
         align-items: flex-end;
         margin-right: 20px;
     
     }
-    .navegador2 ul li a{
-        margin: -14px;
+    
+    .navegador2 ul li a i {
+        margin-left: 30px;
     }
     .boton-menu {
         display: none;
@@ -523,13 +544,18 @@ right: 0;
         justify-content:center;
     }
     .navegador1{
-        flex: 1 1 90%;
+        flex: 1 1 80%;
     }
     .navegador2{
-        flex: 1 1 15%;
+        flex: 1 1 20%;
     }
+    
     .banner{
         height: 500px;
+    }
+    .container-banner {
+        padding: 4rem;
+        text-align: center;
     }
     section .container-producto {
         display: flex;
