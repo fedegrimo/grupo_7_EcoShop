@@ -22,7 +22,7 @@ server.get("/",(req,res)=>{
 server.get("/cart",(req,res)=>{
     res.sendFile(path.join(__dirname,PRODUCT_CART));
 });
-server.get("/registro",(req,res)=>{
+server.get("/register",(req,res)=>{
     res.sendFile(path.join(__dirname,REGISTER_PAGE));
 });
 
@@ -31,7 +31,7 @@ server.get("/login",(req,res)=>{
     res.sendFile(path.join(__dirname,LOGIN_PAGE));
 });
 
-server.get("/productos",(req,res)=>{
+server.get("/product",(req,res)=>{
     res.sendFile(path.join(__dirname,PRODUCT_DETAIL));
 });
 
