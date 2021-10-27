@@ -111,6 +111,10 @@ header.sticky {
     align-items: center;
     margin-left: -28px;
 }
+.navegador1 ul li {
+    margin-right: 40px;
+    
+}
 .navegador2 ul li a i {
     font-size: 1.3rem;
     color: #252525;
