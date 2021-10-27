@@ -7,7 +7,7 @@ const HOME_PAGE = "views/index.html";
 const PRODUCT_DETAIL = "views/productDetail.html";
 const LOGIN_PAGE = "views/login.html";
 const PRODUCT_CART = "views/productCart.html";
-const REGISTER_PAGE = "views/registrer.html";
+const REGISTER_PAGE = "views/register.html";
 const PORT = process.env.PORT || 5000;
 
 server.get("/mensaje",(req,res)=>{
