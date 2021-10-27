@@ -1,0 +1,102 @@
+.container-cart{
+
+    margin-top: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    font-size: 10px;
+}
+.table-responsive{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+.table-responsive thead tr th{
+    padding:15px 20px;
+    text-transform:uppercase;
+    color:#000;
+    text-align:center;
+    font-weight:600;
+    background-color:#f2f2f2;
+    border:none
+}
+.table-responsive thead tr th:first-child{
+    text-align:left
+}
+.table-responsive tbody tr td{
+    padding:20px 10px;
+    vertical-align:middle;
+    font-size:16px
+}
+.table-responsive tbody tr td .form-group--number{
+    max-width:100px;
+    display:inline-block
+}
+.table-responsive tbody tr td .form-group--number input{
+    border-radius:0
+}
+.table-responsive tbody tr td .ps-product--cart{
+    max-width:500px
+}
+.table-responsive tbody tr td:last-child{
+    text-align:right
+}
+
+.product-cart{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.product-cart > img{
+    width: 5vw;
+    padding-right: 5px;
+}
+
+.product-cart > .product-content{
+    color: #2f2f2f;
+}
+
+.table-responsive > .quantity{
+    border: 1px solid #2f2f2f;
+    width: 30px;
+    text-align: center;
+}
+
+.nav-button{
+    width: 50vw;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.nav-button > .btn-cart {
+    color: #2d3a4b;
+    font-size: 14px;
+    line-height: 40px;
+    letter-spacing: 1px;
+    padding: 10px;
+    font-family:'Montserrat', sans-serif;
+    background: none;
+    border-radius: 10px;
+    border: 1px solid #2d3a4b;
+    color: #2d3a4b;
+    margin-top: 20px;
+    transition: all 0.200s ease;
+    cursor: pointer;
+}
+
+.nav-button > .btn-cart:hover {
+    transform: translate(-2px,-2px);
+    background: #2d3a4b;
+}
+.nav-button > .btn-cart:active{
+    transform: translate(1px,1px);
+}
+
+.nav-button > .btn-cart:hover{
+    color: #FFF;
+}
