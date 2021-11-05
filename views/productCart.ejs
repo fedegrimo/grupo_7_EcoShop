@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./layout/head') %>
+<body>
+    <%- include('./layout/header') %>
+
+<section class="container-cart">
+    <form>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="product-cart">
+                                <img src="/img/chair1.jpg"/>
+                                <div class="product-content">WOOD CHAIR</div>
+                            </div>
+                            
+                        </td>
+                        <td class="price">$ 299</td>
+                        <td>
+                            <input type="text" class="quantity"  placeholder="1" value="1" name="cantidad">
+                        </td>
+                        <td class="price">$ 299</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <div class="nav-button">
+                <a href="/" class="btn-cart"><i class="fas fa-arrow-left"></i>Seguir comprando</a>
+                <a href="/" class="btn-cart"><i class="fas fa-sync-alt"></i>Actualizar</a>
+                
+            </div>
+        </div>
+        <div class="button-finalizar">
+            <a href="/" class="btn-cart__finalizar">Finalizar Compra</a>
+        </div>
+
+        <div class="tabla">
+
+            <div class="tabla__subtotal">
+                <p>Subtotal</p>
+                <p>$6000</p>
+            </div>
+
+            <div class="tabla__total">
+                <p>Total</p>
+                <p class="precio">$6000</p>
+            </div>
+
+        </div>
+        
+    </form>
+    
+    
+  </section> 
+  <%- include('./layout/head') %>
+</body>
+</html>

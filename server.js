@@ -1,41 +1,24 @@
+const path = require("path");
 const express = require("express");
 const server = express();
-const path = require("path");
-server.use("/public",express.static("public"));
+const pageCTRL = require('./controllers/pageCTRL');
+const PORT = process.env.PORT || 3000;
 
-const HOME_PAGE = "views/index.html";
-const PRODUCT_DETAIL = "views/productDetail.html";
-const LOGIN_PAGE = "views/login.html";
-const PRODUCT_CART = "views/productCart.html";
-const REGISTER_PAGE = "views/register.html";
-const PORT = process.env.PORT || 5000;
+//Set Template Engine
+server.set("views", path.resolve(__dirname, "views"));
+server.set("view engine", "ejs");
 
-server.get("/mensaje",(req,res)=>{
-    res.send("Mensaje desde js");
-});
+//Static Files
+server.use('/css',express.static(path.resolve(__dirname,'public/css')));
+server.use('/img',express.static(path.resolve(__dirname,'public/img')));
+server.use('/js',express.static(path.resolve(__dirname,'public/js')));
 
-
-server.get("/",(req,res)=>{
-    res.sendFile(path.join(__dirname,HOME_PAGE));
-});
-
-server.get("/cart",(req,res)=>{
-    res.sendFile(path.join(__dirname,PRODUCT_CART));
-});
-server.get("/register",(req,res)=>{
-    res.sendFile(path.join(__dirname,REGISTER_PAGE));
-});
-
-
-server.get("/login",(req,res)=>{
-    res.sendFile(path.join(__dirname,LOGIN_PAGE));
-});
-
-server.get("/product",(req,res)=>{
-    res.sendFile(path.join(__dirname,PRODUCT_DETAIL));
-});
-
-
+//Routes Files
+server.get("/",pageCTRL.index);
+server.get("/cart",pageCTRL.cart);
+server.get("/register",pageCTRL.register);
+server.get("/login",pageCTRL.login);
+server.get("/product",pageCTRL.product);
 
 
 server.listen(PORT,()=>{

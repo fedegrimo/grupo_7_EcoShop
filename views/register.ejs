@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./layout/head') %>
+<body>
+    <%- include('./layout/header') %>
+
+<section class="form-register">
+    <form id="frm" method="post">
+        <h1>Registrarse</h1>
+        <section class="divider">
+            <div class="row">
+                <span><i class="fas fa fa-user"></i></span>
+                <input type="text" name="nombre" placeholder="Apellido y Nombre">
+            </div>
+            <div class="row">
+                <span><i class="fas fa fa-envelope"></i></span>
+                <input type="email" name="email" placeholder="E-mail">
+                
+            </div>
+        </section>
+        <section class="divider">
+            <div class="row">
+                <span><i class="fas fa fa-envelope"></i></span>
+                <input type="email" name="email-repeat" placeholder="Repetir E-mail">
+                
+            </div>
+            <div class="row">
+                <span><i class="fas fa fa-lock"></i></span>
+                <input type="password" name="password" placeholder="Contraseña">
+                
+            </div>
+        </section>
+        
+        
+        <div class="row">
+            <input type="submit" value="Registrar"/>
+        </div>
+
+        <div class="row login">
+            <a href="/login">Login</a>
+        </div>
+    </form>
+</section>
+
+<%- include('./layout/head') %>
+</body>
+</html>
