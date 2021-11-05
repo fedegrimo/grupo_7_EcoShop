@@ -21,53 +21,21 @@
 
   <section class="homeproducts">
     <div class="homeproducts__container">
+        <% produtos.forEach (val) {%>
         <article class="homeproducts__products">
             <div class="products__img">
-                <img src="/img/HomeProducto1.png" alt="HomeProducto1">
+                <img src="/img/<%= val.picture %>" alt="HomeProducto1">
             </div>
             <div class="products__info">
-                <span class="price"><small>$</small>299</span>
-                <h4>ECO FRIENDLY</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus accumsan enim, sit amet tristique mauris vulputate sit amet. Cras moles</p>
+                <span class="price"><small>$</small><%= val.price %></span>
+                <h4><%= val.title %></h4>
+                <p><%= val.desciption %></p>
                 <a href="/product"><button><span class="button__text">SHOP NOW</span></button></a>
             </div>
         </article>
+        <% } %>
 
-        <article class="homeproducts__products">
-            <div class="products__img">
-                <img src="/img/HomeProducto2.png" alt="HomeProducto1">
-            </div>
-            <div class="products__info">
-                <span class="price"><small>$</small>299</span>
-                <h4>ECO FRIENDLY</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus accumsan enim, sit amet tristique mauris vulputate sit amet. Cras moles</p>
-               <a href="/product"><button><span class="button__text">SHOP NOW</span></button></a>
-            </div>
-        </article>
 
-        <article class="homeproducts__products">
-            <div class="products__img">
-                <img src="/img/HomeProducto3.png" alt="HomeProducto1">
-            </div>
-            <div class="products__info">
-                <span class="price"><small>$</small>299</span>
-                <h4>ECO FRIENDLY</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus accumsan enim, sit amet tristique mauris vulputate sit amet. Cras moles</p>
-                <a href="/product"><button><span class="button__text">SHOP NOW</span></button></a>
-            </div>
-        </article>
-
-        <article class="homeproducts__products">
-            <div class="products__img">
-                <img src="/img/HomeProducto3.png" alt="HomeProducto1">
-            </div>
-            <div class="products__info">
-                <span class="price"><small>$</small>299</span>
-                <h4>ECO FRIENDLY</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus accumsan enim, sit amet tristique mauris vulputate sit amet. Cras moles</p>
-                <a href="/product"><button><span class="button__text">SHOP NOW</span></button></a>
-            </div>
-        </article>
 
     </div>
 
