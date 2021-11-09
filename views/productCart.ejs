@@ -4,64 +4,130 @@
 <body>
     <%- include('./layout/header') %>
 
-<section class="container-cart">
-    <form>
-        <div class="table-responsive">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Producto</th>
-                        <th>Precio</th>
-                        <th>Cantidad</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="product-cart">
-                                <img src="/img/chair1.jpg"/>
-                                <div class="product-content">WOOD CHAIR</div>
-                            </div>
-                            
-                        </td>
-                        <td class="price">$ 299</td>
-                        <td>
-                            <input type="text" class="quantity"  placeholder="1" value="1" name="cantidad">
-                        </td>
-                        <td class="price">$ 299</td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-            <div class="nav-button">
-                <a href="/" class="btn-cart"><i class="fas fa-arrow-left act"></i>Seguir comprando</a>
-                <a href="/" class="btn-cart"><i class="fas fa-sync-alt"></i>Actualizar</a>
-                
-            </div>
-        </div>
-        <div class="button-finalizar">
-            <a href="/" class="btn-cart__finalizar">Finalizar Compra</a>
-        </div>
+    <div class="cart-container">
 
-        <div class="tabla">
-
-            <div class="tabla__subtotal">
-                <p>Subtotal</p>
-                <p>$6000</p>
-            </div>
-
-            <div class="tabla__total">
-                <p>Total</p>
-                <p class="precio">$6000</p>
-            </div>
-
-        </div>
+        <div class="cart-billing"> 
+            <h6>BILLING DETAILS</h6>
         
-    </form>
-    
-    
-  </section> 
+            <form>
+
+                <ul class="cart-billing__user">
+                    
+                    <!-- Name -->
+                    <li class="user__info">
+                    <label>NOMBRE
+                        <input type="text" name="first-name" value="" placeholder="">
+                    </label>
+                    </li>
+
+                    <!-- LAST NAME -->
+
+                    <li class="user__info">
+                    <label>APELLIDO
+                        <input type="text" name="last-name" value="" placeholder="">
+                    </label>
+                    </li>
+
+                    <li class="user__info"> 
+                    <!-- COMPANY NAME -->
+                    <label>COMPANY NAME
+                        <input type="text" name="company" value="" placeholder="">
+                    </label>
+                    </li>
+
+                    <li class="user__info"> 
+                    <!-- ADDRESS -->
+                    <label>DIRECCION
+                        <input type="text" name="address" value="" placeholder="">
+                    </label>
+                    </li>
+
+                    <!-- TOWN/CITY -->
+
+                    <li class="user__info">
+                    <label>CIUDAD
+                        <input type="text" name="town" value="" placeholder="">
+                    </label>
+                    </li>
+                    
+                    <!-- COUNTRY -->
+
+                    <li class="user__info">
+                    <label>PAIS
+                        <input type="text" name="contry-state" value="" placeholder="">
+                    </label>
+                    </li>
+                    
+                    <!-- EMAIL ADDRESS -->
+                    <li class="user__info">
+                    <label>EMAIL
+                        <input type="text" name="contry-state" value="" placeholder="">
+                    </label>
+                    </li>
+
+                    <!-- PHONE -->
+                    <li class="user__info">
+                    <label>PHONE
+                        <input type="text" name="postal-code" value="" placeholder="">
+                    </label>
+                    </li>
+                    
+                    <!-- PHONE -->
+                    <li class="user__info">
+                    <button type="submit">continue</button>
+                    </li>
+                    
+                </ul>
+
+            </form>
+        </div>
+
+        <div class="shopping-cart">
+
+            <h6>YOUR ORDER</h6>
+
+            <div class="order-place">
+              <div class="order-detail">
+                <p>WOOD CHAIR <span>$598 </span></p>
+                <p>STOOL <span>$199 </span></p>
+                <p>WOOD SPOON <span> $139</span></p>
+                
+                <!-- SUB TOTAL -->
+                <p class="all-total">TOTAL COST <span> $998</span></p>
+            </div>
+
+            <div class="metodoPago">
+                <ul>
+                    <li>
+                        <div class="radio">
+                        <input type="radio" name="radio1" id="radio1" value="option1" checked="">
+                        <label for="radio1"><span class="metodoPago__texto">DEPOSITO BANCARIA</span></label>
+                        </div>
+                    
+                    </li>
+                 
+                    <li>
+                        <div class="radio">
+                        <input type="radio" name="radio1" id="radio3" value="option3">
+                        <label for="radio3"><span class="metodoPago__texto">TARJETA DE CREDITO/ DEBITO</span></label>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="radio">
+                        <input type="radio" name="radio1" id="radio4" value="option4">
+                        <label for="radio4"><span class="metodoPago__texto">PAYPAL</span></label>
+                        </div>
+                    </li>
+
+                </ul>
+                <a href="#." class="btn">COMPRAR</a> </div>
+            </div>
+
+
+        </div>
+
+    </div>
   <%- include('./layout/head') %>
 </body>
 </html>
