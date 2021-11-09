@@ -21,22 +21,42 @@
 
   <section class="homeproducts">
     <div class="homeproducts__container">
-        <% produtos.forEach (val) {%>
-        <article class="homeproducts__products">
+        
+        <% if(products) { %> 
+            
+            
+                <% products.forEach(function(product) { %>
+                
+                    <article class="homeproducts__products">
+                        <div class="products__img">
+                            <img src="<%= product.picture %>" alt="HomeProducto1">
+                        </div>
+                        <div class="products__info">
+                            <span class="price"><%= product.price%></span>
+                            <h4><%= product.title %></h4>
+                            <p> <%= product.description %></p>
+                            <a href="/product"><button><span class="button__text">SHOP NOW</span></button></a>
+                        </div>
+                    </article>
+        
+                <% }); %> 
+            
+        
+            <% } %>
+        
+        
+        <!-- <article class="homeproducts__products">
             <div class="products__img">
-                <img src="/img/<%= val.picture %>" alt="HomeProducto1">
+                <img src="/img/ val.picture" alt="HomeProducto1">
             </div>
             <div class="products__info">
-                <span class="price"><small>$</small><%= val.price %></span>
-                <h4><%= val.title %></h4>
-                <p><%= val.desciption %></p>
+                <span class="price"><small>$</small></span>
+                <h4></h4>
+                <p> val.desciption</p>
                 <a href="/product"><button><span class="button__text">SHOP NOW</span></button></a>
             </div>
-        </article>
-        <% } %>
-
-
-
+        </article> -->
+       
     </div>
 
 </section>
@@ -49,58 +69,27 @@
 
     <div class="contenedor-items">
 
-        <div class="item"> 
-            <div class="item-img"> 
-                <img class="img-1" src="/img/product-2.jpg" alt="">
-            </div>
-                 <!-- Item Name -->
-            <div class="item-name"> 
-                <a href="#.">stone cup</a>
-                <p>Lorem ipsum dolor sit amet</p>
-            </div>
-                <!-- Price --> 
-            <span class="price"><small>$</small>299</span>
-        </div>
-        
-            <div class="item"> 
-                <div class="item-img"> 
-                    <img class="img-1" src="/img/product-3.jpg" alt="">
-                </div>
-                 <!-- Item Name -->
-                <div class="item-name"> 
-                    <a href="#.">gray bag</a>
-                    <p>Lorem ipsum dolor sit amet</p>
-                </div>
-                <!-- Price --> 
-                    <span class="price"><small>$</small>299</span>
-            </div>
-
-            <div class="item"> 
-                <div class="item-img"> 
-                <img class="img-1" src="/img/product-4.jpg" alt="">
-                </div>
-                 <!-- Item Name -->
-                <div class="item-name"> 
-                <a href="#.">chair</a>
-                <p>Lorem ipsum dolor sit amet</p>
-                </div>
-                <!-- Price --> 
-                <span class="price"><small>$</small>299</span>
-            </div>
-
-            <div class="item"> 
-                <div class="item-img"> 
-                <img class="img-1" src="/img/product-5.jpg" alt="">
-                </div>
-                 <!-- Item Name -->
-                <div class="item-name"> 
-                <a href="#.">stool</a>
-                <p>Lorem ipsum dolor sit amet</p>
-                </div>
-                <!-- Price --> 
-                <span class="price"><small>$</small>299</span>
-            </div>
+        <% if(item) { %>    
+            <% item.forEach(function(item) { %>
             
+                <div class="item"> 
+                    <div class="item-img"> 
+                        <img class="img-1" src="<%= item.picture %>" alt="">
+                    </div>
+                         <!-- Item Name -->
+                    <div class="item-name"> 
+                        <a href="#."><%= item.title %></a>
+                        <p><%= item.description %></p>
+                    </div>
+                        <!-- Price --> 
+                    <span class="price"><%= item.price %></span>
+                </div>
+    
+            <% }); %> 
+        
+    
+        <% } %>
+        
     </div> <!-- contenedor-items -->
 
 </section> <!-- TERMINA SECTION recomendacion-->

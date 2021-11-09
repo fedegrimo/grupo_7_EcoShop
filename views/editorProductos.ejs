@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./layout/head') %>
+<body>
+    <%- include('./layout/header') %>
+
+<section class="container-editor">
+    <div class="contenedor-formularios">
+
+        <form action="#" method="#">
+
+            <div class="datosProductos">
+                <label for="nombreProducto" name="nombreProducto" id="NombreProducto">Nombre del Producto</label><br>
+                <input type="text" name="nombreProducto" id="nombreProducto" placeholder="Nombre del producto" required minlength="2" maxlength="14"><br>
+                <label for="Descripcion" name="Descripcion" id="Descripcion">Descripcion del producto</label><br>
+                <textarea name="Descripcion" id="Descripcion" placeholder="Descripción" required> </textarea><br>
+            </div>
+
+            <div class="fotoProducto">
+                <label for="fotoProduct" name="fotoProduct" id="titulo-foto">Foto del producto</label><br>
+                <input type="file" name="fotoProduct" id="boton-fotoProduct">
+            </div>
+
+            <div class="categoria">
+                <div class="categoria__titulo">
+                    <label for="categoria" name="categoria">Categoria</label>
+                    <select name="categoria" class="categoria">
+                    <option>Sillas</option>
+                    <option>Muebles</option>
+                    <option>Decoracion</option>
+                    <option>Sillones</option>
+                    <option>Iluminacion</option>
+                </select> 
+                </div>
+                
+
+            </div>
+
+            <div class="cantidad">
+                <label for="Cantidad" name="Cantidad">Numero de Articulos</label>
+                <input class="cantidadProducto" type="number">
+            </div>
+
+            <div class="precio">
+                <label for="price" name="price">$</label>
+                <input class="price" type="number">
+            </div>
+
+            <div class="boton-enviar">
+                <button type="submit" id="send">Enviar</button>
+                <button type="reset" id="delete">Borrar</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</main>
+    
+</section> 
+  <%- include('./layout/head') %>
+</body>
+</html>

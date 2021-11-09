@@ -4,6 +4,11 @@ const server = express();
 const pageCTRL = require('./controllers/pageCTRL');
 const PORT = process.env.PORT || 3000;
 
+//middlewares
+server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
+
+
 //Set Template Engine
 server.set("views", path.resolve(__dirname, "views"));
 server.set("view engine", "ejs");
@@ -19,7 +24,8 @@ server.get("/cart",pageCTRL.cart);
 server.get("/register",pageCTRL.register);
 server.get("/login",pageCTRL.login);
 server.get("/product",pageCTRL.product);
-
+server.get("/agregarProducto",pageCTRL.agregarProducto);
+server.get("/editorProductos",pageCTRL.editorProductos);
 
 server.listen(PORT,()=>{
     console.log(`Servidor iniciado en puerto ${PORT}`);

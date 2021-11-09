@@ -1,2 +1,30 @@
-{"picture": "HomeProducto1.png","price":"299","title":"ECO FRIENDLY","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus accumsan enim, sit amet tristique mauris vulputate sit amet. Cras moles"},
-{"picture": "HomeProducto1.png","price":"299","title":"ECO FRIENDLY","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus accumsan enim, sit amet tristique mauris vulputate sit amet. Cras moles"}
+[
+    {
+        "picture": "/img/HomeProducto1.png",
+        "price":"$299",
+        "title":"ECO FRIENDLY",
+        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus accumsan enim, sit amet tristique mauris vulputate sit amet. Cras moles"
+    },
+
+    {
+        "picture": "/img/HomeProducto2.png",
+        "price":"$489",
+        "title":"Concrete Shaving Kit",
+        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus accumsan enim, sit amet tristique mauris vulputate sit amet. Cras moles"
+    },
+
+    {
+        "picture": "/img/HomeProducto3.png",
+        "price":"$954",
+        "title":"WOODEN CHAIR",
+        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus accumsan enim, sit amet tristique mauris vulputate sit amet. Cras moles"
+    },
+
+    {
+        "picture":"/img/HomeProducto3.png",
+        "price":"$99",
+        "title":"CERAMIC STONE VASE",
+        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus accumsan enim, sit amet tristique mauris vulputate sit amet. Cras moles"
+    }
+]
+
