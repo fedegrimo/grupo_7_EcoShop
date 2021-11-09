@@ -1,4 +1,4 @@
-# Título del Proyecto
+# ECO SHOP
 
 _El sitio Web se especializa en la venta de productos eco design. Destinado a u público entre 20 y 50 años. El objetivo es los productos se muestren en forma armonica y simplificando la navegación._
 
