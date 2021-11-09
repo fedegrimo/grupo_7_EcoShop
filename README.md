@@ -1,71 +1,93 @@
-# Grupo_7_EcoShop
-El sitio Web se especializa en la venta de productos eco design. Destinado a u publico entre 20 y 50 años. El objetivo es los productos se muestren en forma armonica y simplificando la navegación.
+# Título del Proyecto
 
-## Integrantes del equipo:
-### Emiliano Montanari
-Tengo 27 años y soy de Córdoba, Capital.
-Soy abogado y me intereso la programación de hace años solo que nunca tuve el tiempo para dedicarle full time y ahora que puedo me inscribí al curso.
+_El sitio Web se especializa en la venta de productos eco design. Destinado a u público entre 20 y 50 años. El objetivo es los productos se muestren en forma armonica y simplificando la navegación._
 
-### Federico Luciani
-Soy Ciclista de Montaña, programador autodidacta, tratando de adquirir mejores conocimientos y practicas.
+## Comenzando 🚀
 
-### Federico Grimolizzi
-Programador Web y Desarrollador Web en PHP. Actualizando conocimientos. 45 años.
+_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
 
-## Links templates
-https://demos.webicode.com/html/eco-shop-html/Single_Img_Demo/index.html
-
-https://demos.webicode.com/html/eco-shop-html/html/index-1.html
+Mira **Deployment** para conocer como desplegar el proyecto.
 
 
-https://demos.webicode.com/html/eco-shop-html/html/index-header-4.html
+### Pre-requisitos 📋
 
-https://demos.webicode.com/html/eco-shop-html/html/index-2.html
+_Que cosas necesitas para instalar el software y como instalarlas_
 
-https://demos.webicode.com/html/eco-shop-html/html/index-header-2.html
+```
+Express Nodemon
+```
 
-## Fonts
-https://fonts.googleapis.com/css?family=Montserrat:400,700
+### Instalación 🔧
 
-https://fonts.googleapis.com/css?family=Playfair+Display:400,700,90
+_Para ejecutar el entorno de desarrollo sigue los siguientes pasos_
 
-## Wireframes
+_Paso 1_
 
-### Inicio de la maqueta 
-Escritorio: https://wireframe.cc/sVuD1E
-Móvil: https://wireframe.cc/Oa02wf
+```
+npm install express nodemon
+```
 
-### Mockup Detalle de Producto
-Escritorio: https://wireframe.cc/pro/pp/7345de5c9477387
-Móvil: https://wireframe.cc/pro/pp/7345de5c9477387
+_Paso 2_
 
-### Mockup Carrito de Compras
-Escritorio: https://wireframe.cc/1WLpo0
-Móvil: https://wireframe.cc/Ch4xh6
+```
+npm i ejs
+```
 
-### Productos de la maqueta
-Escritorio: https://wireframe.cc/qruNcN
-Móvil: https://wireframe.cc/bsyUQ2
+## Ejecutando las pruebas ⚙️
 
-### Maqueta Formulario Iniciar sesión
-Escritorio: https://wireframe.cc/2RgIMb
-Móvil: https://wireframe.cc/KMXtnf
+_Para ejecutar el servidor escribe el siguiente comando_
 
-### Mockup Registración
-Escritorio: https://wireframe.cc/HFROKO
-Móvil: https://wireframe.cc/UKnOIW
+### Analice las pruebas end-to-end 🔩
 
-### Contacto de Mockup
-Escritorio: https://wireframe.cc/pro/pp/7345de5c9477387
-Móvil: https://wireframe.cc/pro/pp/7345de5c9477387
+_El servidor se ejecuta en la url de localhost:3000_
 
-### Mockup Formulario de registro
-Escritorio: https://wireframe.cc/Tu4uaI
-Móvil: https://wireframe.cc/F1LCKM
+```
+npm run server
+```
 
-### Comprobación de la maqueta
-Escritorio: https://wireframe.cc/h7B6yD
-Móvil: https://wireframe.cc/B0Sxdl
+### Y las pruebas de estilo de codificación ⌨️
 
-## Trello
-link: https://trello.com/b/wCxLgPJu/digitalhouse
+_Explica que verifican estas pruebas y por qué_
+
+```
+Da un ejemplo
+```
+
+## Despliegue 📦
+
+_Agrega notas adicionales sobre como hacer deploy_
+
+## Construido con 🛠️
+
+_Menciona las herramientas que utilizaste para crear tu proyecto_
+
+* [Wireframe](http://www.wireframe.cc/) - Maquetación
+* [Trello](https://trello.com/) - Tablero de Tareas
+
+
+## Wiki 📖
+
+Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
+
+## Autores ✒️
+
+_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
+
+* **Emiliano Montanari* - *Trabajo Inicial* - [emimontanari](https://github.com/emimontanari)
+* **Federico Grimolizzi** - *Trabajo Inicial* - [fedegrimo](https://github.com/fedegrimo)
+
+También puedes mirar la lista de todos los [contribuyentes](https://github.com/fedegrimo/grupo_7_EcoShop/graphs/contributors) quíenes han participado en este proyecto. 
+
+## Licencia 📄
+
+Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+
+## Expresiones de Gratitud 🎁
+
+* Comenta a otros sobre este proyecto 📢
+* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
+* Da las gracias públicamente 🤓.
+
+
+---
+⌨️ con ❤️ por [fedegrimo](https://github.com/fedegrimo) 😊
