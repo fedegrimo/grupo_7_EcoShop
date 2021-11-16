@@ -7,9 +7,8 @@
 <section class="banner">
     <div class="banner-info">
       <div class="container-banner">
-        <h4>WOOD CHAIR</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. 
-          Sed feugiat, tellus vel tristique posuere, diam</p>
+        <h4><%= rowProduct.title %></h4>
+        <p><%= rowProduct.description %></p>
         <ol class="breadcrumb">
           <li><a href="/">HOME</a></li>
           <i class="far fa-arrow-alt-circle-right"></i>
@@ -25,20 +24,19 @@
 
     <div class="container-producto">
             <div class="imagen-producto">
-                <img src="/img/chair1.jpg">
+                <img src="/img/<%= rowProduct.picture %>">
             </div>
         <div class="prod-desc">   
 
            <div class="descripcion-producto">
-                <h4> WOOD CHAIR</h4>
-                <span class="precio"><small>$</small>299</span>
-                <div class="on-sale"> 10% <span>OFF</span> </div>
+                <h4> <%= rowProduct.title %></h4>
+                <span class="precio"><small>$</small><%= toThousand(rowProduct.price) %></span>
+                <div class="on-sale"> <%= rowProduct.discount %>% <span>OFF</span> </div>
                 <ul class="item-owner">
-                <li>Designer :<span> ABC Art</span></li>
-                <li class="brand">Brand:<span> LimeWood</span></li>
+                <li>Designer :<span> <%= rowProduct.designer %></span></li>
+                <li class="brand">Brand:<span> <%= rowProduct.brand %></span></li>
                 </ul>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus ligula a scelerisque gravida. Nullam laoreet tortor ac maximus alique met, consectetur adipiscing elit. Vestibulum finibus ligula a scelerisque gravida. Nullam 
-                </p>
+                <p><% rowProduct.description %></p>
             </div>
 
             <div class="selectores-botones">
@@ -126,59 +124,24 @@
         </div>
 
         <div class="contenedor-items">
+            <% if(products) { %>    
+                <% products.forEach(function(product) { 
+                    if (product.category === 'visited') {%>
 
             <div class="item"> 
                 <div class="item-img"> 
-                    <img class="img-1" src="/img/product-2.jpg" alt="">
+                    <a href="<%= product.id %>"><img class="img-1" src="/img/<%= product.picture %>" alt="<%= product.title %>"></a>
                 </div>
                      <!-- Item Name -->
                 <div class="item-name"> 
-                    <a href="#.">stone cup</a>
-                    <p>Lorem ipsum dolor sit amet</p>
+                    <a href="<%= product.id %>"><%= product.title %></a>
+                    <p><%= product.description %></p>
                 </div>
                     <!-- Price --> 
-                <span class="price"><small>$</small>299</span>
+                <span class="price"><small>$</small><%= product.title %></span>
             </div>
-            
-                <div class="item"> 
-                    <div class="item-img"> 
-                        <img class="img-1" src="/img/product-3.jpg" alt="">
-                    </div>
-                     <!-- Item Name -->
-                    <div class="item-name"> 
-                        <a href="#.">gray bag</a>
-                        <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                    <!-- Price --> 
-                        <span class="price"><small>$</small>299</span>
-                </div>
-
-                <div class="item"> 
-                    <div class="item-img"> 
-                    <img class="img-1" src="/img/product-4.jpg" alt="">
-                    </div>
-                     <!-- Item Name -->
-                    <div class="item-name"> 
-                    <a href="#.">chair</a>
-                    <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                    <!-- Price --> 
-                    <span class="price"><small>$</small>299</span>
-                </div>
-
-                <div class="item"> 
-                    <div class="item-img"> 
-                    <img class="img-1" src="/img/product-5.jpg" alt="">
-                    </div>
-                     <!-- Item Name -->
-                    <div class="item-name"> 
-                    <a href="#.">stool</a>
-                    <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                    <!-- Price --> 
-                    <span class="price"><small>$</small>299</span>
-                </div>
-                
+            <% } }); %> 
+        <% } %> 
         </div> <!-- contenedor-items -->
 
   </section> <!-- TERMINA SECTION recomendacion-->

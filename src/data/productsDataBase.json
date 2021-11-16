@@ -1,0 +1,94 @@
+[
+    {
+        "id": 1,
+        "picture": "HomeProducto1.png",
+        "discount":10,
+        "price":299,
+        "title":"ECO FRIENDLY",
+        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus accumsan enim, sit amet tristique mauris vulputate sit amet. Cras moles",
+        "designer":"ABC",
+        "brand":"Dilot",
+        "category":"in-sale"
+    },
+    {
+        "id": 2,
+        "picture": "HomeProducto2.png",
+        "price":489,
+        "discount":10,
+        "title":"Concrete Shaving Kit",
+        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus accumsan enim, sit amet tristique mauris vulputate sit amet. Cras moles",
+        "designer":"ABC",
+        "brand":"Dilot",
+        "category":"in-sale"
+    },
+
+    {
+        "id": 3,
+        "picture": "HomeProducto3.png",
+        "price":954,
+        "discount":10,
+        "title":"WOODEN CHAIR",
+        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus accumsan enim, sit amet tristique mauris vulputate sit amet. Cras moles",
+        "designer":"ABC",
+        "brand":"Dilot",
+        "category":"in-sale"
+    },
+
+    {
+        "id": 4,
+        "picture":"HomeProducto3.png",
+        "price":99,
+        "discount":10,
+        "title":"CERAMIC STONE VASE",
+        "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus accumsan enim, sit amet tristique mauris vulputate sit amet. Cras moles",
+        "designer":"ABC",
+        "brand":"Dilot",
+        "category":"in-sale"
+    },
+    {
+        "id": 5,
+        "picture": "product-2.jpg",
+        "price":199,
+        "discount":10,
+        "title":"stone cup",
+        "description":"Lorem ipsum dolor sit amet",
+        "designer":"ABC",
+        "brand":"Dilot",
+        "category":"visited"
+    },
+    {
+        "id": 6,
+        "picture": "product-3.jpg",
+        "price":150,
+        "discount":10,
+        "title":"gray bag",
+        "description":"Lorem ipsum dolor sit amet",
+        "designer":"ABC",
+        "brand":"Dilot",
+        "category":"visited"
+    },
+    {
+        "id": 7,
+        "picture": "product-4.jpg",
+        "price":200,
+        "discount":10,
+        "title":"chair",
+        "description":"Lorem ipsum dolor sit amet",
+        "designer":"ABC",
+        "brand":"Dilot",
+        "category":"visited"
+    },
+    {
+        "id": 8,
+        "picture":"product-5.jpg",
+        "price":300,
+        "discount":10,
+        "title":"stool",
+        "description":"Lorem ipsum dolor sit amet",
+        "designer":"ABC",
+        "brand":"Dilot",
+        "category":"visited"
+    }
+    
+]
+

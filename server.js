@@ -32,16 +32,12 @@ server.use('/js',express.static(path.resolve(__dirname,'public/js')));
 
 // ************ WRITE YOUR CODE FROM HERE ************
 // ************ Route System require and use() ************
-const pageCTRL = require('./controllers/pageCTRL');
 
-//Routes Files
-server.get("/",pageCTRL.index);
-server.get("/cart",pageCTRL.cart);
-server.get("/register",pageCTRL.register);
-server.get("/login",pageCTRL.login);
-server.get("/product",pageCTRL.product);
-server.get("/agregarProducto",pageCTRL.agregarProducto);
-server.get("/editorProductos",pageCTRL.editorProductos);
+const mainRouter = require('./src/routes/main'); // Rutas main
+const productsRouter = require('./src/routes/products'); // Rutas /products
+
+server.use('/', mainRouter);
+server.use('/products', productsRouter);
 
 // ************ DON'T TOUCH FROM HERE ************
 // ************ catch 404 and forward to error handler ************
