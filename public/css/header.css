@@ -137,3 +137,47 @@ header.sticky {
     display: block;
     margin: auto;
 }
+.icon-acount-container{
+    position:relative;
+}
+.icon-acount-container .menu-acount{
+    display:none;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items: flex-start;
+    width:160px;
+    height: 100px;
+    background-color: white;
+    position: absolute;
+    right: -40px;
+    top: 30px;
+    text-align: left;
+    padding: 10px 15px;
+    background-color: #f0f5f9;
+    --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    
+  
+}
+
+.icon-acount-container .menu-acount li{
+    cursor: pointer;
+    color:black;
+}
+
+.icon-acount-container:hover .menu-acount{
+    display:flex;
+    animation: dropdown-animate 350ms ease forwards;
+}
+
+@keyframes dropdown-animate{
+    from{
+        opacity:0%;
+        transform: translate(0,-20px);
+    }
+    to{
+        opacity:100%;
+        transform: translate(0,0);
+    }
+
+}

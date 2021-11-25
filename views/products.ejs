@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./layout/head') %>
+<body>
+    <%- include('./layout/header') %>
+
+<section class="homebanner">
+    <div class="banner-info">
+      <div class="container-banner">
+        <h4>Bienvenido a ECOSHOP</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. 
+          Sed feugiat, tellus vel tristique posuere, diam</p>
+        <ol class="breadcrumb">
+          <li><a href="/products/list">PRODUCTS LIST</a></li>
+        </ol>
+      </div>
+    </div>
+</section> <!-- Termina SECTION BANNER-->
+
+<div class="container products-wrapper">
+    
+       
+<% productsAll.forEach(function(product) { %>
+
+        <div class="col-12 col-sm-6 col-lg-3">
+            <section class="product-box">
+                <a href="/products/detail/<%= product.id %>">
+                    <figure class="product-box_image">
+                        <img src="img/<%= product.picture %>" alt="<%= product.name %>">
+                    </figure>
+                    
+                    <article class="product-box_data">
+
+                      <div class="data_price">
+                        <p>$ <%= product.price %></p>
+                        <span><%= product.discount %>% OFF</span>
+                      </div>
+
+                        <h4 class="data_price-title"><%= product.title %></h4>
+                        <p class="data_price-text"><%= product.description %></p>
+                    </article>
+                </a>
+            </section>
+        </div>
+
+<% }) %>
+    
+</div>
+<%- include('./layout/head') %>
+</body>
+</html>

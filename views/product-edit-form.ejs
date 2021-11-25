@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./layout/head') %>
+<body>
+    <%- include('./layout/header') %>
+
+<section class="homebanner">
+    <div class="banner-info">
+      <div class="container-banner">
+        <h4>Bienvenido a ECOSHOP</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. 
+          Sed feugiat, tellus vel tristique posuere, diam</p>
+        <ol class="breadcrumb">
+          <i class="far fa-arrow-alt-circle-right"></i>
+          <li><a href="/products/list">PRODUCT LIST</a></li>
+        </ol>
+      </div>
+    </div>
+</section> <!-- Termina SECTION BANNER-->
+
+<% if (productToEdit) { %>
+
+    
+
+        <section class="formularioEdit">
+       
+        <h3 class="formularioEdit_title">Estas editando:<%= productToEdit.title %></h3>
+        <form action="/products" method="POST" enctype="">
+
+            <div class="formulario_contenedor">     
+                
+                <figure class="product_image">
+                    <img src="/img/<%= productToEdit.picture %>" alt="<%= productToEdit.name %>">
+                </figure> 
+
+                <div class="formulario_contenido">
+
+                <div class="formulario_item">
+                    <label for="name" class="form-label">Nombre del producto:</label>
+                    <input type="text" id="name" name="name" class="form-input" value="<%=productToEdit.title%>">
+                </div>
+
+                <div class="formulario_item">
+                    <label for="price" class="form-label">Precio del producto:</label>
+                    <input type="text" id="price" name="price"class="form-input" value="<%=productToEdit.price%>">
+                </div>
+
+                <div class="formulario_item">
+                    <label for="discount" class="form-label">Descuento:</label>
+                    <input type="text" id="discount" name="discount" class="form-input" value="<%= productToEdit.discount %>">
+                </div>
+
+                <div class="formulario_item">
+                    <label for="fileImage" class="form-label">Categoria:</label>
+                    <select class="selectForm" name="category" id="category">
+
+                        <% if (productToEdit.category === "in-sale") { %>
+                            <option selected>in-sale</option>
+                            <option>visited</option>
+
+                            <%} else { %>
+                                <option>in-sale</option>
+                                <option selected>visited</option>
+                            <% } %>
+                            
+                        
+                    </select>
+                </div>
+
+                <div class="formulario_item">
+                    <label for="fileImage" class="form-label">Imagen:</label>
+                    <input type="file" id="fileImage" name="fileImage">
+                </div>
+
+                <div class="formulario_item">
+                    <label for="description" class="form-label">Descipción:</label>
+                    <textarea name="description" id="description" class="form-input"><%= productToEdit.description %></textarea>
+                </div>
+
+                <div class="formulario_item-button">
+                    <button type="submit" class="buy-now-button">Guardar producto</button>
+                    <button type="reset" class="buy-now-button">Borrar</button>
+                </div>
+
+                
+            </div>
+   
+        </form>
+    </section>
+     
+<% } %>
+
+
+
+
+<%- include('./layout/head') %>
+</body>
+</html>

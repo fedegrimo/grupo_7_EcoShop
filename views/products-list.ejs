@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./layout/head') %>
+<body>
+    <%- include('./layout/header') %>
+
+<section class="homebanner">
+    <div class="banner-info">
+      <div class="container-banner">
+        <h4>Bienvenido a ECOSHOP</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. 
+          Sed feugiat, tellus vel tristique posuere, diam</p>
+        <ol class="breadcrumb">
+          <li><a href="/products">PRODUCTS</a></li>
+        </ol>
+      </div>
+    </div>
+</section> <!-- Termina SECTION BANNER-->
+    <section class="productList">
+
+        <div class="listaProductos">
+            <h1 class="listaProductos__titulo">LISTA DE PRODUCTOS</h1>
+            <a href="/products/create/" class="btn__texto">Agregar Producto</a>
+          
+            <% if (products) { %>
+              
+              <% products.forEach(product => { %>
+              
+                    <div class="editarProd">
+              
+                      <figure class="product-box_image">
+                          <img src="/img/<%= product.picture %>" alt="<%= product.name %>">
+                      </figure>      
+         
+                      <div class="editarProd_datos">
+                        <h2 class="editarProd__titulo"><%= product.title %></h2>  
+                        <p><%= product.description %></p>
+                      </div>
+                      <div class="editarProd_categority">
+                        <span><%= product.category %></span>
+                      </div>
+                      <div class="editarProd_prince">
+                          <p>$ <%= product.price %></p>
+                      </div>
+      
+                      <div class="editarProd_color">
+                          <select name="" id="">
+                            <option selected value="">CANTIDAD</option>
+                            <option value="">1</option>
+                            <option value="">2</option>
+                            <option value="">3</option>
+                          </select>
+                      </div>
+      
+                      <div class="btnEdit">
+                        <a href="/products/<%= product.id %>/edit" class="editarProd__btn">Editar</a>
+                        <a href="/products/<%= product.id %>" class="editarProd__btnDelete"><i class="fas fa-trash-alt"></i></a>  
+                      </div>
+                    </div>
+
+              <% }) %>
+
+            <% } %>
+
+            
+    
+        </div>
+    </section>
+<%- include('./layout/head') %>
+</body>
+</html>

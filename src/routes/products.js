@@ -23,6 +23,9 @@ const productsController = require('../controllers/productsConstroller');
 /*** GET ALL PRODUCTS ***/ 
 router.get('/', productsController.index); 
 
+/*** GET LIST PRODUCTS ADMINISTRATION ***/
+router.get('/list', productsController.list); 
+
 /*** CREATE ONE PRODUCT ***/ 
 router.get('/create/', productsController.create); 
 router.post('/', upload.single('fileImage'),productsController.store); 

@@ -8,11 +8,14 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const controller = {
-	// Root - Show all products
+	// Root - Show all products -trabajar
 	index: (req, res) => {
-		res.render('products',{productsAll:products});
+		res.render('products',{productsAll: products});
 	},
-
+	// List administration product -trabajar
+	list: (req, res) => {
+		res.render('products-list',{products: products});
+	},
 	// Detail - Detail from one product
 	detail: (req, res) => {
 		let id = req.params.id;
@@ -25,9 +28,9 @@ const controller = {
 		res.render('productDetail',{ rowProduct, products, toThousand})
 	},
 
-	// Create - Form to create
+	// Create - Form to create -trabajar
 	create: (req, res) => {
-		res.render('product-create-form',{category});
+		res.render('product-create-form');
 	},
 
     // Add - Cart
@@ -52,14 +55,16 @@ const controller = {
 		res.redirect('/products');
 	},
 
-	// Update - Form to edit
+	// Update - Form to edit -TRABAJAR
 	edit: (req, res) => {
 		const productToEdit = products.find(val => {
 			if (val.id == req.params.id){
 				return val;
 			}
 		})
-		res.render('product-edit-form',{productToEdit,category});
+
+		//TODO: ver category
+		res.render('product-edit-form',{productToEdit});
 	},
 	// Update - Method to update
 	update: (req, res) => {
@@ -95,6 +100,7 @@ const controller = {
 		fs.writeFileSync(productsFilePath,JSON.stringify(newProducts),'utf-8');
 		res.redirect('/products');
 	}
+
 };
 
 module.exports = controller;

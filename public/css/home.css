@@ -9,6 +9,11 @@
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 .container-banner{
     width: 100%;
@@ -94,10 +99,14 @@
 .products__img{
     width: 90%;
     margin: 20px auto;
+    max-width:408px;
+    overflow: hidden;
+    max-height:420px ;
 }
 .products__img img{
     width: 100%;
     border-radius: 5px;
+   padding: 3rem;
 }
 .products__info{
     max-width: 320px;
