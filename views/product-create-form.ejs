@@ -21,44 +21,86 @@
 <section class="formularioEdit">
        
         <h3 class="formularioEdit_title">Formulario creacion de productos</h3>
+       
         <form action="/products" method="POST" enctype="">
 
-            <div class="formulario_contenedor formulario_contenedorCreate">     
-                
+            <div class="formulario_contenedor formulario_contenedorCreate">   
                 <div class="formulario_contenido">
-
+                    
                     <div class="formEdit_grid">
                         <div class="formulario_item">
                             <label for="name" class="form-label">Nombre del producto:</label>
-                            <input type="text" id="name" name="name" class="form-input">
+                            <input type="text" 
+                            id="name" 
+                            name="name" 
+                            class="form-input"
+                            value="<%= locals.oldData ? oldData.name : null %>">
+                            <% if (locals.errors && errors.name) { %>
+                                <div class="text-danger">
+                                    <%= errors.name.msg %>
+                                </div>
+                            <% } %>
                         </div>
 
                         <div class="formulario_item">
                             <label for="price" class="form-label">Precio del producto:</label>
-                            <input type="text" id="price" name="price"class="form-input">
+                            <input type="text" 
+                            id="price" 
+                            name="price" 
+                            class="form-input"
+                            value="<%= locals.oldData ? oldData.price : null %>">
+                            <% if (locals.errors && errors.price) { %>
+                                <div class="text-danger">
+                                    <%= errors.price.msg %>
+                                </div>
+                            <% } %>
                         </div>
 
                         <div class="formulario_item">
                             <label for="discount" class="form-label">Descuento:</label>
-                            <input type="text" id="discount" name="discount" class="form-input">
+                            <input type="text" 
+                            id="discount" 
+                            name="discount" 
+                            class="form-input"
+                            value="<%= locals.oldData ? oldData.discount : null %>">
                         </div>
 
                         <div class="formulario_item">
                             <label for="fileImage" class="form-label">Categoria:</label>
                             <select class="selectForm" name="category" id="category">
-                                <option></option>
-                                <option></option>
+                                <% 
+                                    categorias.forEach(element => { %>
+                                        <option value="<%= element.clave %>" <%= locals.objData && (element.clave === oldData.category) ? 'selected' : null %> ><%= element.valor %></option> 
+                                  <%  });
+                                 %> 
                             </select>
+                            <% if (locals.errors && errors.category) { %>
+                                <div class="text-danger">
+                                    <%= errors.category.msg %>
+                                </div>
+                            <% } %>
                         </div>
                     </div>
+                    
                     <div class="formulario_item">
-                        <label for="fileImage" class="form-label">Imagen:</label>
-                        <input type="file" id="fileImage" name="fileImage">
+                        <label for="description" class="form-label">Descipción:</label>
+                        <textarea name="description" 
+                        id="description" 
+                        class="form-input"><%= locals.description ? oldData.description : null %>
+                        </textarea>
                     </div>
 
                     <div class="formulario_item">
-                        <label for="description" class="form-label">Descipción:</label>
-                        <textarea name="description" id="description" class="form-input"></textarea>
+                        <label for="fileImage" class="form-label">Imagen:</label>
+                        <input type="file" 
+                        id="fileImage" 
+                        name="fileImage" 
+                        value="<%= locals.oldData ? oldData.fileImage : null %>">
+                        <% if (locals.errors && errors.fileImage) { %>
+                            <div class="text-danger">
+                                <%= errors.fileImage.msg %>
+                            </div>
+                        <% } %>
                     </div>
 
                     <div class="formulario_item-button">

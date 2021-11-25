@@ -55,26 +55,26 @@
                     <select class="selectForm" name="category" id="category">
 
                         <% if (productToEdit.category === "in-sale") { %>
-                            <option selected>in-sale</option>
-                            <option>visited</option>
-
+                            <option value="in-sale" selected>En Oferta</option>
+                            <option value="visited">Visitado</option>
                             <%} else { %>
-                                <option>in-sale</option>
-                                <option selected>visited</option>
+                                <option value="in-sale">En Oferta</option>
+                                <option value="visited" selected>Visitado</option>
                             <% } %>
                             
                         
                     </select>
                 </div>
 
-                <div class="formulario_item">
-                    <label for="fileImage" class="form-label">Imagen:</label>
-                    <input type="file" id="fileImage" name="fileImage">
-                </div>
-
+            
                 <div class="formulario_item">
                     <label for="description" class="form-label">Descipción:</label>
                     <textarea name="description" id="description" class="form-input"><%= productToEdit.description %></textarea>
+                </div>
+
+                <div class="formulario_item">
+                    <label for="fileImage" class="form-label">Imagen:</label>
+                    <input type="file" id="fileImage" name="fileImage" class="form-input">
                 </div>
 
                 <div class="formulario_item-button">

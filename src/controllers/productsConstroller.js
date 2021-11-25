@@ -1,12 +1,16 @@
 const fs = require('fs');
 const path = require('path');
+const { validationResult } = require ("express-validator");
 const { render } = require('../../server');
 
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-
+const categorias = [{clave : "in-sale",
+					valor: "En Oferta"},
+					{clave:"visited",
+					valor: "Visitado"}];
 const controller = {
 	// Root - Show all products -trabajar
 	index: (req, res) => {
@@ -30,7 +34,7 @@ const controller = {
 
 	// Create - Form to create -trabajar
 	create: (req, res) => {
-		res.render('product-create-form');
+		res.render('product-create-form', {categorias});
 	},
 
     // Add - Cart
@@ -40,19 +44,29 @@ const controller = {
 	
 	// Create -  Method to store
 	store: (req, res) => {
-		const {name, price, discount, category, description} = req.body;
-		const lastIndex = products.length - 1;
-		const id = products[lastIndex].id + 1;
-		const val = {	'id':id,
-						'name':name,
-						'price':price,
-						'image':'img-bicicleta-fierce.jpg',
-						'discount':discount,
-						'category':category,
-						'description':description};
-		products.push(val);
-		fs.writeFileSync(productsFilePath,JSON.stringify(products),'utf-8');
-		res.redirect('/products');
+		const resultValidation = validationResult(req);
+		if (resultValidation.errors.length > 0){
+			res.render('product-create-form',{ 
+				errors: resultValidation.mapped(),
+				oldData: req.body,
+				categorias
+			});
+		} else {
+			const {name, price, discount, category, description} = req.body;
+			const lastIndex = products.length - 1;
+			const id = products[lastIndex].id + 1;
+			const val = {	'id':id,
+							'name':name,
+							'price':price,
+							'image':'img-bicicleta-fierce.jpg',
+							'discount':discount,
+							'category':category,
+							'description':description};
+			products.push(val);
+			fs.writeFileSync(productsFilePath,JSON.stringify(products),'utf-8');
+			res.redirect('/products/list');
+		}
+		
 	},
 
 	// Update - Form to edit -TRABAJAR
