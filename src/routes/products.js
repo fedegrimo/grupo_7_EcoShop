@@ -39,7 +39,7 @@ const validations = [
     }
     
     return true;
-  }),
+  })
 ]
 
 // ************ Controller Require ************
