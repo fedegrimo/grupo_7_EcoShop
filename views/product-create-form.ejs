@@ -15,10 +15,9 @@
                     
                     <div class="formEdit_grid">
                         <div class="formulario_item">
-                            <label for="name" class="form-label">Nombre del producto:</label>
+                            <label for="title" class="form-label">Nombre del producto:</label>
                             <input type="text" 
-                            id="name" 
-                            name="name" 
+                            name="title" 
                             class="form-input"
                             value="<%= locals.oldData ? oldData.name : null %>">
                             <% if (locals.errors && errors.name) { %>
@@ -31,7 +30,6 @@
                         <div class="formulario_item">
                             <label for="price" class="form-label">Precio del producto:</label>
                             <input type="text" 
-                            id="price" 
                             name="price" 
                             class="form-input"
                             value="<%= locals.oldData ? oldData.price : null %>">
@@ -45,15 +43,14 @@
                         <div class="formulario_item">
                             <label for="discount" class="form-label">Descuento:</label>
                             <input type="text" 
-                            id="discount" 
                             name="discount" 
                             class="form-input"
                             value="<%= locals.oldData ? oldData.discount : null %>">
                         </div>
 
                         <div class="formulario_item">
-                            <label for="fileImage" class="form-label">Categoria:</label>
-                            <select class="selectForm" name="category" id="category">
+                            <label for="category" class="form-label">Categoria:</label>
+                            <select class="selectForm" name="category">
                                 <% 
                                     categorias.forEach(element => { %>
                                         <option value="<%= element.clave %>" <%= locals.oldData && (element.clave === oldData.category) ? 'selected' : null %> ><%= element.valor %></option> 
@@ -72,14 +69,15 @@
                         <label for="description" class="form-label">Descipción:</label>
                         <textarea name="description" 
                         id="description" 
-                        class="form-input"><%= locals.oldData ? oldData.description : null %>
+                        class="form-input">
+                        <%= locals.oldData ? oldData.description : null %>
                         </textarea>
                     </div>
 
                     <div class="formulario_item">
                         <label for="fileImage" class="form-label">Imagen:</label>
                         <input type="file" 
-                        id="fileImage" 
+                        id="fileImage"
                         name="fileImage" 
                         value="<%= locals.oldData ? oldData.fileImage : null %>">
                         <% if (locals.errors && errors.fileImage) { %>

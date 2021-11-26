@@ -6,8 +6,6 @@
 
 <% if (productToEdit) { %>
 
-    
-
         <section class="formularioEdit">
        
         <h3 class="formularioEdit_title">Estas editando:<%= productToEdit.title %></h3>
@@ -23,12 +21,22 @@
 
                 <div class="formulario_item">
                     <label for="name" class="form-label">Nombre del producto:</label>
-                    <input type="text" id="name" name="name" class="form-input" value="<%=productToEdit.title%>">
+                    <input type="text" id="title" name="title" class="form-input" value="<%=productToEdit.title%>">
+                    <% if (locals.errors && errors.name) { %>
+                        <div class="text-danger">
+                            <%= errors.name.msg %>
+                        </div>
+                    <% } %>
                 </div>
 
                 <div class="formulario_item">
                     <label for="price" class="form-label">Precio del producto:</label>
                     <input type="text" id="price" name="price"class="form-input" value="<%=productToEdit.price%>">
+                    <% if (locals.errors && errors.price) { %>
+                        <div class="text-danger">
+                            <%= errors.price.msg %>
+                        </div>
+                    <% } %>
                 </div>
 
                 <div class="formulario_item">
@@ -37,29 +45,33 @@
                 </div>
 
                 <div class="formulario_item">
-                    <label for="fileImage" class="form-label">Categoria:</label>
+                    <label for="category" class="form-label">Categoria:</label>
                     <select class="selectForm" name="category" id="category">
-
-                        <% if (productToEdit.category === "in-sale") { %>
-                            <option value="in-sale" selected>En Oferta</option>
-                            <option value="visited">Visitado</option>
-                            <%} else { %>
-                                <option value="in-sale">En Oferta</option>
-                                <option value="visited" selected>Visitado</option>
-                            <% } %>
-                            
-                        
+                        <% 
+                            categorias.forEach(element => { %>
+                                <option value="<%= element.clave %>" <%= element.clave === productToEdit.category ? 'selected' : null %> ><%= element.valor %></option> 
+                            <%  });
+                            %> 
                     </select>
+
+                    <% if (locals.errors && errors.category) { %>
+                        <div class="text-danger">
+                            <%= errors.category.msg %>
+                        </div>
+                    <% } %>
                 </div>
 
             
                 <div class="formulario_item">
                     <label for="description" class="form-label">Descipción:</label>
                     <textarea name="description" id="description" class="form-input"><%= productToEdit.description %></textarea>
+
                 </div>
 
                 <div class="formulario_item">
                     <label for="fileImage" class="form-label">Imagen:</label>
+                    <input type="hidden" name="id" value="<%= productToEdit.id %>"/>
+                    <input type="hidden" name="picture" value="<%= productToEdit.picture %>"/>
                     <input type="file" id="fileImage" name="fileImage" class="form-input">
                 </div>
 

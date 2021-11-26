@@ -19,9 +19,9 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// ************ Validation Form ************
+// ************ Validation Create / Update Product ************
 const validations = [
-  check("name").notEmpty().withMessage('Ingresar el nombre del producto'),
+  check("title").notEmpty().withMessage('Ingresar el nombre del producto'),
   check("price").notEmpty().withMessage('Ingresar precio').bail().isFloat().withMessage("Debes ingresar solamente valores numéricos"),
   check("category").notEmpty().withMessage("Seleccionar categoría"),
   check("fileImage").custom((value, {req}) => {
@@ -40,7 +40,8 @@ const validations = [
     
     return true;
   })
-]
+];
+
 
 // ************ Controller Require ************
 const productsController = require('../controllers/productsConstroller');

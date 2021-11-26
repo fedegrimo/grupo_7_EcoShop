@@ -17,7 +17,7 @@ const controller = {
 	},
 	// List administration product -trabajar
 	list: (req, res) => {
-		res.render('products-list',{products: products});
+		res.render('products-list',{products});
 	},
 	// Detail - Detail from one product
 	detail: (req, res) => {
@@ -51,13 +51,14 @@ const controller = {
 				categorias
 			});
 		} else {
-			const {name, price, discount, category, description, fileImage} = req.body;
+			const {title, price, discount, category, description} = req.body;
 			const lastIndex = products.length - 1;
 			const id = products[lastIndex].id + 1;
+			const fileImage = req.file;
 			const val = {	'id':id,
-							'name':name,
+							'picture':fileImage.filename,
+							'title':title,
 							'price':price,
-							'image':'img-bicicleta-fierce.jpg',
 							'discount':discount,
 							'category':category,
 							'description':description};
@@ -77,25 +78,39 @@ const controller = {
 		})
 
 		//TODO: ver category
-		res.render('product-edit-form',{productToEdit});
+		res.render('product-edit-form',{productToEdit,categorias});
 	},
 	// Update - Method to update
 	update: (req, res) => {
-		const {name, price, discount, category, description} = req.body;
-		const id = req.params.id;
-		const newProducts = [];
-		products.map(val=>{
-			if (val.id == id){
-				val.name=name;
-				val.price=price;
-				val.discount=discount;
-				val.category=category;
-				val.description=description;
-				newProducts.push(val);
-			} else {
-				newProducts.push(val);
-			}
-		})
+
+		const resultValidation = validationResult(req);
+		if (resultValidation.errors.length > 0){
+			res.render('product-edit-form',{ 
+				errors: resultValidation.mapped(),
+				productToEdit: req.body,
+				categorias
+			});
+		} else {
+			const {title, price, discount, category, description,picture} = req.body;
+			const id = req.params.id;
+			const fileImage = req.file;
+			const filename = (picture) ? picture : fileImage.filename;
+			const newProducts = [];
+			products.map(val=>{
+				if (val.id == id){
+					val.title=title;
+					val.price=price;
+					val.discount=discount;
+					val.category=category;
+					val.description=description;
+					val.picture=filename;
+					newProducts.push(val);
+				} else {
+					newProducts.push(val);
+				}
+			});
+		}
+		
 		fs.writeFileSync(productsFilePath,JSON.stringify(newProducts),'utf-8');
 		res.redirect('/products/list');
 	},
