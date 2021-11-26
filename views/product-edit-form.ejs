@@ -4,20 +4,6 @@
 <body>
     <%- include('./layout/header') %>
 
-<section class="homebanner">
-    <div class="banner-info">
-      <div class="container-banner">
-        <h4>Bienvenido a ECOSHOP</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. 
-          Sed feugiat, tellus vel tristique posuere, diam</p>
-        <ol class="breadcrumb">
-          <i class="far fa-arrow-alt-circle-right"></i>
-          <li><a href="/products/list">PRODUCT LIST</a></li>
-        </ol>
-      </div>
-    </div>
-</section> <!-- Termina SECTION BANNER-->
-
 <% if (productToEdit) { %>
 
     
@@ -25,7 +11,7 @@
         <section class="formularioEdit">
        
         <h3 class="formularioEdit_title">Estas editando:<%= productToEdit.title %></h3>
-        <form action="/products" method="POST" enctype="">
+        <form action="/products/<%= productToEdit.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
 
             <div class="formulario_contenedor">     
                 
@@ -78,7 +64,7 @@
                 </div>
 
                 <div class="formulario_item-button">
-                    <button type="submit" class="buy-now-button">Guardar producto</button>
+                    <button type="submit" class="buy-now-button">Actualizar producto</button>
                     <button type="reset" class="buy-now-button">Borrar</button>
                 </div>
 

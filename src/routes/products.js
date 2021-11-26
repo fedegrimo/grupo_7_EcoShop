@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require("multer");
 const { check } = require("express-validator"); 
-const { path } = require('../../server');
+const path = require('path');
 
 // ************ Path Image & Generate Name Image ************
 const storage = multer.diskStorage({
@@ -11,7 +11,8 @@ const storage = multer.diskStorage({
     cb(null, 'public/img')
   },
   filename: function (req, file, cb) {
-    const newFile = file.fieldname + '-' + Date.now();
+    let fileExtension = path.extname(file.originalname);
+    const newFile = file.fieldname + '-' + Date.now() + fileExtension;
     cb(null, newFile)
   }
 });
@@ -26,7 +27,7 @@ const validations = [
   check("fileImage").custom((value, {req}) => {
     let file = req.file;
     let acceptExtension = ['.jpg','.gif','.png','.svg'];
-    
+
     if (!file){
       throw new Error ("Tienes que subir una imagen");
     } else {
@@ -52,7 +53,7 @@ router.get('/list', productsController.list);
 
 /*** CREATE ONE PRODUCT ***/ 
 router.get('/create/', productsController.create); 
-router.post('/', upload.single('fileImage'),validations,productsController.store); 
+router.post('/create/', upload.single('fileImage'),validations,productsController.store); 
 
 
 /*** GET ONE PRODUCT ***/ 
@@ -60,7 +61,7 @@ router.get('/detail/:id/', productsController.detail);
 
 /*** EDIT ONE PRODUCT ***/ 
 router.get('/:id/edit', productsController.edit); 
-router.put('/:id', upload.single('fileImage'),productsController.update); 
+router.put('/:id', upload.single('fileImage'),validations,productsController.update); 
 
 
 /*** DELETE ONE PRODUCT***/ 

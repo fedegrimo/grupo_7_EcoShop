@@ -10,12 +10,12 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FlorAguirre/grupo_7_EcoShop.git"
+    "url": "git+https://github.com/fedegrimo/grupo_7_EcoShop.git"
   },
   "bugs": {
-    "url": "https://github.com/FlorAguirre/grupo_7_EcoShop/issues"
+    "url": "https://github.com/fedegrimo/grupo_7_EcoShop/issues"
   },
-  "homepage": "https://github.com/FlorAguirre/grupo_7_EcoShop#readme",
+  "homepage": "https://github.com/fedegrimo/grupo_7_EcoShop#readme",
   "dependencies": {
     "cookie-parser": "^1.4.5",
     "debug": "^4.3.2",

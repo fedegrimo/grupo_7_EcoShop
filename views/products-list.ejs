@@ -4,18 +4,7 @@
 <body>
     <%- include('./layout/header') %>
 
-<section class="homebanner">
-    <div class="banner-info">
-      <div class="container-banner">
-        <h4>Bienvenido a ECOSHOP</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. 
-          Sed feugiat, tellus vel tristique posuere, diam</p>
-        <ol class="breadcrumb">
-          <li><a href="/products">PRODUCTS</a></li>
-        </ol>
-      </div>
-    </div>
-</section> <!-- Termina SECTION BANNER-->
+
     <section class="productList">
 
         <div class="listaProductos">
@@ -44,17 +33,13 @@
                       </div>
       
                       <div class="editarProd_color">
-                          <select name="" id="">
-                            <option selected value="">CANTIDAD</option>
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                          </select>
                       </div>
       
                       <div class="btnEdit">
-                        <a href="/products/<%= product.id %>/edit" class="editarProd__btn">Editar</a>
-                        <a href="/products/<%= product.id %>" class="editarProd__btnDelete"><i class="fas fa-trash-alt"></i></a>  
+                        <a href="/products/<%= product.id %>/edit" class="editarProd__btn" alt="Editar Producto" title="Editar Producto"><i class="fas fa-edit"></i></a>
+                        <form action="/products/<%= product.id %>?_method=DELETE" method="POST">
+                          <button type="submit" class="editarProd__btnDelete" alt="Eliminar Producto" title="Eliminar Producto"><i class="fas fa-trash-alt"></i></button>
+                        </form>
                       </div>
                     </div>
 

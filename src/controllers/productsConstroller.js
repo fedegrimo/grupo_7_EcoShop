@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const { validationResult } = require ("express-validator");
-const { render } = require('../../server');
 
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
@@ -52,7 +51,7 @@ const controller = {
 				categorias
 			});
 		} else {
-			const {name, price, discount, category, description} = req.body;
+			const {name, price, discount, category, description, fileImage} = req.body;
 			const lastIndex = products.length - 1;
 			const id = products[lastIndex].id + 1;
 			const val = {	'id':id,
@@ -98,7 +97,7 @@ const controller = {
 			}
 		})
 		fs.writeFileSync(productsFilePath,JSON.stringify(newProducts),'utf-8');
-		res.redirect('detail/' + id);
+		res.redirect('/products/list');
 	},
 
 	// Delete - Delete one product from DB
@@ -112,7 +111,7 @@ const controller = {
 		});
 		
 		fs.writeFileSync(productsFilePath,JSON.stringify(newProducts),'utf-8');
-		res.redirect('/products');
+		res.redirect('/products/list');
 	}
 
 };

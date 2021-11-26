@@ -4,25 +4,11 @@
 <body>
     <%- include('./layout/header') %>
 
-<section class="homebanner">
-    <div class="banner-info">
-      <div class="container-banner">
-        <h4>Bienvenido a ECOSHOP</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus maximus vehicula. 
-          Sed feugiat, tellus vel tristique posuere, diam</p>
-        <ol class="breadcrumb">
-          <li><a href="/">HOME</a></li>
-          <i class="far fa-arrow-alt-circle-right"></i>
-          <li><a href="/products">Products</a></li>
-        </ol>
-      </div>
-    </div>
-</section> <!-- Termina SECTION BANNER-->
 <section class="formularioEdit">
        
         <h3 class="formularioEdit_title">Formulario creacion de productos</h3>
        
-        <form action="/products" method="POST" enctype="">
+        <form action="/products/create" method="POST" enctype="multipart/form-data">
 
             <div class="formulario_contenedor formulario_contenedorCreate">   
                 <div class="formulario_contenido">
@@ -70,7 +56,7 @@
                             <select class="selectForm" name="category" id="category">
                                 <% 
                                     categorias.forEach(element => { %>
-                                        <option value="<%= element.clave %>" <%= locals.objData && (element.clave === oldData.category) ? 'selected' : null %> ><%= element.valor %></option> 
+                                        <option value="<%= element.clave %>" <%= locals.oldData && (element.clave === oldData.category) ? 'selected' : null %> ><%= element.valor %></option> 
                                   <%  });
                                  %> 
                             </select>
@@ -86,7 +72,7 @@
                         <label for="description" class="form-label">Descipción:</label>
                         <textarea name="description" 
                         id="description" 
-                        class="form-input"><%= locals.description ? oldData.description : null %>
+                        class="form-input"><%= locals.oldData ? oldData.description : null %>
                         </textarea>
                     </div>
 
