@@ -26,17 +26,20 @@ const validations = [
   check("category").notEmpty().withMessage("Seleccionar categoría"),
   check("fileImage").custom((value, {req}) => {
     let file = req.file;
-    let acceptExtension = ['.jpg','.gif','.png','.svg'];
+    let acceptExtension = ['.jpg','.gif','.png','.webp'];
 
-    if (!file){
-      throw new Error ("Tienes que subir una imagen");
-    } else {
-      let fileExtension = path.extname(file.originalname);
-      
-      if(!acceptExtension.includes(fileExtension)){
-        throw new Error (`Las extension permitidas son ${acceptExtension.join(', ')}`);
+    if (!req.body.picture){
+      if (!file){
+        throw new Error ("Tienes que subir una imagen");
+      } else {
+        let fileExtension = path.extname(file.originalname);
+        
+        if(!acceptExtension.includes(fileExtension)){
+          throw new Error (`Las extension permitidas son ${acceptExtension.join(', ')}`);
+        }
       }
     }
+    
     
     return true;
   })

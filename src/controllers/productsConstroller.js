@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { validationResult } = require ("express-validator");
+const { reset } = require('nodemon');
 
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
@@ -94,7 +95,7 @@ const controller = {
 			const {title, price, discount, category, description,picture} = req.body;
 			const id = req.params.id;
 			const fileImage = req.file;
-			const filename = (picture) ? picture : fileImage.filename;
+			const filename = (fileImage) ? fileImage.filename : picture;
 			const newProducts = [];
 			products.map(val=>{
 				if (val.id == id){
@@ -109,10 +110,10 @@ const controller = {
 					newProducts.push(val);
 				}
 			});
+			fs.writeFileSync(productsFilePath,JSON.stringify(newProducts),'utf-8');
+			res.redirect('/products/list');
 		}
 		
-		fs.writeFileSync(productsFilePath,JSON.stringify(newProducts),'utf-8');
-		res.redirect('/products/list');
 	},
 
 	// Delete - Delete one product from DB

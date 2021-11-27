@@ -72,7 +72,12 @@
                     <label for="fileImage" class="form-label">Imagen:</label>
                     <input type="hidden" name="id" value="<%= productToEdit.id %>"/>
                     <input type="hidden" name="picture" value="<%= productToEdit.picture %>"/>
-                    <input type="file" id="fileImage" name="fileImage" class="form-input">
+                    <input type="file" id="fileImage" name="fileImage" class="form-input" value="<%= productToEdit.picture %>">
+                    <% if (locals.errors && errors.fileImage) { %>
+                            <div class="text-danger">
+                                <%= errors.fileImage.msg %>
+                            </div>
+                        <% } %>
                 </div>
 
                 <div class="formulario_item-button">
