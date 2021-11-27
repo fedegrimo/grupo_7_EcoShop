@@ -21,21 +21,9 @@ Express Nodemon
 
 _Para ejecutar el entorno de desarrollo sigue los siguientes pasos_
 
-_Paso 1_
-
 ```
-npm install express nodemon
+npm install
 ```
-
-_Paso 2_
-
-```
-npm i ejs
-```
-
-## Ejecutando las pruebas ⚙️
-
-_Para ejecutar el servidor escribe el siguiente comando_
 
 ### Analice las pruebas end-to-end 🔩
 
@@ -52,6 +40,10 @@ _Explica que verifican estas pruebas y por qué_
 ```
 Da un ejemplo
 ```
+
+### Enlace Heroku 🔗
+
+https://dh-grupo7-ecoshop.herokuapp.com/
 
 ## Despliegue 📦
 
