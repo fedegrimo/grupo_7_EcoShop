@@ -1,9 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const { validationResult } = require ("express-validator");
+const { reset } = require('nodemon');
 
-const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
+const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -37,8 +38,13 @@ const controller = {
 				oldData: req.body
 			});
 		} else {
-			let {email,password} = req.body;
-			if (email === 'eco' && password === 'shop'){
+			validation = users.find(val => {
+				if ((val.email === req.body.email) && (val.password === req.body.password)){
+					return true;
+				} 
+			})
+			
+			if (validation){
 				res.redirect('/products/list');
 			} else {
 				res.render('login', { errorLogin: "Usuario inválido"});
@@ -46,7 +52,34 @@ const controller = {
 			
 		}
         
-    }
+    },
+	// Create -  Method to store
+	store: (req, res) => {
+		const resultValidation = validationResult(req);
+		if (resultValidation.errors.length > 0){
+			res.render('register',{ 
+				errors: resultValidation.mapped(),
+				oldData: req.body
+			});
+		} else {
+			const {nombre, apellido, email, password} = req.body;
+			let id=1;
+			if (users.length > 0){
+				const lastIndex = users.length - 1;
+				id = users[lastIndex].id + 1;
+			}
+
+			const val = {	'id':id,
+							'nombre':nombre,
+							'apellido':apellido,
+							'email':email,
+							'password':password};
+			users.push(val);
+			fs.writeFileSync(usersFilePath,JSON.stringify(users),'utf-8');
+			res.redirect('/login');
+		}
+		
+	},
 };
 
 module.exports = controller;

@@ -10,27 +10,55 @@
         <section class="divider">
             <div class="row">
                 <span><i class="fas fa fa-user"></i></span>
-                <input type="text" name="nombre" placeholder="Apellido y Nombre">
+                <input type="text" 
+                name="nombre" 
+                placeholder="Nombre"
+                value="<%= locals.oldData ? oldData.nombre : null %>">
+                <% if (locals.errors && errors.nombre) { %>
+                    <div class="text-danger">
+                        <%= errors.nombre.msg %>
+                    </div>
+                <% } %>
             </div>
             <div class="row">
-                <span><i class="fas fa fa-envelope"></i></span>
-                <input type="email" name="email" placeholder="E-mail">
-                
+                <span><i class="fas fa fa-user"></i></span>
+                <input type="text" 
+                name="apellido" 
+                placeholder="Apellido"
+                value="<%= locals.oldData ? oldData.apellido : null %>">
+                <% if (locals.errors && errors.apellido) { %>
+                    <div class="text-danger">
+                        <%= errors.apellido.msg %>
+                    </div>
+                <% } %>
             </div>
         </section>
         <section class="divider">
             <div class="row">
                 <span><i class="fas fa fa-envelope"></i></span>
-                <input type="email" name="email-repeat" placeholder="Repetir E-mail">
-                
+                <input type="email" 
+                name="email" 
+                placeholder="E-mail"
+                value="<%= locals.oldData ? oldData.email : null %>">
+                <% if (locals.errors && errors.email) { %>
+                    <div class="text-danger">
+                        <%= errors.email.msg %>
+                    </div>
+                <% } %>
             </div>
             <div class="row">
                 <span><i class="fas fa fa-lock"></i></span>
-                <input type="password" name="password" placeholder="Contraseña">
-                
+                <input type="password" 
+                name="password" 
+                placeholder="Contraseña"
+                value="<%= locals.oldData ? oldData.password : null %>">
+                <% if (locals.errors && errors.password) { %>
+                    <div class="text-danger">
+                        <%= errors.password.msg %>
+                    </div>
+                <% } %>
             </div>
         </section>
-        
         
         <div class="row">
             <input type="submit" value="Registrar"/>

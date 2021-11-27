@@ -9,6 +9,15 @@ const validationsLogin = [
     check("password").notEmpty().withMessage('Ingresar contraseña')
   ]
 
+const validationsUserRegistration = [
+    check("nombre").notEmpty().withMessage('Ingresar nombre'),
+    check("apellido").notEmpty().withMessage('Ingresar apellido'),
+    check("email").notEmpty().withMessage('Ingresar email').bail().
+    isEmail().withMessage("Email inválido"),
+    check("password").notEmpty().withMessage('Ingresar constraseña').bail().
+    isLength({min: 6}).withMessage("La contraseña debe tener al menos 6 caracteres.")
+  ]
+
 // ************ Controller Require ************
 const mainController = require('../controllers/mainController');
 
@@ -26,6 +35,7 @@ router.post('/login',validationsLogin, mainController.loginValidation);
 
 /*** GET REGISTER USER ***/ 
 router.get('/register', mainController.register); 
+router.post('/register', validationsUserRegistration, mainController.store); 
 
 /*** GET CART ***/ 
 router.get('/cart', mainController.cart); 
