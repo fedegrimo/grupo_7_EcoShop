@@ -14,7 +14,7 @@
             <div class="formulario_contenedor">     
                 
                 <figure class="product_image">
-                    <img src="/img/<%= productToEdit.picture %>" alt="<%= productToEdit.name %>">
+                    <img src="/img/<%= productToEdit.picture %>" alt="<%= productToEdit.title %>">
                 </figure> 
 
                 <div class="formulario_contenido">
@@ -22,9 +22,9 @@
                 <div class="formulario_item">
                     <label for="name" class="form-label">Nombre del producto:</label>
                     <input type="text" id="title" name="title" class="form-input" value="<%=productToEdit.title%>">
-                    <% if (locals.errors && errors.name) { %>
+                    <% if (locals.errors && errors.title) { %>
                         <div class="text-danger">
-                            <%= errors.name.msg %>
+                            <%= errors.title.msg %>
                         </div>
                     <% } %>
                 </div>

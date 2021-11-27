@@ -19,10 +19,10 @@
                             <input type="text" 
                             name="title" 
                             class="form-input"
-                            value="<%= locals.oldData ? oldData.name : null %>">
-                            <% if (locals.errors && errors.name) { %>
+                            value="<%= locals.oldData ? oldData.title : null %>">
+                            <% if (locals.errors && errors.title) { %>
                                 <div class="text-danger">
-                                    <%= errors.name.msg %>
+                                    <%= errors.title.msg %>
                                 </div>
                             <% } %>
                         </div>
