@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const {uploadProduct:upload,path} = require ('../middlewares/multerMiddleware');
-const validations = require ('../middlewares/validateRegisterMiddleware');
+const {validations} = require ('../middlewares/validateRegisterMiddleware');
 
 
 // ************ Controller Require ************
