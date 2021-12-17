@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const { validationResult } = require ("express-validator");
 const { reset } = require('nodemon');
+const bcryptjs = require ('bcryptjs');
+const User = require ('../models/User');
 
 const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
 const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
@@ -65,20 +67,11 @@ const controller = {
 				oldData: req.body
 			});
 		} else {
-			const {nombre, apellido, email, password} = req.body;
-			let id=1;
-			if (users.length > 0){
-				const lastIndex = users.length - 1;
-				id = users[lastIndex].id + 1;
+			let userToCreate= {
+				...req.body,
+				password : bcryptjs.hashSync(req.body.password,10)
 			}
-
-			const val = {	'id':id,
-							'nombre':nombre,
-							'apellido':apellido,
-							'email':email,
-							'password':password};
-			users.push(val);
-			fs.writeFileSync(usersFilePath,JSON.stringify(users),'utf-8');
+			User.create(userToCreate);
 			res.redirect('/login');
 		}
 		

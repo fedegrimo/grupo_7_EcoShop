@@ -9,10 +9,10 @@ const Product = {
     },
 
     generateId: () => {
-        let allUsers = this.findAll();
-        let lastUser = allUsers.pop();
-        if (lastUser){
-            return lastUser.id + 1;
+        let allProducts = this.findAll();
+        let lastProduct = allProducts.pop();
+        if (lastProduct){
+            return lastProduct.id + 1;
         }
         return 1;
     },
@@ -23,31 +23,32 @@ const Product = {
 
 
     findByPk: (id) => {
-        let allUsers = this.findAll();
-        let userFound = allUsers.find(oneUser => oneUser.Id === id);
-        return userFound;
+        let allProducts = this.findAll();
+        let productFound = allProducts.find(oneProduct => oneProduct.Id === id);
+        return productFound;
     },
 
     findByFill:(field,text) => {
-        let allUsers = this.findAll();
-        let userFound = allUsers.find(oneUser => oneUser[field] === text);
+        let allProducts = this.findAll();
+        let productFound = allProducts.find(oneProduct => oneProduct[field] === text);
+        return productFound;
     },
 
     create: (userData) => {
-        let allUsers = this.findAll();
-        let newUser ={
+        let allProducts = this.findAll();
+        let newProduct ={
             id: this.generateId(),
             ...userData
         }
-        allUsers.push(userData);
-        fs.writeFileSync(this.filename,JSON.stringify(allUsers,null,' '));
-        return newUser;
+        allProducts.push(newProduct);
+        fs.writeFileSync(this.filename,JSON.stringify(allProducts,null,' '));
+        return newProduct;
     },
 
     delete : (id) => {
-        let allUsers = this.findAll();
-        let finalUsers = allUsers.filter(oneUser => oneUser.id !== id);
-        fs.writeFileSync(this.filename,JSON.stringify(finalUsers,null,' '),'utf-8');
+        let allProducts = this.findAll();
+        let finalProduct = allProducts.filter(oneProduct => oneProduct.id !== id);
+        fs.writeFileSync(this.filename,JSON.stringify(finalProduct,null,' '),'utf-8');
         return true;
     }
 
