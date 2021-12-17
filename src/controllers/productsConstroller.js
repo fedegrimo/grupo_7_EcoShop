@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { validationResult } = require ("express-validator");
 const { reset } = require('nodemon');
+const Product = require ('../models/Product');
 
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
@@ -52,19 +53,11 @@ const controller = {
 				categorias
 			});
 		} else {
-			const {title, price, discount, category, description} = req.body;
-			const lastIndex = products.length - 1;
-			const id = products[lastIndex].id + 1;
-			const fileImage = req.file;
-			const val = {	'id':id,
-							'picture':fileImage.filename,
-							'title':title,
-							'price':price,
-							'discount':discount,
-							'category':category,
-							'description':description};
-			products.push(val);
-			fs.writeFileSync(productsFilePath,JSON.stringify(products),'utf-8');
+			let productToCreate= {
+				...req.body,
+				picture:fileImage.filename
+			}
+			Product.create(productToCreate);
 			res.redirect('/products/list');
 		}
 		
