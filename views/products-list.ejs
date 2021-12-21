@@ -2,7 +2,7 @@
 <html lang="en">
 <%- include('./layout/head') %>
 <body>
-    <%- include('./layout/header') %>
+    <%- include('./layout/headerBackend') %>
 
 
     <section class="productList">
@@ -10,9 +10,9 @@
         <div class="listaProductos">
             <h1 class="listaProductos__titulo">LISTA DE PRODUCTOS</h1>
             <a href="/products/create/" class="btn__texto">Agregar Producto</a>
-          
+           
             <% if (products) { %>
-              
+        
               <% products.forEach(product => { %>
               
                     <div class="editarProd">

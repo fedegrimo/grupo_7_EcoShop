@@ -5,7 +5,7 @@ const path = require("path");
 const express = require("express");
 const logger = require('morgan');
 const methodOverride =  require('method-override'); // Pasar poder usar los métodos PUT y DELETE
-
+const session = require('express-session');
 // ************ express() - (don't touch) ************
 const server = express();
 
@@ -20,6 +20,11 @@ server.use(express.json());
 server.use(cookieParser());
 server.use(methodOverride('_method')); // Pasar poder pisar el method="POST" en el formulario por PUT y DELETE
 
+server.use(session({
+    secret:'Secreto',
+    resave:true,
+    saveUninitialized:true
+}));
 
 // ************ Template Engine - (don't touch) ************
 server.set("view engine", "ejs");
@@ -35,9 +40,13 @@ server.use('/js',express.static(path.resolve(__dirname,'public/js')));
 
 const mainRouter = require('./src/routes/main'); // Rutas main
 const productsRouter = require('./src/routes/products'); // Rutas /products
+const backendRouter = require('./src/routes/backend'); // Rutas /backend
+const usersRouter = require('./src/routes/users'); // Rutas /backend
 
 server.use('/', mainRouter);
 server.use('/products', productsRouter);
+server.use('/backend', backendRouter);
+server.use('/users',usersRouter);
 
 // ************ DON'T TOUCH FROM HERE ************
 // ************ catch 404 and forward to error handler ************

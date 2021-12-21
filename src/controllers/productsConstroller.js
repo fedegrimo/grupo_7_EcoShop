@@ -7,6 +7,11 @@ const Product = require ('../models/Product');
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
+// USERS
+
+const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
+const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const categorias = [{clave : "in-sale",
 					valor: "En Oferta"},
@@ -15,11 +20,18 @@ const categorias = [{clave : "in-sale",
 const controller = {
 	// Root - Show all products -trabajar
 	index: (req, res) => {
-		res.render('products',{productsAll: products});
+		res.render('products',{productsAll: products,
+								usersAll: users
+		});
 	},
 	// List administration product -trabajar
 	list: (req, res) => {
-		res.render('products-list',{products});
+		if(req.cookies.login){
+			res.render('products-list',{products, users});
+		}else{
+			res.redirect('/backend');
+		}
+		
 	},
 	// Detail - Detail from one product
 	detail: (req, res) => {

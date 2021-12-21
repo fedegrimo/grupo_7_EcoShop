@@ -29,8 +29,8 @@ const validations = [
 
   // ************ Validation Form Login ************
 const validationsLogin = [
-    check("email").notEmpty().withMessage('Ingresar email'),
-    check("password").notEmpty().withMessage('Ingresar contraseña')
+    check("email").notEmpty().withMessage('El campo email es requerido'),
+    check("password").notEmpty().withMessage('El campo password es requerido')
   ]
 
   // ************ Validation User Registration ************

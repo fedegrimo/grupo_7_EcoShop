@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./layout/head') %>
+<body>
+    <%- include('./layout/headerBackend') %>
+    <section class="productList">
+
+        <div class="listaProductos">
+            <h1 class="listaProductos__titulo">LISTA DE USUARIOS</h1>
+            <a href="/users/create" class="btn__texto">Agregar Usuario</a>
+
+     <% if (users) { %>
+        
+        <% users.forEach(user => { %>
+          
+             <div class="editarUser">
+              
+                <figure class="user-box_imageUser">
+                    <img src="/img/clients-picture/<%= user.pictureprofile%>" alt="">
+                </figure>      
+   
+                <div class="editarUser_item">
+                  <span><%= user.name%></span>  
+                  <p></p>
+                </div>
+
+                <div class="editarUser_item">
+                  <span><%= user.lastName%></span>
+                </div>
+
+                <div class="editarUser_item">
+                    <p><%= user.email%></p>
+                </div>
+
+                <div class="editarUser_item">
+                  <span><%= user.password%></span>
+                </div>
+
+                <div class="btnEdit">
+              
+                  <a href="/users/<%= user.id%>/edit" class="editarProd__btn" alt="Editar Producto" title="Editar Producto"><i class="fas fa-edit"></i></a>
+                  <form action="/products/?_method=DELETE" method="POST">
+                    <button type="submit" class="editarProd__btnDelete" alt="Eliminar Producto" title="Eliminar Producto"><i class="fas fa-trash-alt"></i></button>
+                  </form>
+                </div>
+              </div>
+        </div>
+    </section>
+    <% }) %>
+
+    <% } %> 
+
+            
+    
+<%- include('./layout/head') %>
+</body>
+</html>

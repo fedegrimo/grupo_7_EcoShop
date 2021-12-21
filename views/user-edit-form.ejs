@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./layout/head') %>
+<body>
+   
+
+    <% if (userToEdit) { %>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <%- include('./layout/head') %>
+    <body>
+        <%- include('./layout/headerBackend') %>
+
+    <section class="formularioEditUser">
+        
+            <h3 class="formularioEditUser_title">Formulario creacion de usuarios</h3>
+       
+        <form action="/users/<%=userToEdit.id%>/edit" method="POST" enctype="multipart/form-data">
+
+            <div class="formulario_contenedorUser">   
+                <div class="formulario_contenidoUser">
+                    
+                    <div class="formEditUser_grid">
+
+                        <div class="formularioUser_item">
+                            <label for="name" class="formUser-label">Nombre:</label>
+                            <input type="text" 
+                            name="name" 
+                            class="formUser-input"
+                            value="<%=userToEdit.name%>">
+                           
+                                <div class="text-danger">
+                                   
+                                </div>
+                           
+                        </div>
+
+                        <div class="formularioUser_item">
+                            <label for="lastname" class="formUser-label">Apellido:</label>
+                            <input type="text" 
+                            name="lastname" 
+                            class="formUser-input"
+                            value="<%= userToEdit.lastName%>">
+                            
+                        </div>
+
+                        <div class="formularioUser_item">
+                            <label for="email" class="formUser-label">Email:</label>
+                            <input type="text" 
+                            name="email" 
+                            class="formUser-input"
+                            value="<%= userToEdit.email%>">
+                        </div>
+
+                        <div class="formularioUser_item">
+                        <label for="password" class="formUser-label">Contraseña:</label>
+                        <input type="text" name="Password" 
+                        id="password" 
+                        class="formUser-input" value="<%= userToEdit.password%>">
+                        </input>
+                        </div>
+                    </div>
+                    
+                    
+
+                    <div class="formularioUser_item">
+                        <label for="fileImage" class="formUser-label">Foto de perfil:</label>
+                        <input type="file" 
+                        id="fileImage"
+                        name="fileImage" 
+                        value="<%= locals.oldData ? oldData.fileImage : null %>">
+                        <% if (locals.errors && errors.fileImage) { %>
+                            <div class="text-danger">
+                                <%= errors.fileImage.msg %>
+                            </div>
+                        <% } %>
+                    </div>
+
+                    <div class="formulario_item-buttonUser">
+                        <button type="submit" class="buy-now-buttonUser">Actualizar Usuario</button>
+                        <button type="reset" class="buy-now-buttonUser">Borrar</button>
+                    </div>
+                </div>
+                
+            </div>
+   
+        </form>
+
+    </section>
+    <% } %>
+<%- include('./layout/head') %>
+</body>
+</html>
+<%- include('./layout/head') %>
+</body>
+</html>

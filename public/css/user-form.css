@@ -1,0 +1,122 @@
+.formularioEditUser{
+    margin: 220px auto;
+    background-color: #f0f5f9;
+    --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    width: 80%;
+    height: 40vh;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.formularioEditUser_title{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+}
+.formulario_contenedorUser{
+    width: 90%;
+    margin: 0 auto;
+}
+.formEditUser_grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.formularioUser_item{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.formUser-label{
+    font-size: 14px;
+    color: #121212;
+    font-weight: 400;
+    margin: 10px 0;
+}
+.formUser-input{
+    width: 70%;
+    background-color: #F5F5F5;
+    
+    height: 30px;
+    border: 1px solid #121212;
+}
+.formulario_item-buttonUser{
+    width: 50%;
+    margin: 10px auto;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+}
+.buy-now-buttonUser{
+    width: 100%;
+    height: 35px;
+    text-align: center;
+    color: #F5F5F5;
+    font-weight: 700;
+    background-color: #2d3a4b;
+    border: none;
+}
+
+/*LISTA DE USUSARIOS*/
+.editarUser{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f5f9;
+    font-size: 14px;
+    margin-top: 80px;
+    --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    border-radius: 10px;
+}
+.user-box_imageUser{
+    width: 80px;
+    height: 60px;
+    margin: 50px auto;
+    border-radius: 50%;
+}
+.user-box_imageUser img{
+  width: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 768px) { 
+    .editarUser{
+        width: 90%;
+        height: 80px;
+        background-color: #f0f5f9;
+        font-size: 14px;
+        text-align: center;
+        font-weight: 400;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        margin-top: 80px;
+    }
+    .user-box_imageUser{
+        width: 100%;
+        height: 60px;
+        margin: 0 auto;
+        margin-top: 10px;
+        border-radius: 50%;
+    }
+    .user-box_imageUser img{
+       width: 60px;
+       height: 60px;
+       overflow: hidden;
+       border-radius: 50%;
+    }
+    .editarUser_item{
+        color: #121212;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

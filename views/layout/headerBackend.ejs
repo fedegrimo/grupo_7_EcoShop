@@ -1,0 +1,59 @@
+
+
+<% if (users) { %>
+        
+    <% users.forEach(user => { %>
+    
+        <header class="headerBackend">
+
+            <div class="header-container">
+
+                    <div class="logo-backend">
+
+                        <a>
+                            <img src="/img/logo-foot.png">
+                        </a>
+
+                    </div> <!--Termina el DIV DEL LOGO-->
+
+                    <nav class="navegador-backend">
+
+                        <div class="navegador-backend1">
+                            <ul>
+                                <li>
+                                    <a href="/products/list">PRODUCTOS</a>
+                                </li>
+        
+                                <li>
+                                    <a href="/users/">CLIENTES</a>
+                                </li>
+
+                            </ul>
+                        </div> <!-- Cierra el div del PRIMER NAVEGADOR -->
+
+                        <div class="navegador-backend2">
+                                <div class="navegador-profile">
+                                     <a href="/" class="icon-acount-container">
+                                        <i class="fas fa-user-circle"><span class="userName"><%= user.name%></span></i>
+                                    </a>
+
+                                </div>
+
+                                <div class="navegador-logout">
+                                    <form method="post" action="/backend/logout" class="btn-logout">
+                                        <button type="submit"><i class="fas fa-sign-out-alt"></i></button>
+                                    </form>
+                                </div>       
+                        </div> 
+
+                        <div class="boton-menu">
+                            <i class="fa fa-bars burger"></i>
+                        </div>
+                    </nav>
+            </div> <!--header-top-->
+
+        </header>
+        
+    <% }) %>
+
+  <% } %>

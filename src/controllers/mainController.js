@@ -75,7 +75,8 @@ const controller = {
 			res.redirect('/login');
 		}
 		
-	},
+	}
+
 };
 
 module.exports = controller;
