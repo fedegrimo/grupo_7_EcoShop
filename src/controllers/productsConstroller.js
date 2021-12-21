@@ -47,7 +47,12 @@ const controller = {
 
 	// Create - Form to create -trabajar
 	create: (req, res) => {
-		res.render('product-create-form', {categorias});
+		if(req.cookies.login){
+			res.render('product-create-form', {categorias,users});
+		}else{
+			res.redirect('/backend');
+		}
+		
 	},
 
     // Add - Cart
@@ -58,6 +63,7 @@ const controller = {
 	// Create -  Method to store
 	store: (req, res) => {
 		const resultValidation = validationResult(req);
+		const fileImage = req.file;
 		if (resultValidation.errors.length > 0){
 			res.render('product-create-form',{ 
 				errors: resultValidation.mapped(),
@@ -65,10 +71,12 @@ const controller = {
 				categorias
 			});
 		} else {
+			
 			let productToCreate= {
 				...req.body,
 				picture:fileImage.filename
 			}
+			
 			Product.create(productToCreate);
 			res.redirect('/products/list');
 		}
@@ -77,14 +85,17 @@ const controller = {
 
 	// Update - Form to edit -TRABAJAR
 	edit: (req, res) => {
-		const productToEdit = products.find(val => {
-			if (val.id == req.params.id){
-				return val;
-			}
-		})
-
-		//TODO: ver category
-		res.render('product-edit-form',{productToEdit,categorias});
+		if(req.cookies.login){
+			const productToEdit = products.find(val => {
+				if (val.id == req.params.id){
+					return val;
+				}
+			})
+			res.render('product-edit-form',{productToEdit,categorias,users});
+		}else{
+			res.redirect('/backend');
+		}
+	
 	},
 	// Update - Method to update
 	update: (req, res) => {
@@ -115,7 +126,7 @@ const controller = {
 					newProducts.push(val);
 				}
 			});
-			fs.writeFileSync(productsFilePath,JSON.stringify(newProducts),'utf-8');
+			fs.writeFileSync(productsFilePath,JSON.stringify(newProducts),'utf-8',' ');
 			res.redirect('/products/list');
 		}
 		

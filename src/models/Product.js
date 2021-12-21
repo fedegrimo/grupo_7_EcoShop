@@ -5,11 +5,11 @@ const Product = {
     filename: path.join(__dirname, '../data/productsDataBase.json'),
     
     getData: () => {
-        return JSON.parse(fs.readFileSync(this.filename, 'utf-8'));
+        return JSON.parse(fs.readFileSync(Product.filename, 'utf-8'));
     },
 
     generateId: () => {
-        let allProducts = this.findAll();
+        let allProducts = Product.findAll();
         let lastProduct = allProducts.pop();
         if (lastProduct){
             return lastProduct.id + 1;
@@ -18,37 +18,37 @@ const Product = {
     },
     
     findAll: () => {
-        return this.getData();
+        return Product.getData();
     },
 
 
     findByPk: (id) => {
-        let allProducts = this.findAll();
+        let allProducts = Product.findAll();
         let productFound = allProducts.find(oneProduct => oneProduct.Id === id);
         return productFound;
     },
 
     findByFill:(field,text) => {
-        let allProducts = this.findAll();
+        let allProducts = Product.findAll();
         let productFound = allProducts.find(oneProduct => oneProduct[field] === text);
         return productFound;
     },
 
     create: (userData) => {
-        let allProducts = this.findAll();
+        let allProducts = Product.findAll();
         let newProduct ={
-            id: this.generateId(),
+            id: Product.generateId(),
             ...userData
         }
         allProducts.push(newProduct);
-        fs.writeFileSync(this.filename,JSON.stringify(allProducts,null,' '));
+        fs.writeFileSync(Product.filename,JSON.stringify(allProducts,null,' '));
         return newProduct;
     },
 
     delete : (id) => {
-        let allProducts = this.findAll();
+        let allProducts = Product.findAll();
         let finalProduct = allProducts.filter(oneProduct => oneProduct.id !== id);
-        fs.writeFileSync(this.filename,JSON.stringify(finalProduct,null,' '),'utf-8');
+        fs.writeFileSync(Product.filename,JSON.stringify(finalProduct,null,' '),'utf-8');
         return true;
     }
 

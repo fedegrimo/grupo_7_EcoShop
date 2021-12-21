@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { validationResult } = require ("express-validator");
+const User = require ('../models/User');
 
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -10,15 +11,14 @@ const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 const controller = {
 
-	users: (req, res) => {
+	list: (req, res) => {
         if(req.cookies.login){
 			res.render('clientes-list',{users});
 		}else{
 			res.redirect('/backend');
 		}
-        res.render('clientes-list',{users});
 	 },
-	usersLogin: (req, res) => {
+	login: (req, res) => {
 		console.log('este es el query', req.body)
 		const { email, password } = req.body;
 
@@ -46,27 +46,34 @@ const controller = {
 		}
 			
 	},
-	usersCreate: (req, res) => {
-		res.render('user-create-form',{users});
+	create: (req, res) => {
+		if(req.cookies.login){
+			res.render('user-create-form',{users});
+		}else{
+			res.redirect('/backend');
+		}
+		
 	},
-	usersStore: (req, res) => {
+	store: (req, res) => {
 		const resultValidation = validationResult(req);
+		const fileImage = req.file;
 		if (resultValidation.errors.length > 0){
 			res.render('user-create-form',{ 
 				errors: resultValidation.mapped(),
 				oldData: req.body,
+				users
 			});
 		} else {
 			let userToCreate= {
 				...req.body,
 				picture:fileImage.filename
 			}
-			Product.create(userToCreate);
+			User.create(userToCreate);
 			res.redirect('/users');
 		}
 		
 	},
-	userEdit: (req, res) => {
+	edit: (req, res) => {
 		const userToEdit = users.find(val => {
 			if (val.id == req.params.id){
 				return val;
@@ -74,7 +81,7 @@ const controller = {
 		});
 		res.render('user-edit-form',{userToEdit, users});
 	},
-	userUpdate: (req, res) => {
+	update: (req, res) => {
 
 		const resultValidation = validationResult(req);
 		if (resultValidation.errors.length > 0){
@@ -105,6 +112,19 @@ const controller = {
 			res.redirect('/users');
 		}
 		
+	},
+	// Delete - Delete one product from DB
+	destroy : (req, res) => {
+		const id = req.params.id;
+		const newUser = [];
+		users.map(val => {
+			if (val.id != id){
+				newUser.push(val);
+			}
+		});
+		
+		fs.writeFileSync(usersFilePath,JSON.stringify(newUser),'utf-8');
+		res.redirect('/users/');
 	}
 };
 
