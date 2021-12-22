@@ -6,7 +6,7 @@
     <section class="productList">
 
         <div class="listaProductos">
-            <h1 class="listaProductos__titulo">LISTA DE USUARIOS</h1>
+            <h1 class="listaProductos__titulo">LISTADO DE USUARIOS</h1>
             <a href="/users/create" class="btn__texto">Agregar Usuario</a>
 
      <% if (users) { %>
@@ -16,7 +16,7 @@
              <div class="editarUser">
               
                 <figure class="user-box_imageUser">
-                    <img src="/img/avatars/<%= user.pictureprofile%>" alt="">
+                    <img src="/img/avatars/<%= user.picture%>" alt="">
                 </figure>      
    
                 <div class="editarUser_item">
@@ -39,7 +39,7 @@
                 <div class="btnEdit">
               
                   <a href="/users/<%= user.id%>/edit" class="editarProd__btn" alt="Editar Producto" title="Editar Producto"><i class="fas fa-edit"></i></a>
-                  <form action="/products/?_method=DELETE" method="POST">
+                  <form action="/users/<%= user.id %>?_method=DELETE" method="POST">
                     <button type="submit" class="editarProd__btnDelete" alt="Eliminar Producto" title="Eliminar Producto"><i class="fas fa-trash-alt"></i></button>
                   </form>
                 </div>

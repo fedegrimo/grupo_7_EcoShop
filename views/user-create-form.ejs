@@ -6,7 +6,7 @@
 
 <section class="formularioEditUser">
        
-        <h3 class="formularioEditUser_title">Formulario creacion de usuarios</h3>
+        <h3 class="formularioEditUser_title">Formulario creación de usuarios</h3>
        
         <form action="/users/create" method="POST" enctype="multipart/form-data">
 
@@ -20,10 +20,10 @@
                             <input type="text" 
                             name="name" 
                             class="formUser-input"
-                            value="<%= locals.oldData ? oldData.title : null %>">
-                            <% if (locals.errors && errors.title) { %>
+                            value="<%= locals.oldData ? oldData.name : null %>">
+                            <% if (locals.errors && errors.name) { %>
                                 <div class="text-danger">
-                                    <%= errors.title.msg %>
+                                    <%= errors.name.msg %>
                                 </div>
                             <% } %>
                         </div>
@@ -33,10 +33,10 @@
                             <input type="text" 
                             name="lastname" 
                             class="formUser-input"
-                            value="<%= locals.oldData ? oldData.price : null %>">
-                            <% if (locals.errors && errors.price) { %>
+                            value="<%= locals.oldData ? oldData.lastname : null %>">
+                            <% if (locals.errors && errors.lastname) { %>
                                 <div class="text-danger">
-                                    <%= errors.price.msg %>
+                                    <%= errors.lastname.msg %>
                                 </div>
                             <% } %>
                         </div>
@@ -46,16 +46,29 @@
                             <input type="text" 
                             name="email" 
                             class="formUser-input"
-                            value="<%= locals.oldData ? oldData.discount : null %>">
+                            value="<%= locals.oldData ? oldData.email : null %>">
+                            <% if (locals.errors && errors.email) { %>
+                                <div class="text-danger">
+                                    <%= errors.email.msg %>
+                                </div>
+                            <% } %>
                         </div>
 
                         <div class="formularioUser_item">
                         <label for="password" class="formUser-label">Contraseña:</label>
-                        <input type="text" name="Password" 
-                        id="password" 
-                        class="formUser-input">
-                        <%= locals.oldData ? oldData.description : null %>
-                        </input>
+                        <input type="password" 
+                        name="password" 
+                        class="formUser-input"
+                        value="<%= locals.oldData ? oldData.password : null %>">
+                        <% if (locals.errors && errors.password) { %>
+                            <div class="text-danger">
+                                <%= errors.password.msg %>
+                            </div>
+                        <% } %>
+                        <input type="hidden" 
+                        name="role" 
+                        value="<%= locals.oldData ? oldData.role : 1 %>">
+                        
                         </div>
                     </div>
                     
@@ -75,8 +88,8 @@
                     </div>
 
                     <div class="formulario_item-buttonUser">
-                        <button type="submit" class="buy-now-buttonUser">Guardar Usuario</button>
-                        <button type="reset" class="buy-now-buttonUser">Borrar</button>
+                        <button type="submit" class="buy-now-buttonUser">Guardar</button>
+                        <button type="reset" class="buy-now-buttonUser">Volver</button>
                     </div>
                 </div>
                 

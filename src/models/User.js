@@ -12,7 +12,7 @@ const User = {
         let allUsers = User.findAll();
         let lastUser = allUsers.pop();
         if (lastUser){
-            return lastUser.id + 1;
+            return parseINT(lastUser.id) + 1;
         }
         return 1;
     },
@@ -37,7 +37,7 @@ const User = {
     create: (userData) => {
         let allUsers = User.findAll();
         let newUser ={
-            id: this.generateId(),
+            id: User.generateId(),
             ...userData
         }
         allUsers.push(newUser);

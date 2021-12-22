@@ -39,11 +39,27 @@ const validationsUserRegistration = [
     check("lastname").notEmpty().withMessage('Ingresar apellido'),
     check("email").notEmpty().withMessage('Ingresar email').bail().
     isEmail().withMessage("Email inválido"),
-    check("password").notEmpty().withMessage('Ingresar constraseña').bail().
-    isLength({min: 6}).withMessage("La contraseña debe tener al menos 6 caracteres.")
-  ]
+    check("password").notEmpty().withMessage('Ingresar contraseña').bail().
+    isLength({min: 6}).withMessage("La contraseña debe tener al menos 6 caracteres."),
+    check("fileImage").custom((value, {req}) => {
+      let file = req.file;
+      let acceptExtension = ['.jpg','.gif','.png','.webp'];
   
-
+      if (!req.body.picture){
+        if (!file){
+          throw new Error ("Tienes que subir una imagen");
+        } else {
+          let fileExtension = path.extname(file.originalname);
+          
+          if(!acceptExtension.includes(fileExtension)){
+            throw new Error (`Las extension permitidas son ${acceptExtension.join(', ')}`);
+          }
+        }
+      }
+      return true;
+    })
+  ];
+  
   module.exports = {
       validations,
       validationsLogin,

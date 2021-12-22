@@ -1,12 +1,1 @@
-[
-
-    {
-        "id":"1",
-        "email":"admin@admin.com",
-        "password":"admin",
-        "name":"Admin",
-        "lastName":"EcoShop",
-        "pictureprofile":"profile.png"
-    }
-    
-]
+[{"id":"1","name":"Admin","lastname":"Echo","email":"admin@admin.com","password":"admin","picture":"profile.png","role":1},{"id":"2","name":"fede","lastname":"grimo","email":"fede.grimo@gmail.com","password":"121212","picture":"fileImage-1640138236131.webp","role":1},{"id":"21","name":"Emiliano ","lastname":"Montanari","email":"emiliano@montanari.com.ar","password":"emiliano","role":"1","picture":"fileImage-1640143870021.webp"}]

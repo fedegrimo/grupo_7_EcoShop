@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { validationResult } = require ("express-validator");
 const User = require ('../models/User');
+const { resourceUsage } = require('process');
 
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -13,7 +14,7 @@ const controller = {
 
 	list: (req, res) => {
         if(req.cookies.login){
-			res.render('clientes-list',{users});
+			res.render('user-list',{users});
 		}else{
 			res.redirect('/backend');
 		}
@@ -57,6 +58,7 @@ const controller = {
 	store: (req, res) => {
 		const resultValidation = validationResult(req);
 		const fileImage = req.file;
+
 		if (resultValidation.errors.length > 0){
 			res.render('user-create-form',{ 
 				errors: resultValidation.mapped(),
@@ -79,30 +81,39 @@ const controller = {
 				return val;
 			}
 		});
-		res.render('user-edit-form',{userToEdit, users});
+
+		if(req.cookies.login){
+			res.render('user-edit-form',{oldData:userToEdit, users});
+		}else{
+			res.redirect('/backend');
+		}
+		
 	},
 	update: (req, res) => {
 
 		const resultValidation = validationResult(req);
+		const fileImage = req.file;
 		if (resultValidation.errors.length > 0){
 			res.render('user-edit-form',{ 
 				errors: resultValidation.mapped(),
-				userToEdit: req.body
+				oldData:req.body,
+				users
 			});
 
 		} else {
-			const {name, lastName, email, password,pictureprofile} = req.body;
+
+			const {name, lastname, email, password,role,picture} = req.body;
 			const id = req.params.id;
-			const fileImage = req.file;
 			const filename = (fileImage) ? fileImage.filename : picture;
 			const newUser = [];
 			users.map(val=>{
 				if (val.id == id){
 					val.name=name;
-					val.lastName=lastName;
+					val.lastname=lastname;
 					val.email=email;
 					val.password=password;
-					val.pictureprofile=filename;
+					val.picture=filename;
+					val.role = role
 					newUser.push(val);
 				} else {
 					newUser.push(val);
@@ -124,7 +135,7 @@ const controller = {
 		});
 		
 		fs.writeFileSync(usersFilePath,JSON.stringify(newUser),'utf-8');
-		res.redirect('/users/');
+		res.redirect('/users');
 	}
 };
 
