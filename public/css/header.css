@@ -191,88 +191,114 @@ header.sticky {
     width: 100%;
     padding: 10px;
 }
-.header-container{
-    display: flex ;
-    flex-direction: row;
-    justify-content: space-between;
+.headerBackend-container{
+    width: 100%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+.logo-backend{
+    display: flex;
+    flex-direction:row;
+    justify-content: flex-start;
     align-items: center;
+}
+.logo-backend img{
+    max-width:180px;
+    height: 30px;
+    width: 132px;
 }
 .navegador-backend1{
     display: none;
 }
-.navegador-backend{
-    width: 100%;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    align-items: center;
+
+.botonBackend-menu i{
+    padding: 6px;
+    color: black;
+    font-size: 1.2rem;
+    background-color: #fff;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    border: #858683 solid 1.5px;
+    border-radius: 6px;
+    display: block;
+    margin: auto;
 }
 .navegador-backend2{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
 }
-.userName{
-    font-size: 18px;
+.navegador-profile{
     color: #252525;
-    font-weight: 900;
-    margin-left: 5px;
-    margin-bottom: 5px;
-}
-.icon-acount-container{
-    font-size: 20px;
-    color: #252525;
-    margin-right: 10px;
-}
-.navegador-logout{
-    background-color: white;
-    color: black;
-    padding: 10px 20px;
-    text-align: center;
     text-decoration: none;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    font-weight: 500;
     display: inline-block;
 }
-.btn-logout button{
-    width: 50px;
-    height: 20px;
-    color:#252525;
-    background: none;
-    border: none;
-    cursor: pointer;
+.fa-user-circle{
+    color: #252525;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 900;
 }
-.btn-logout button i {
-    font-size: 18px;
-    color:#9B0000;
+.userName{
+    color: #252525;
+    text-decoration: none;
+    font-size: 20px;
+    margin-left: 5px;
+}
+.btnlogout{
+    font-weight: bold;
+    background-color: #ec4553;
+    padding: 6px;
+    color: black;
+    font-size: 1.2rem;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    display: block;
 }
 
 @media (min-width:768px) { 
-    .navegador-backend1{
-        display: block;
-        margin: 0 auto;
+    .botonBackend-menu{
+        display: none;
     }
-    .navegador-backend1 ul{
-        width: 100%;
+    .navegador-backend{
+        display: block;
+    }
+    .navegador-backend1{
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
+    
+
     }
-    .navegador-backend1 ul li{
-        display: block;
-        margin-left: 20px;
-        width: 100%;
-    }
-    .navegador-backend1 ul li a{
+    .navegador-backend1 a{
         color: #252525;
-        font-weight: 900;
         text-decoration: none;
+        font-size: 1.2em;
+        text-transform: uppercase;
+        font-weight: 500;
+        display: inline-block;
+        transition: all 300ms ease;
     }
-    .navegador-backend{
-        width: 100%;
+    .navegador-backend2 {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-evenly;
         align-items: center;
-    }
+        
+}
+.navegador-backend1 a:hover {
+    color: #fddb3a;
+    font-weight: bold;
+  }
+
 }

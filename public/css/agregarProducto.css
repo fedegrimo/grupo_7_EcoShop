@@ -3,8 +3,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 90%;
-    margin: 0 auto;
+    width: 95%;
+    margin: 50px auto;
 }
 
 .listaProductos__titulo{
@@ -34,6 +34,7 @@
 }
 .editarProd{
     width: 100%;
+    max-width: 415px;
     height: 100%;
     margin: 20px auto 20px auto;
     background-color: #f0f5f9;
@@ -46,17 +47,29 @@
     --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
-
+.editarProd_image{
+    width: 260px;
+    height: 260px;
+    max-width: 260px;
+    margin: 10px auto;
+    
+}
+.editarProd_image img{
+    width: 230px;
+    height: 240px;
+    padding: 15px;
+}
 @media (min-width:768px) { 
     .editarProd{
-        width: 100%;
+        width: 100%; max-width: none;
         height: 20rem;
         padding: 5px;
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
+       display: grid;
+        grid-template-columns: repeat(5, 1fr);
         margin-top: 20px;
         background-color: #f0f5f9
     }
+    
     .editarProd_color select{
         text-align: center;
         width: 50%;
@@ -71,26 +84,19 @@
     margin: 10px auto;
 }
 .editarProd_datos p{
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 400;
     color: #2d3a4b;
     margin: 10px auto;
 }
 
-
-.editarProd__imagen{
-    width: 100px;
-    height: 100px;
-    border: 1px solid black;
-    border-radius: 50%;
-}
 .editarProd__btn{
     font-family:'Montserrat', sans-serif;
     font-weight: 400;
     background:#003049;
-    width: 80px;
+    width: 50px;
     height: 40px;
-    padding: 12px;
+    padding: 10px;
     color: #f8f9fa;
     cursor: pointer;
     border-radius: 5px;
@@ -117,14 +123,14 @@
     margin-left: 1rem;
 }
 .editarProd_categority{
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
     color: #003049;
     text-transform: uppercase;
     margin-bottom: 10px;
 }
 .editarProd_prince{
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
     color: #003049;
     margin-bottom: 10px;
