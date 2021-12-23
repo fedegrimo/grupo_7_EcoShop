@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { validationResult } = require ("express-validator");
 const { reset } = require('nodemon');
-const bcryptjs = require ('bcryptjs');
+const bcrypt = require ('bcryptjs');
 const User = require ('../models/User');
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -23,18 +23,15 @@ const controller = {
 		
 	},
 	backendLogin: (req, res) => {
-		console.log('este es el query', req.body)
 		const { email, password } = req.body;
-
 		const resultValidation = validationResult(req);
-		console.log(resultValidation);
 		if (resultValidation.errors.length > 0){
 			console.log('hubo error en validation');
 			res.render('backend',{ 
 				errors: resultValidation.mapped(),
 				oldData: req.body
 			});
-		} else if( users.some( user => (user.email === email)&&(user.password === password)) ){
+		} else if( users.some( user => (user.email === email)&&(bcrypt.compareSync(password,user.password))) ){
 			console.log('los datos fueron correctos');
 			req.session.email = email;
 			req.session.admin= true;

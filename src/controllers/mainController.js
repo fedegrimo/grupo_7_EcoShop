@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { validationResult } = require ("express-validator");
 const { reset } = require('nodemon');
-const bcryptjs = require ('bcryptjs');
+const bcrypt = require ('bcryptjs');
 const User = require ('../models/User');
 
 const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
@@ -44,13 +44,13 @@ const controller = {
 			});
 		} else {
 			validation = users.find(val => {
-				if ((val.email === req.body.email) && (val.password === req.body.password)){
+				if ((val.email === req.body.email) && (bcrypt.compareSync(req.body.password,val.password))){
 					return true;
 				} 
 			})
 			
 			if (validation){
-				res.redirect('/products/list');
+				res.redirect('/');
 			} else {
 				res.render('login', { errorLogin: "Usuario inválido"});
 			}

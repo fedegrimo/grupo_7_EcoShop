@@ -12,7 +12,7 @@ const User = {
         let allUsers = User.findAll();
         let lastUser = allUsers.pop();
         if (lastUser){
-            return parseINT(lastUser.id) + 1;
+            return lastUser.id + 1;
         }
         return 1;
     },
@@ -41,14 +41,14 @@ const User = {
             ...userData
         }
         allUsers.push(newUser);
-        fs.writeFileSync(User.filename,JSON.stringify(allUsers,null,' '));
+        fs.writeFileSync(User.filename,JSON.stringify(allUsers,'utf-8',' '));
         return newUser;
     },
 
     delete : (id) => {
         let allUsers = User.findAll();
         let finalUsers = allUsers.filter(oneUser => oneUser.id !== id);
-        fs.writeFileSync(User.filename,JSON.stringify(finalUsers,null,' '),'utf-8');
+        fs.writeFileSync(User.filename,JSON.stringify(finalUsers,'utf-8',' '));
         return true;
     }
 

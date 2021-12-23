@@ -3,6 +3,7 @@ const path = require('path');
 const { validationResult } = require ("express-validator");
 const User = require ('../models/User');
 const { resourceUsage } = require('process');
+const bcrypt = require ('bcryptjs');
 
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -19,34 +20,6 @@ const controller = {
 			res.redirect('/backend');
 		}
 	 },
-	login: (req, res) => {
-		console.log('este es el query', req.body)
-		const { email, password } = req.body;
-
-		const resultValidation = validationResult(req);
-		console.log(resultValidation);
-		if (resultValidation.errors.length > 0){
-			console.log('hubo error en validation');
-			res.render('backend',{ 
-				errors: resultValidation.mapped(),
-				oldData: req.body
-			});
-		} else if( users.some( user => (user.email === email)&&(user.password === password)) ){
-			console.log('los datos fueron correctos');
-			req.session.email = email;
-			req.session.admin = true;
-			res.cookie('login', 'true'); 
-			res.redirect('clientes-list',{usersAll: users});
-		}else{
-			console.log('usuario y password incorrectos');
-			res.render('backend',
-				{
-					loginFail:true,
-					oldData: req.body
-			});
-		}
-			
-	},
 	create: (req, res) => {
 		if(req.cookies.login){
 			res.render('user-create-form',{users});
@@ -68,6 +41,7 @@ const controller = {
 		} else {
 			let userToCreate= {
 				...req.body,
+				password: bcrypt.hashSync(req.body.password,10),
 				picture:fileImage.filename
 			}
 			User.create(userToCreate);
@@ -111,7 +85,7 @@ const controller = {
 					val.name=name;
 					val.lastname=lastname;
 					val.email=email;
-					val.password=password;
+					val.password=bcrypt.hashSync(password,10);
 					val.picture=filename;
 					val.role = role
 					newUser.push(val);
