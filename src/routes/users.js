@@ -10,7 +10,6 @@ const usersController = require('../controllers/usersControlles');
 
 /*** BACKEND USERS***/ 
 router.get('/',usersController.list);
-router.post('/',validationsLogin, usersController.login);
 
 /*** CREATE ONE USER ***/ 
 router.get('/create/', usersController.create); 

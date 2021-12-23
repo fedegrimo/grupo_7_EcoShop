@@ -16,7 +16,7 @@ const controller = {
 		if(req.cookies.login){
 			res.redirect('/products/list',{usersAll: users})
 		}else{
-			res.render('backend',{loginFail:false,
+			res.redirect('/',{loginFail:false,
 								  usersAll: users
 			});
 		}

@@ -33,12 +33,13 @@ _El servidor se ejecuta en la url de localhost:3000_
 npm run server
 ```
 
-### Y las pruebas de estilo de codificación ⌨️
+### Acceso al Backend ⌨️
 
-_Explica que verifican estas pruebas y por qué_
+http://localhost:3000/backend
 
 ```
-Da un ejemplo
+Email: admin@admin.com
+Contraseña: administrador
 ```
 
 ### Enlace Heroku 🔗
