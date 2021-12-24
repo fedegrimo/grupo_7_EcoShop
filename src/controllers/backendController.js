@@ -31,14 +31,12 @@ const controller = {
 				errors: resultValidation.mapped(),
 				oldData: req.body
 			});
-		} else if( users.some( user => (user.email === email)&&(bcrypt.compareSync(password,user.password))) ){
-			console.log('los datos fueron correctos');
+		} else if( users.some( user => (user.email === email)&&(bcrypt.compareSync(password,user.password) && (user.role == '1'))) ){
 			req.session.email = email;
 			req.session.admin= true;
 			res.cookie('login', 'true'); 
 			res.redirect('/products/list');
 		}else{
-			console.log('usuario y password incorrectos');
 			res.render('backend',
 				{
 					loginFail:true,
@@ -49,7 +47,6 @@ const controller = {
 	},
 
 	logout:(req, res) => {
-		console.log(req.cookies.login);
 		//usar res
 		res.clearCookie('login');
 		//después de borrar la cookie

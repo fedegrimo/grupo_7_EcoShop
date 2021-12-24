@@ -269,7 +269,12 @@ header.sticky {
     border-radius: 6px;
     display: block;
 }
-
+.emailSession{
+    font-family:'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    color: #252525;
+    text-decoration: none !important;
+}
 @media (min-width:768px) { 
     .botonBackend-menu{
         display: none;

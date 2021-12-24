@@ -59,9 +59,18 @@ const validationsUserRegistration = [
       return true;
     })
   ];
-  
+
+  const validationsClientRegistration = [
+    check("name").notEmpty().withMessage('Ingresar nombre'),
+    check("lastname").notEmpty().withMessage('Ingresar apellido'),
+    check("email").notEmpty().withMessage('Ingresar email').bail().
+    isEmail().withMessage("Email inválido"),
+    check("password").notEmpty().withMessage('Ingresar contraseña').bail().
+    isLength({min: 6}).withMessage("La contraseña debe tener al menos 6 caracteres.")
+  ];
   module.exports = {
       validations,
       validationsLogin,
-      validationsUserRegistration
-  };
+      validationsUserRegistration,
+      validationsClientRegistration
+  }

@@ -11,26 +11,29 @@
             <div class="row">
                 <span><i class="fas fa fa-user"></i></span>
                 <input type="text" 
-                name="nombre" 
+                name="name" 
                 placeholder="Nombre"
-                value="<%= locals.oldData ? oldData.nombre : null %>">
-                <% if (locals.errors && errors.nombre) { %>
+                value="<%= locals.oldData ? oldData.name : null %>">
+                <% if (locals.errors && errors.name) { %>
                     <div class="text-danger">
-                        <%= errors.nombre.msg %>
+                        <%= errors.name.msg %>
                     </div>
                 <% } %>
             </div>
             <div class="row">
                 <span><i class="fas fa fa-user"></i></span>
                 <input type="text" 
-                name="apellido" 
+                name="lastname" 
                 placeholder="Apellido"
-                value="<%= locals.oldData ? oldData.apellido : null %>">
-                <% if (locals.errors && errors.apellido) { %>
+                value="<%= locals.oldData ? oldData.lastname : null %>">
+                <% if (locals.errors && errors.lastname) { %>
                     <div class="text-danger">
-                        <%= errors.apellido.msg %>
+                        <%= errors.lastname.msg %>
                     </div>
                 <% } %>
+                <input type="hidden" 
+                name="role" 
+                value="<%= locals.oldData ? oldData.role : 2 %>">
             </div>
         </section>
         <section class="divider">

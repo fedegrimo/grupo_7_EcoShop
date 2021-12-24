@@ -16,7 +16,7 @@
                         <li>
                             <a href="/products">PRODUCTOS</a>
                         </li>
-                
+                        
                     
                     </ul>
                 </div> <!-- Cierra el div del PRIMER NAVEGADOR -->
@@ -24,11 +24,14 @@
                     <ul>
                         <li class="dropdown user-acc"> 
                             <a href="/login" class="icon-acount-container">
-                                <i class="far fa-user hombre"></i>
-                                <ul class="menu-acount">
-                                    <li>Registrar</li>
-                                    <li>Vender productos</li>
-                                </ul>
+                                
+                               <% if(login){ %>
+                                <span class="emailSession"><%= login%></span>
+                                <a href="/logout"><i class="fas fa-sign-out-alt"></i></a>
+                                <% }else{ %>
+                                    <i class="far fa-user hombre"></i>
+
+                               <% } %>
                             </a>
                         </li>
 

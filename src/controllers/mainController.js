@@ -4,7 +4,6 @@ const { validationResult } = require ("express-validator");
 const { reset } = require('nodemon');
 const bcrypt = require ('bcryptjs');
 const User = require ('../models/User');
-
 const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
 const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
@@ -15,7 +14,7 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const controller = {
 	index: (req, res) => {
-        res.render('index', { products, toThousand });
+        res.render('index', { products, toThousand,login: req.cookies.email});
 	},
 	search: (req, res) => {
 		keywords = req.body.keywords;
@@ -24,17 +23,23 @@ const controller = {
 				return val;
 			}
 		})
-		res.render('results',{keywords,search});
+		res.render('results',{keywords,search,login: req.cookies.email});
 	},
     cart: (req, res) => {
-        res.render('productCart');
+        res.render('productCart',{login: req.cookies.email});
 	},
     register: (req, res) => {
-        res.render('register');
+        res.render('register',{login: req.cookies.email});
 	},
     login: (req,res) => {
-        res.render('login');
+        res.render('login',{login: req.cookies.email});
     },
+	logout:(req, res) => {
+		//usar res
+		res.clearCookie('email');
+		//después de borrar la cookie
+		res.redirect('/login');
+	},
     loginValidation: (req,res) => {
 		const resultValidation = validationResult(req);
 		if (resultValidation.errors.length > 0){
@@ -42,34 +47,30 @@ const controller = {
 				errors: resultValidation.mapped(),
 				oldData: req.body
 			});
-		} else {
-			validation = users.find(val => {
-				if ((val.email === req.body.email) && (bcrypt.compareSync(req.body.password,val.password))){
-					return true;
-				} 
-			})
-			
-			if (validation){
-				res.redirect('/');
-			} else {
-				res.render('login', { errorLogin: "Usuario inválido"});
-			}
-			
+		} else if( users.some( user => (user.email === req.body.email)&&(bcrypt.compareSync(req.body.password,user.password) && (user.role == '2'))) ){
+			req.session.email = req.body.email;
+			req.session.admin= true;
+			res.cookie('login', 'true');
+			res.cookie('email',req.session.email);
+			res.redirect('/');
 		}
         
     },
 	// Create -  Method to store
 	store: (req, res) => {
 		const resultValidation = validationResult(req);
+
 		if (resultValidation.errors.length > 0){
 			res.render('register',{ 
 				errors: resultValidation.mapped(),
-				oldData: req.body
+				oldData: req.body,
+				login: req.cookies.login
 			});
 		} else {
 			let userToCreate= {
 				...req.body,
-				password : bcryptjs.hashSync(req.body.password,10)
+				password : bcrypt.hashSync(req.body.password,10),
+				picture: "profile.png"
 			}
 			User.create(userToCreate);
 			res.redirect('/login');

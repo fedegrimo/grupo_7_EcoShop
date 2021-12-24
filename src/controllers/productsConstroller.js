@@ -21,7 +21,8 @@ const controller = {
 	// Root - Show all products -trabajar
 	index: (req, res) => {
 		res.render('products',{productsAll: products,
-								usersAll: users
+								usersAll: users,
+								login: req.cookies.email
 		});
 	},
 	// List administration product -trabajar
@@ -42,7 +43,7 @@ const controller = {
 			}
 			
 		});
-		res.render('productDetail',{ rowProduct, products, toThousand})
+		res.render('productDetail',{ rowProduct, products, toThousand,login: req.cookies.email})
 	},
 
 	// Create - Form to create -trabajar

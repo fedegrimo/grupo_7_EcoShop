@@ -1,1 +1,47 @@
-[{"id":"1","name":"Admin","lastname":"Echo","email":"admin@admin.com","password":"$2a$10$KZcqewVOra4vXfVFGunHCORqsiwrGSEw2DjBWfVB7kEXEwcdNQBfm","picture":"profile.png","role":"1"},{"id":"211","name":"Leonardo","lastname":"Coma","email":"leobardo@dh.com","password":"$2a$10$AEF9.QofkS4ir5OgE46XaOhyNpi3m6w1UD9EAs8ED2/zpvLqjDBAW","role":"1","picture":"fileImage-1640300704187.webp"},{"id":"2111","name":"Emiliano","lastname":"Montanari","email":"emi@monta.com","password":"$2a$10$0DA9RiOeSwNsqIYxBtOd8uWSli7GMY8BYVWYswsNBnaQQ/NwjluWO","role":"1","picture":"fileImage-1640301009908.jpg"}]
+[
+ {
+  "id": "1",
+  "name": "Admin",
+  "lastname": "Echo",
+  "email": "admin@admin.com",
+  "password": "$2a$10$KZcqewVOra4vXfVFGunHCORqsiwrGSEw2DjBWfVB7kEXEwcdNQBfm",
+  "picture": "profile.png",
+  "role": "1"
+ },
+ {
+  "id": "211",
+  "name": "Leonardo",
+  "lastname": "Coma",
+  "email": "leobardo@dh.com",
+  "password": "$2a$10$AEF9.QofkS4ir5OgE46XaOhyNpi3m6w1UD9EAs8ED2/zpvLqjDBAW",
+  "role": "1",
+  "picture": "fileImage-1640300704187.webp"
+ },
+ {
+  "id": "2111",
+  "name": "Emiliano",
+  "lastname": "Montanari",
+  "email": "emi@monta.com",
+  "password": "$2a$10$0DA9RiOeSwNsqIYxBtOd8uWSli7GMY8BYVWYswsNBnaQQ/NwjluWO",
+  "role": "1",
+  "picture": "fileImage-1640301009908.jpg"
+ },
+ {
+  "id": "21111",
+  "name": "emi",
+  "lastname": "emi",
+  "role": "2",
+  "email": "EMI@EMI.COM",
+  "password": "$2a$10$3cXolJsESllUPycY5I.wbObTu4CH1YgP.tNrFypugQwCA40NexAbu",
+  "picture": "profile.png"
+ },
+ {
+  "id": "211111",
+  "name": "emi",
+  "lastname": "montanari",
+  "role": "2",
+  "email": "emimontanari@gmail.com",
+  "password": "$2a$10$UN7PJj8oJujTc70ztW5gAO4neyvYLiVIVPMpDfUG9zPtntzIAtmbW",
+  "picture": "profile.png"
+ }
+]
