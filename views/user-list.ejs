@@ -32,10 +32,6 @@
                     <p><%= user.email%></p>
                 </div>
 
-                <div class="editarUser_item">
-                  <span><%= user.password%></span>
-                </div>
-
                 <div class="btnEdit">
               
                   <a href="/users/<%= user.id%>/edit" class="editarProd__btn" alt="Editar Producto" title="Editar Producto"><i class="fas fa-edit"></i></a>
@@ -44,10 +40,9 @@
                   </form>
                 </div>
               </div>
+             <% }) %> 
         </div>
     </section>
-    <% }) %>
-
     <% } %> 
 
             
