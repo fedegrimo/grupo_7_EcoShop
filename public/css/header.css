@@ -127,7 +127,7 @@ header.sticky {
 .boton-menu i{
     padding: 7px;
     color: black;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     background-color: #fff;
     width: 40px;
     height: 40px;
@@ -141,10 +141,11 @@ header.sticky {
     position:relative;
 }
 .icon-acount-container .menu-acount{
-    display:none;
-    flex-direction: column;
-    justify-content:space-around;
-    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items: center;
+    vertical-align: middle;
     width:160px;
     height: 100px;
     background-color: white;
@@ -242,20 +243,24 @@ header.sticky {
 .fa-user-circle{
     color: #252525;
     text-decoration: none;
-    font-size: 1.2em;
+    font-size: 1.3em;
     font-weight: 900;
 }
 .userName{
+    font-family: 'Montserrat', sans-serif;
     color: #252525;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 0.8rem;
     margin-left: 5px;
+    font-weight: 200;
+
+
 }
 .btnlogout{
     font-weight: bold;
     background-color: #ec4553;
     padding: 6px;
-    color: black;
+    color: #fff;
     font-size: 1.2rem;
     width: 35px;
     height: 35px;
