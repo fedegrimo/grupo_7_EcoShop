@@ -48,6 +48,11 @@ server.use('/products', productsRouter);
 server.use('/backend', backendRouter);
 server.use('/users',usersRouter);
 
+//sequelize config
+const db = require("./src/database/models/");
+
+db();
+
 // ************ DON'T TOUCH FROM HERE ************
 // ************ catch 404 and forward to error handler ************
 server.use((req, res, next) => next(createError(404)));
