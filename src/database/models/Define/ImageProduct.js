@@ -1,4 +1,4 @@
-const {sqlize,Sequelize:dataTypes} = require ('../config/connection');
+const {sqlize,Sequelize:dataTypes} = require ('../../config/connection');
 
 const alias = 'imageProduct';
 
@@ -14,7 +14,7 @@ const cols = {
         type: dataTypes.STRING(255),
         allowNull: false
     },
-    product_id: dataTypes.BIGINT(10),
+    product_id: dataTypes.BIGINT(10)
 };
 
 const config = {

@@ -1,6 +1,6 @@
-const {sqlize,Sequelize:dataTypes} = require ('../config/connection');
+const {sqlize,Sequelize:dataTypes} = require ('../../config/connection');
 
-const alias = 'category';
+const alias = 'profile';
 
 const cols = {
     id: {
@@ -24,14 +24,14 @@ const config = {
     timestamps: false
 }
 
- // Creación Tabla Category
- const Category = sqlize.define(alias, cols, config);
+ // Creación Tabla Profile
+ const Profile = sqlize.define(alias, cols, config);
 
- // Relación Tabla Category
- Category.associate = function(models) {
-    Category.hasMany(models.Product, { 
-        as: "product",
-        foreignKey: "category_id"
+ // Relación Tabla Profile
+ Profile.associate = function(models) {
+    Profile.hasMany(models.User, { 
+        as: "user",
+        foreignKey: "profile_id"
     })
 }
 
@@ -42,13 +42,13 @@ const config = {
  *  syncDB(true) => force to database / drop if exist the tables
  *  syncDB(false) => force to database / not drop if exist the tables
  */
-const CategorySyncDB = async (switchTF) => {
+const ProfileSyncDB = async (switchTF) => {
     try {
-      await Category.sync({ force: switchTF });
+      await Profile.sync({ force: switchTF });
     } catch (err) {
         console.log("err syncDB: ", err);
     }
   };
 
 
-module.exports = CategorySyncDB;
+module.exports = ProfileSyncDB;

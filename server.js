@@ -49,7 +49,7 @@ server.use('/backend', backendRouter);
 server.use('/users',usersRouter);
 
 //sequelize config
-const db = require("./src/database/models/");
+const db = require("./src/database/models/Define/");
 
 db();
 

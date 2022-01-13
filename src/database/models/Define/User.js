@@ -1,6 +1,6 @@
-const {sqlize,Sequelize:dataTypes} = require ('../config/connection');
+const {sqlize,Sequelize:dataTypes} = require ('../../config/connection');
 
-const alias = 'product';
+const alias = 'users';
 
 const cols = {
     id: {
@@ -10,27 +10,27 @@ const cols = {
         autoIncrement: true
     },
 
-    name: {
+    firstname: {
         type: dataTypes.STRING(100),
         allowNull: false
     },
-    price: {
-        type: dataTypes.DECIMAL(8, 2).UNSIGNED,
+    lastname: {
+        type: dataTypes.STRING(100),
         allowNull: false
     },
-    offer: {
-        type: dataTypes.DECIMAL(3, 2).UNSIGNED,
+    email: {
+        type: dataTypes.STRING(100),
         allowNull: false
     },
-    description: {
-        type: dataTypes.TEXT(), 
+    password: {
+        type: dataTypes.STRING(100),
         allowNull: false
     },
-    category_id: dataTypes.BIGINT(10),
-    active: {
-        type: dataTypes.BOOLEAN,
+    images: {
+        type: dataTypes.STRING(100),
         allowNull: false
-    }
+    },
+    profile_id: dataTypes.BIGINT(10)
 };
 const config = {
     timestamps: true,
@@ -39,14 +39,14 @@ const config = {
     deletedAt: false
 }
 
- // Creación Tabla Product
- const Product = sqlize.define(alias, cols, config);
+ // Creación Tabla User
+ const User = sqlize.define(alias, cols, config);
 
- // Relación Tabla Category
- Product.associate = function(models) {
-     Product.belongsTo(models.Category, { 
-         as: "category",
-         foreignKey: "category_id"
+ // Relación Tabla User
+ User.associate = function(models) {
+    User.belongsTo(models.Profile, { 
+         as: "profile",
+         foreignKey: "profile_id"
      })
  }
 
@@ -57,13 +57,13 @@ const config = {
  *  syncDB(true) => force to database / drop if exist the tables
  *  syncDB(false) => force to database / not drop if exist the tables
  */
-const ProductSyncDB = async (switchTF) => {
+const UserSyncDB = async (switchTF) => {
     try {
-      await Product.sync({ force: switchTF });
+      await User.sync({ force: switchTF });
     } catch (err) {
         console.log("err syncDB: ", err);
     }
   };
 
 
-module.exports = ProductSyncDB;
+module.exports = UserSyncDB;

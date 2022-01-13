@@ -3,7 +3,6 @@ const path = require('path');
 const { validationResult } = require ("express-validator");
 const { reset } = require('nodemon');
 const bcrypt = require ('bcryptjs');
-const User = require ('../models/User');
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -30,7 +29,7 @@ const controller = {
 			res.render('backend',{ 
 				errors: resultValidation.mapped(),
 				oldData: req.body
-			});
+			}	);
 		} else if( users.some( user => (user.email === email)&&(bcrypt.compareSync(password,user.password) && (user.role == '1'))) ){
 			req.session.email = email;
 			req.session.admin= true;
