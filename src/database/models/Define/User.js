@@ -33,6 +33,7 @@ const cols = {
     profile_id: dataTypes.BIGINT(10)
 };
 const config = {
+    tableName: "users",
     timestamps: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',
@@ -66,4 +67,7 @@ const UserSyncDB = async (switchTF) => {
   };
 
 
-module.exports = UserSyncDB;
+module.exports = {
+    create: UserSyncDB,
+    db: User
+};

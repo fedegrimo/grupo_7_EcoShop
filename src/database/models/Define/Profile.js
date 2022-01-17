@@ -1,6 +1,6 @@
 const {sqlize,Sequelize:dataTypes} = require ('../../config/connection');
 
-const alias = 'profile';
+const alias = 'Profile';
 
 const cols = {
     id: {
@@ -21,6 +21,7 @@ const cols = {
 };
 
 const config = {
+    tableName: "profile",
     timestamps: false
 }
 
@@ -50,5 +51,7 @@ const ProfileSyncDB = async (switchTF) => {
     }
   };
 
-
-module.exports = ProfileSyncDB;
+module.exports = {
+    create: ProfileSyncDB,
+    db: Profile
+};

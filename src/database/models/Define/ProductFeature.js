@@ -1,6 +1,6 @@
 const {sqlize,Sequelize:dataTypes} = require ('../../config/connection');
 
-const alias = 'product_feature';
+const alias = 'ProductFeature';
 
 const cols = {
     product_id: dataTypes.BIGINT(10),
@@ -8,6 +8,7 @@ const cols = {
 };
 
 const config = {
+    tableName: "product_feature",
     timestamps: false
 }
 
@@ -38,4 +39,7 @@ const ProductFeatureSyncDB = async (switchTF) => {
   };
 
 
-module.exports = ProductFeatureSyncDB;
+module.exports = {
+    create: ProductFeatureSyncDB,
+    db: ProductFeature
+};

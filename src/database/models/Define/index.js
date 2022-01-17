@@ -1,11 +1,11 @@
 const {checkSqlize} = require("../../config/connection");
-const CategorySyncDB = require("../../models/Define/Category");
-const FeatureSyncDB = require("../../models/Define/Feature");
-const ImageProductSyncDB = require("../../models/Define/ImageProduct");
-const ProductSyncDB = require("../../models/Define/Product");
-const ProductFeatureSyncDB = require("../../models/Define/ProductFeature");
-const ProfileSyncDB = require("../../models/Define/Profile");
-const UserSyncDB = require("../../models/Define/User");
+const {create:CategorySyncDB}= require("../../models/Define/Category");
+const {create:FeatureSyncDB} = require("../../models/Define/Feature");
+const {create:ImageProductSyncDB} = require("../../models/Define/ImageProduct");
+const {create:ProductSyncDB} = require("../../models/Define/Product");
+const {create:ProductFeatureSyncDB} = require("../../models/Define/ProductFeature");
+const {create:ProfileSyncDB} = require("../../models/Define/Profile");
+const {create:UserSyncDB} = require("../../models/Define/User");
 
 
 const sw = false;

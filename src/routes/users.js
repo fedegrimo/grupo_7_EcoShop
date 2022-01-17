@@ -6,7 +6,7 @@ const {uploadAvatar:upload,path} = require ('../middlewares/multerMiddleware');
 const {validationsLogin,validationsUserRegistration} = require ('../middlewares/validateRegisterMiddleware');
 
 // ************ Controller Require ************
-const usersController = require('../controllers/usersControlles');
+const usersController = require('../database/controllers/userController');
 
 /*** BACKEND USERS***/ 
 router.get('/',usersController.list);

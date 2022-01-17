@@ -1,6 +1,6 @@
 const {sqlize,Sequelize:dataTypes} = require ('../../config/connection');
 
-const alias = 'product';
+const alias = 'Product';
 
 const cols = {
     id: {
@@ -33,6 +33,7 @@ const cols = {
     }
 };
 const config = {
+    tableName: "product",
     timestamps: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',
@@ -65,5 +66,7 @@ const ProductSyncDB = async (switchTF) => {
     }
   };
 
-
-module.exports = ProductSyncDB;
+module.exports = {
+    create: ProductSyncDB,
+    db: Product
+};
