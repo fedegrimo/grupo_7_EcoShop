@@ -43,5 +43,14 @@
   "email": "emimontanari@gmail.com",
   "password": "$2a$10$UN7PJj8oJujTc70ztW5gAO4neyvYLiVIVPMpDfUG9zPtntzIAtmbW",
   "picture": "profile.png"
+ },
+ {
+  "id": "2111111",
+  "name": "Emiliano",
+  "lastname": "Montanari",
+  "role": "2",
+  "email": "emiliano@gmail.com",
+  "password": "$2a$10$vPMv1opewRacpLRD1zu0Ue.jgWbrJ9TO.sC6jl3TqDDjWI3Wwseyq",
+  "picture": "profile.png"
  }
 ]

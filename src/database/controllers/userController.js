@@ -36,6 +36,7 @@ const controller = {
 				oldData: req.body,
 				users
 			});
+			
 		} else {
 
             userDB.User.create({

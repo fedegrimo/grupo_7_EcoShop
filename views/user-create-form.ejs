@@ -2,7 +2,7 @@
 <html lang="en">
 <%- include('./layout/head') %>
 <body>
-    <%- include('./layout/headerBackend') %>
+    
 
 <section class="formularioEditUser">
        
@@ -22,6 +22,7 @@
                             class="formUser-input"
                             value="<%= locals.oldData ? oldData.name : null %>">
                             <% if (locals.errors && errors.name) { %>
+                        
                                 <div class="text-danger">
                                     <%= errors.name.msg %>
                                 </div>
