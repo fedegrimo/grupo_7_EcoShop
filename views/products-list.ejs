@@ -18,18 +18,18 @@
                     <div class="editarProd">
               
                       <figure class="editarProd_image">
-                          <img src="/img/products/<%= product.picture %>" alt="<%= product.name %>">
+                          <img src="/img/products/<%= product.fileName %>" alt="<%= product.dataValues.name %>">
                       </figure>      
          
                       <div class="editarProd_datos">
-                        <h2 class="editarProd__titulo" title="<%= product.description %>"><%= product.title %></h2>  
+                        <h2 class="editarProd__titulo" title="<%= product.dataValues.name %>"><%= product.dataValues.name %></h2>  
                     
                       </div>
                       <div class="editarProd_categority">
-                        <span><%= product.category %></span>
+                        <span><%= product.dataValues.category_id %></span>
                       </div>
                       <div class="editarProd_prince">
-                          <p>$ <%= product.price %></p>
+                          <p>$ <%= product.dataValues.price %></p>
                       </div>
       
               

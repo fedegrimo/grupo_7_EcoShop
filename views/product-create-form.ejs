@@ -53,7 +53,7 @@
                             <select class="selectForm" name="category">
                                 <% 
                                     categorias.forEach(element => { %>
-                                        <option value="<%= element.clave %>" <%= locals.oldData && (element.clave === oldData.category) ? 'selected' : null %> ><%= element.valor %></option> 
+                                        <option value="<%= element.dataValues.id %>" <%= locals.oldData && (element.clave === oldData.category) ? 'selected' : null %> ><%= element.dataValues.name %></option> 
                                   <%  });
                                  %> 
                             </select>

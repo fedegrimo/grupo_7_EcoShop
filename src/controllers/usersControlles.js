@@ -57,12 +57,10 @@ const controller = {
 	edit: (req, res) => {
 		const userToEdit = {}
 
-		 let userField = userDB.db.findByPk(req.params.id);
-
-		Promise.all([userField])
-		 .then(([userField])=>{
-
-			 console.log(userField);
+		 let userField = userDB.db.findOne({
+			 where:{id:req.params.id}
+		 }).then((resultado)=>{
+			 
 			userToEdit = {
 				name: resultado.dataValues.firstname,
 				lastname: resultado.dataValues.lastname,
@@ -70,9 +68,24 @@ const controller = {
 				password: resultado.dataValues.password,
 				picture: resultado.dataValues.images
 			}
+
 			res.render('user-edit-form',{oldData:userField, users});
+		 })
+
+		// Promise.all([userField])
+		//  .then(([userField])=>{
+
+		// 	 console.log(userField);
+		// 	userToEdit = {
+		// 		name: resultado.dataValues.firstname,
+		// 		lastname: resultado.dataValues.lastname,
+		// 		email:resultado.dataValues.email,
+		// 		password: resultado.dataValues.password,
+		// 		picture: resultado.dataValues.images
+		// 	}
 			
-		})
+			
+		// })
 		
 		// if(req.cookies.login){
 		// 	// res.render('user-edit-form',{oldData:userToEdit, users});
