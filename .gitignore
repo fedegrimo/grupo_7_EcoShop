@@ -3,3 +3,5 @@
 .DS_Store
 views/node_modules
 src/data/productsDataBase.json
+/public/img/products
+/public/img/avatars
