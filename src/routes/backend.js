@@ -10,8 +10,8 @@ const {validations} = require ('../middlewares/validateRegisterMiddleware');
 const backendController = require('../controllers/backendController');
 
 /*** BACKEND ADMIN LOGIN ***/ 
-router.get('/', backendController.backend);
-router.post('/',validationsLogin, backendController.backendLogin);
+router.get('/', backendController.index);
+router.post('/',validationsLogin, backendController.login);
 router.post('/logout', backendController.logout)
 
 module.exports = router;

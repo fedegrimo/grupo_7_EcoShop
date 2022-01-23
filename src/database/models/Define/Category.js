@@ -51,18 +51,6 @@ const CategorySyncDB = async (switchTF) => {
     }
   };
 
-/* Add Category Ofertas */
-Category.create({
-    name: "Ofertas",
-    active_menu : true
-});
-
-/* Add Category Ofertas */
-Category.create({
-    name: "Home",
-    active_menu : true
-});
-
 module.exports = {
     create: CategorySyncDB,
     db: Category

@@ -10,7 +10,7 @@ const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
 const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 const controller = {
-	backend: (req, res) => {
+	index: (req, res) => {
 
 		if(req.cookies.login){
 			res.redirect('/products/list',{usersAll: users})
@@ -21,7 +21,7 @@ const controller = {
 		}
 		
 	},
-	backendLogin: (req, res) => {
+	login: (req, res) => {
 		const { email, password } = req.body;
 		const resultValidation = validationResult(req);
 		if (resultValidation.errors.length > 0){

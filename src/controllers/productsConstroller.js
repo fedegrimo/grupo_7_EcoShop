@@ -42,11 +42,11 @@ const controller = {
 			}).then((resultado)=>{
 				products.push({
 					product,
-					images: resultado
+					fileName: resultado
 				})
 			})
 		})
-		console.log(products)
+		//console.log(products)
 		if(req.cookies.login){
 			res.render('products-list',{products, users});
 		}else{
@@ -86,7 +86,7 @@ const controller = {
 	},
 	
 	// Create -  Method to store
-	store: async (req, res) => {
+	store: (req, res) => {
 		const resultValidation = validationResult(req);
 		const fileImage = req.file;
 		if (resultValidation.errors.length > 0){
@@ -98,21 +98,19 @@ const controller = {
 				users
 			});
 		} else {
-			
-			const created = await productDB.db.create({
-                name : req.body.title,
-                price: req.body.price,
-                offer: req.body.discount,
+			productDB.db.create({
+				name : req.body.title,
+				price: req.body.price,
+				offer: req.body.discount,
 				description: req.body.description,
 				category_id: req.body.category,
 				active: false
-            });
-			console.log(created._previousDataValues.id);
-
-			imageProductDB.db.create({
+			});
+			
+			/*imageProductDB.db.create({
 				fileName: fileImage.filename,
 				product_id: created._previousDataValues.id
-			});
+			});*/
 			
 			res.redirect('/products/list');
 		}

@@ -19,11 +19,15 @@ const cols = {
         allowNull: false
     },
     offer: {
-        type: dataTypes.DECIMAL(3, 2).UNSIGNED,
+        type: dataTypes.DECIMAL(5, 2).UNSIGNED,
         allowNull: false
     },
     description: {
         type: dataTypes.TEXT(), 
+        allowNull: false
+    },
+    picture: {
+        type: dataTypes.STRING(100),
         allowNull: false
     },
     category_id: dataTypes.BIGINT(10),
@@ -65,6 +69,7 @@ const ProductSyncDB = async (switchTF) => {
         console.log("err syncDB: ", err);
     }
   };
+
 
 module.exports = {
     create: ProductSyncDB,
