@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { validationResult } = require ("express-validator");
 const userDB = require ('../database/models/Define/User');
+const profileDB = require ('../database/models/Define/Profile');
 const { resourceUsage } = require('process');
 const bcrypt = require ('bcryptjs');
 
@@ -54,44 +55,24 @@ const controller = {
 		}
 		
 	},
-	edit: (req, res) => {
-		const userToEdit = {}
+	edit: async (req, res) => {
 
-		 let userField = userDB.db.findOne({
-			 where:{id:req.params.id}
-		 }).then((resultado)=>{
-			 
-			userToEdit = {
-				name: resultado.dataValues.firstname,
-				lastname: resultado.dataValues.lastname,
-				email:resultado.dataValues.email,
-				password: resultado.dataValues.password,
-				picture: resultado.dataValues.images
-			}
-
-			res.render('user-edit-form',{oldData:userField, users});
-		 })
-
-		// Promise.all([userField])
-		//  .then(([userField])=>{
-
-		// 	 console.log(userField);
-		// 	userToEdit = {
-		// 		name: resultado.dataValues.firstname,
-		// 		lastname: resultado.dataValues.lastname,
-		// 		email:resultado.dataValues.email,
-		// 		password: resultado.dataValues.password,
-		// 		picture: resultado.dataValues.images
-		// 	}
-			
-			
-		// })
 		
-		// if(req.cookies.login){
-		// 	// res.render('user-edit-form',{oldData:userToEdit, users});
-		// }else{
-		// 	res.redirect('/backend');
-		// }
+		const profile = await profileDB.db.findAll();
+		const userToEdit = await db.findByPk(req.params.id);
+		res.render('user-edit-form',{userToEdit,profile,users});
+		/*let showUser = userDB.db.findByPk(req.params.id);
+		let showProfile = profileDB.db.findAll();
+
+		Promise.all([showUser,showProfile])
+			.then ((usersEdit,profile) => {
+				if(req.cookies.login){
+					console.log(users);
+					res.render('user-edit-form',{oldData:usersEdit,users});
+				}else{
+					res.redirect('/backend');
+				}
+			});*/
 		
 	},
 	update: (req, res) => {
@@ -106,7 +87,7 @@ const controller = {
 
 		} else {
 
-			const filename = (fileImage) ? fileImage.filename : picture;
+			const filename = (fileImage) ? fileImage.filename : req.body.picture;
 			
 			userDB.db.update({
                 firstname : req.body.name,

@@ -35,8 +35,8 @@ const controller = {
 	},
 	// List administration product -trabajar
 	list: async (req, res) => {
-		const productsdb =  await db.findAll();
-		productsdb.forEach( product =>{
+		const products =  await db.findAll();
+		/*productsdb.forEach( product =>{
 			let images = dbImage.findOne({
 				where : {product_id: product.id}
 			}).then((resultado)=>{
@@ -45,8 +45,8 @@ const controller = {
 					fileName: resultado
 				})
 			})
-		})
-		//console.log(products)
+		})*/
+		console.log(products)
 		if(req.cookies.login){
 			res.render('products-list',{products, users});
 		}else{

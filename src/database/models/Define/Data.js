@@ -49,7 +49,7 @@ const insertData = async (switchTF) => {
             /*Insert Product  */
             insertProduct.forEach( async element => {
                 await productDB.db.create({
-                    name: element.name,
+                    name: element.title,
                     price: element.price,
                     offer: element.discount,
                     description: element.description,

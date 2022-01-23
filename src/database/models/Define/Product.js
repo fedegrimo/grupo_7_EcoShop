@@ -19,7 +19,7 @@ const cols = {
         allowNull: false
     },
     offer: {
-        type: dataTypes.DECIMAL(5, 2).UNSIGNED,
+        type: dataTypes.DECIMAL(8, 2).UNSIGNED,
         allowNull: false
     },
     description: {
