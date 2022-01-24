@@ -9,7 +9,7 @@
             <h1 class="listaProductos__titulo">LISTADO DE USUARIOS</h1>
             <a href="/users/create" class="btn__texto">Agregar Usuario</a>
 
-     <% if (users) { %>
+     <% if (cookies) { %>
         
         <% users.forEach(user => { %>
           
@@ -44,9 +44,5 @@
         </div>
     </section>
     <% } %> 
-
-            
-    
-<%- include('./layout/head') %>
 </body>
 </html>

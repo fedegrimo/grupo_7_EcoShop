@@ -1,6 +1,5 @@
-<% if (users) { %>
-        
-    <% users.forEach(user => { %>
+<% if (cookies) { %>
+
     
         <header class="headerBackend">
 
@@ -21,7 +20,7 @@
                 <div class="navegador-backend2">
                     <div class="navegador-profile">
                         <a href="/" class="icon-acount-container">
-                            <i class="fas fa-user-circle"><span class="userName"><%= user.name%></span></i>
+                            <i class="fas fa-user-circle"><span class="userName"><%= cookies.email%></span></i>
                         </a>
                     </div>
                     <div class="navegador-logout">
@@ -35,7 +34,5 @@
             </div> <!--header-top-->
 
         </header>
-        
-    <% }) %>
 
   <% } %>

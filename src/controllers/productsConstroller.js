@@ -17,28 +17,20 @@ const imageProductDB = require ('../database/models/Define/ImageProduct');
 const { db } = productDB;
 const{db:dbImage} = imageProductDB;
 
-
-// USERS
-
-const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
-const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
-
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const controller = {
-	// Root - Show all products -trabajar
-	index: (req, res) => {
-		res.render('products',{productsAll: products,
-								usersAll: users,
-								login: req.cookies.email
-		});
+	index: async (req, res) => {
+		let products =  await db.findAll();
+		let cookies = req.cookies;
+		res.render('products',{products,cookies});
 	},
 	// List administration product -trabajar
 	list: async (req, res) => {
-		const products =  await db.findAll();
-		console.log(products)
 		if(req.cookies.login){
-			res.render('products-list',{products, users});
+			let products =  await db.findAll();
+			let cookies = req.cookies;
+			res.render('products-list',{products, cookies});
 		}else{
 			res.redirect('/backend');
 		}
@@ -59,9 +51,9 @@ const controller = {
 	// Create - Form to create -trabajar
 	create: async (req, res) => {
 		if(req.cookies.login){
-
-			const categorias = await categoryDB.db.findAll();
-			res.render('product-create-form', {categorias, users });
+			let categorias = await categoryDB.db.findAll();
+			let cookies = req.cookies;
+			res.render('product-create-form', {categorias, cookies });
 
 			
 		}else{
@@ -109,8 +101,8 @@ const controller = {
 
 			const categorias = await categoryDB.db.findAll();
 			const productToEdit = await db.findByPk(req.params.id);
-
-			res.render('product-edit-form',{productToEdit,categorias,users});
+			let cookies = req.cookies;
+			res.render('product-edit-form',{productToEdit,categorias,cookies});
 		}else{
 			res.redirect('/backend');
 		}
@@ -121,7 +113,7 @@ const controller = {
 
 		const resultValidation = validationResult(req);
 		const fileImage = req.file;
-		console.log('here/update', resultValidation);
+
 		if (resultValidation.errors.length > 0){
 			res.render('product-edit-form',{ 
 				errors: resultValidation.mapped(),

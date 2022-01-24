@@ -10,23 +10,22 @@ const { db } = userDB;
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
- const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
- const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 const controller = {
 
 	list: async (req, res) => {
 		const users = await db.findAll();
         if(req.cookies.login){
-			res.render('user-list',{users});
+			cookies = req.cookies;
+			res.render('user-list',{users,cookies});
 		}else{
 			res.redirect('/backend');
 		}
 	 },
 	create: (req, res) => {
 		if(req.cookies.login){
-			//TODO: Pasar los errores y los campos de usuario
-			res.render('user-create-form');
+			cookies = req.cookies;
+			res.render('user-create-form',{cookies});
 		}else{
 			res.redirect('/backend');
 		}
@@ -35,6 +34,7 @@ const controller = {
 	store: (req, res) => {
 		const resultValidation = validationResult(req);
 		const fileImage = req.file;
+		cookies = req.cookies;
 		if (resultValidation.errors.length > 0){
 			res.render('user-create-form',{ 
 				errors: resultValidation.mapped(),
@@ -50,7 +50,7 @@ const controller = {
                 profile_id : req.body.profile_id
             });
 			
-			res.redirect('/users');
+			res.render('users',{cookies});
 		}
 		
 	},
@@ -62,9 +62,13 @@ const controller = {
 		const usersToEdit = await db.findByPk(req.params.id);
 		
 		if(req.cookies.login){
-			res.render('user-edit-form',{userToEdit:usersToEdit.dataValues,profiles,users});
+			cookies = req.cookies;
+			res.render('user-edit-form',{userToEdit:usersToEdit.dataValues,profiles,cookies});
 		}else{
-			res.redirect('/backend');
+			res.render('backend',{ 
+				errors: [],
+				loginFail:false
+			});
 		}
 		
 	},
@@ -76,6 +80,7 @@ const controller = {
 		});
 		
 		const fileImage = req.file;
+		cookies = req.cookies;
 		if (resultValidation.errors.length > 0){
 			res.render('user-edit-form',{ 
 				errors: resultValidation.mapped(),
@@ -100,7 +105,7 @@ const controller = {
 					where: {id: req.params.id}
 				}
 			);
-			res.redirect('/users');
+			res.redirect('/users',{cookies});
 		}
 		
 	},

@@ -8,22 +8,22 @@ const userDB = require ('../database/models/Define/User');
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
-const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 const controller = {
 	index: (req, res) => {
 
 		if(req.cookies.login){
+			users = req.cookies;
 			res.redirect('/products/list',{usersAll: users})
 		}else{
-			res.render('backend',{loginFail:false,
-								  usersAll: users
+			res.render('backend',{ 
+				errors: [],
+				loginFail:false
 			});
 		}
 		
 	},
 	login: async (req, res) => {
-		
 		const { email, password } = req.body;
 		const resultValidation = validationResult(req);
 		if (resultValidation.errors.length > 0){
@@ -45,27 +45,24 @@ const controller = {
 			if (verificacion){
 				if (bcrypt.compareSync(req.body.password,verificacion.password)){
 					req.session.email = req.body.email;
-					req.session.picture = verificacion.dataValues.images;
+					req.session.picture = verificacion.images;
 					req.session.admin= true;
-					res.cookie('login', 'true'); 
+					res.cookie('login', 'true');
+					res.cookie('picture', verificacion.images);
+					res.cookie('email', req.body.email); 
 					res.redirect('/products/list');
 				} else {
-					res.redirect('/backend');
+					res.render('backend',{ 
+						errors: [],
+						loginFail:false
+					});
 				}
 			} else {
-				res.redirect('/backend');
+				res.render('backend',{ 
+					errors: [],
+					loginFail:false
+				});
 			}
-			
-			/*
-			if( users.some( user => (user.email === email)&&(bcrypt.compareSync(password,user.password) && (user.role == '1'))) ){
-			
-		}else{
-			res.render('backend',
-				{
-					loginFail:true,
-					oldData: req.body
-			});
-		}*/
 		} 
 			
 	},
@@ -73,14 +70,22 @@ const controller = {
 	logout:(req, res) => {
 		//usar res
 		res.clearCookie('login');
+		res.clearCookie('picture');
+		res.clearCookie('email');
 		//después de borrar la cookie
-		res.redirect('/backend');
+		res.render('backend',{ 
+			errors: [],
+			loginFail:false
+		});
 	},
 	users: (req, res) => {
 		if(req.cookies.login){
 			res.render('clientes-list',{users});
 		}else{
-	 		res.render('backend',{loginFail:false});
+			res.render('backend',{ 
+				errors: [],
+				loginFail:false
+			});
 	 	}
 	 },
 	usersLogin: (req, res) => {
@@ -88,7 +93,6 @@ const controller = {
 		const { email, password } = req.body;
 
 		const resultValidation = validationResult(req);
-		console.log(resultValidation);
 		if (resultValidation.errors.length > 0){
 			console.log('hubo error en validation');
 			res.render('backend',{ 
