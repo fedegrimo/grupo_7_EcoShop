@@ -67,7 +67,7 @@ const insertData = async (switchTF) => {
                         offer: element.discount,
                         description: element.description,
                         picture: element.picture,
-                        category_id: 1,
+                        category_id: element.category_id,
                         active: true
                     });
                     
