@@ -3,6 +3,7 @@ const path = require('path');
 const { validationResult } = require ("express-validator");
 const { reset } = require('nodemon');
 const bcrypt = require ('bcryptjs');
+const userDB = require ('../database/models/Define/User');
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -21,27 +22,51 @@ const controller = {
 		}
 		
 	},
-	login: (req, res) => {
+	login: async (req, res) => {
+		
 		const { email, password } = req.body;
 		const resultValidation = validationResult(req);
 		if (resultValidation.errors.length > 0){
 			console.log('hubo error en validation');
 			res.render('backend',{ 
 				errors: resultValidation.mapped(),
-				oldData: req.body
+				oldData: req.body,
+				loginFail:true
 			}	);
-		} else if( users.some( user => (user.email === email)&&(bcrypt.compareSync(password,user.password) && (user.role == '1'))) ){
-			req.session.email = email;
-			req.session.admin= true;
-			res.cookie('login', 'true'); 
-			res.redirect('/products/list');
+		} else {
+			
+			let verificacion = await userDB.db.findOne({
+				where : {
+					email: req.body.email,
+					profile_id: 1
+				}
+			});
+			
+			if (verificacion){
+				if (bcrypt.compareSync(req.body.password,verificacion.password)){
+					req.session.email = req.body.email;
+					req.session.picture = verificacion.dataValues.images;
+					req.session.admin= true;
+					res.cookie('login', 'true'); 
+					res.redirect('/products/list');
+				} else {
+					res.redirect('/backend');
+				}
+			} else {
+				res.redirect('/backend');
+			}
+			
+			/*
+			if( users.some( user => (user.email === email)&&(bcrypt.compareSync(password,user.password) && (user.role == '1'))) ){
+			
 		}else{
 			res.render('backend',
 				{
 					loginFail:true,
 					oldData: req.body
 			});
-		}
+		}*/
+		} 
 			
 	},
 
