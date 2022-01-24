@@ -53,7 +53,7 @@ const controller = {
                 profile_id : req.body.profile_id
             });
 			const users = await db.findAll();
-			res.redirec('/users',{users,cookies});
+			res.render('user-list',{users,cookies});
 		}
 		
 	},
