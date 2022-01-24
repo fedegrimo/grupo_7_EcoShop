@@ -11,17 +11,31 @@ const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
 
 const controller = {
 	index: (req, res) => {
-
 		if(req.cookies.login){
 			users = req.cookies;
 			res.redirect('/products/list',{usersAll: users})
 		}else{
-			res.render('backend',{ 
-				errors: [],
-				loginFail:false
-			});
+			if (req.cookies.recordar){
+				res.render('backend',{ 
+					errors: [],
+					loginFail:false,
+					oldData:{
+						email : req.cookies.email,
+						password: req.cookies.password
+					}
+				});
+			} else {
+				res.render('backend',{ 
+					errors: [],
+					loginFail:false,
+					oldData:{
+						email : '',
+						password: ''
+					}
+				});
+			}
+			
 		}
-		
 	},
 	login: async (req, res) => {
 		const { email, password } = req.body;
@@ -46,10 +60,17 @@ const controller = {
 				if (bcrypt.compareSync(req.body.password,verificacion.password)){
 					req.session.email = req.body.email;
 					req.session.picture = verificacion.images;
+					req.session.recordar = (req.body.recordar == 1) ? true :false;
 					req.session.admin= true;
 					res.cookie('login', 'true');
 					res.cookie('picture', verificacion.images);
-					res.cookie('email', req.body.email); 
+					res.cookie('email', req.session.email); 
+					if (req.body.recordar == 1){
+						res.cookie('recordar', req.session.recordar);
+						res.cookie('password', req.body.password); 
+					} else {
+						res.clearCookie('recordar');
+					}
 					res.redirect('/products/list');
 				} else {
 					res.render('backend',{ 
@@ -70,13 +91,27 @@ const controller = {
 	logout:(req, res) => {
 		//usar res
 		res.clearCookie('login');
-		res.clearCookie('picture');
-		res.clearCookie('email');
+		if (req.cookies.recordar){
+			res.render('backend',{ 
+				errors: [],
+				loginFail:false,
+				oldData:{
+					email : req.cookies.email,
+					password: req.cookies.password
+				}
+			});
+		} else {
+			res.render('backend',{ 
+				errors: [],
+				loginFail:false,
+				oldData:{
+					email : '',
+					password: ''
+				}
+			});
+		}
 		//después de borrar la cookie
-		res.render('backend',{ 
-			errors: [],
-			loginFail:false
-		});
+		
 	},
 	users: (req, res) => {
 		if(req.cookies.login){
