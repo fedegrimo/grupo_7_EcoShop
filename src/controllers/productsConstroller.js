@@ -57,7 +57,7 @@ const controller = {
 	},
 	
 	// Create -  Method to store
-	store: (req, res) => {
+	store: async (req, res) => {
 		const resultValidation = validationResult(req);
 		const fileImage = req.file;
 		if (resultValidation.errors.length > 0){
@@ -69,15 +69,15 @@ const controller = {
 				users
 			});
 		} else {
-			productDB.db.create({
-				name : req.body.title,
-				price: req.body.price,
-				offer: req.body.discount,
-				description: req.body.description,
-				category_id: req.body.category,
-				picture : fileImage,
-				active: false
-			});
+			await productDB.db.create({
+						name : req.body.title,
+						price: req.body.price,
+						offer: req.body.discount,
+						description: req.body.description,
+						category_id: req.body.category,
+						picture : fileImage,
+						active: false
+					});
 			
 			res.redirect('/products/list');
 		}

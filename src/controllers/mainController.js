@@ -39,24 +39,37 @@ const controller = {
 		//después de borrar la cookie
 		res.redirect('/login');
 	},
-    loginValidation: (req,res) => {
+    loginValidation: async (req,res) => {
 		const resultValidation = validationResult(req);
 		if (resultValidation.errors.length > 0){
 			res.render('login',{ 
 				errors: resultValidation.mapped(),
-				oldData: req.body
+				oldData: req.body,
+				login: req.cookies.email
 			});
-		} else if( users.some( user => (user.email === req.body.email)&&(bcrypt.compareSync(req.body.password,user.password) && (user.role == '2'))) ){
-			req.session.email = req.body.email;
-			req.session.admin= true;
-			res.cookie('login', 'true');
-			res.cookie('email',req.session.email);
-			res.redirect('/');
+		} else {
+			let verificacion = await userDB.db.findOne({
+				where : {
+					email: req.body.email,
+					profile_id: 2
+				}
+			});
+			
+			if (verificacion){
+				if (bcrypt.compareSync(req.body.password,verificacion.password)){
+					req.session.email = req.body.email;
+					req.session.admin= false;
+					res.cookie('login', 'true');
+					res.cookie('email', req.session.email); 
+					res.redirect('/');
+				} 
+			}
+		
 		}
         
     },
 	// Create -  Method to store
-	store: (req, res) => {
+	store: async (req, res) => {
 		const resultValidation = validationResult(req);
 
 		if (resultValidation.errors.length > 0){
@@ -66,12 +79,15 @@ const controller = {
 				login: req.cookies.login
 			});
 		} else {
-			let userToCreate= {
-				...req.body,
-				password : bcrypt.hashSync(req.body.password,10),
-				picture: "profile.png"
-			}
-			User.create(userToCreate);
+			await userDB.db.create({
+                firstname : req.body.firstname,
+                lastname: req.body.lastname,
+                email: req.body.email,
+                password: bcrypt.hashSync(req.body.password,10),
+                images: "profile.png",
+                profile_id : req.body.role
+            });
+			
 			res.redirect('/login');
 		}
 		
