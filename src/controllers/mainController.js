@@ -1,19 +1,18 @@
-const fs = require('fs');
-const path = require('path');
 const { validationResult } = require ("express-validator");
-const { reset } = require('nodemon');
 const bcrypt = require ('bcryptjs');
-const User = require ('../models/User');
-const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
-const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
-
-const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+const productDB = require ('../database/models/Define/Product');
+const userDB = require ('../database/models/Define/User');
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const controller = {
-	index: (req, res) => {
+	index: async (req, res) => {
+		let products =  await productDB.db.findAll({
+			where:{
+				category_id: 2,
+				active: 1
+			}
+		});
         res.render('index', { products, toThousand,login: req.cookies.email});
 	},
 	search: (req, res) => {

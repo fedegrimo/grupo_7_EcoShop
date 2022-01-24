@@ -56,23 +56,21 @@
     <div class="contenedor-items">
 
         <% if(products) { %>    
-            <% products.forEach(function(product) { 
-                if (product.category === 'visited') {%>
-            
+            <% products.forEach(function(product) { %>
                 <div class="item"> 
                     <div class="item-img"> 
                         <a href="products/detail/<%= product.id %>"><img class="img-1" src="img/products/<%= product.picture %>" alt="<%= product.title %>"></a>
                     </div>
                          <!-- Item Name -->
                     <div class="item-name"> 
-                        <a href="products/detail/<%= product.id %>"><%= product.title %></a>
+                        <a href="products/detail/<%= product.id %>"><%= product.name %></a>
                         <p><%= product.description %></p>
                     </div>
                         <!-- Price --> 
                     <span class="price">$ <%= toThousand(product.price) %></span>
                 </div>
     
-            <% } }); %> 
+            <% }); %> 
         <% } %>
         
     </div> <!-- contenedor-items -->

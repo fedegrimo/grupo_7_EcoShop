@@ -11,7 +11,7 @@ const controller = {
 	index: async (req, res) => {
 		let products =  await db.findAll();
 		let cookies = req.cookies;
-		res.render('products',{products,cookies});
+		res.render('products',{products,login: req.cookies.email,cookies});
 	},
 	// List administration product -trabajar
 	list: async (req, res) => {
@@ -25,13 +25,14 @@ const controller = {
 		
 	},
 	// Detail - Detail from one product
-	detail: (req, res) => {
+	detail: async (req, res) => {
 		let id = req.params.id;
-		let rowProduct = products.find(val => {
-			if (val.id == id){
-				return val;
+		let rowProduct =  await db.findByPk(req.params.id);
+		let products =  await productDB.db.findAll({
+			where:{
+				category_id: 2,
+				active: 1
 			}
-			
 		});
 		res.render('productDetail',{ rowProduct, products, toThousand,login: req.cookies.email})
 	},
