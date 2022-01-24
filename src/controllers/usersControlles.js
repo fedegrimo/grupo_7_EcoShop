@@ -55,28 +55,32 @@ const controller = {
 		
 	},
 	edit: async (req, res) => {
-
 		
 		const profiles = await profileDB.db.findAll({
 			where : {active_menu : 1}
 		});
-		const userToEdit = await db.findByPk(req.params.id);
+		const usersToEdit = await db.findByPk(req.params.id);
 		
 		if(req.cookies.login){
-			res.render('user-edit-form',{userToEdit,profiles,users});
+			res.render('user-edit-form',{userToEdit:usersToEdit.dataValues,profiles,users});
 		}else{
 			res.redirect('/backend');
 		}
 		
 	},
-	update: (req, res) => {
+	update: async (req, res) => {
 
 		const resultValidation = validationResult(req);
+		const profiles = await profileDB.db.findAll({
+			where : {active_menu : 1}
+		});
+		
 		const fileImage = req.file;
 		if (resultValidation.errors.length > 0){
 			res.render('user-edit-form',{ 
 				errors: resultValidation.mapped(),
 				userToEdit: req.body,
+				profiles,
 				users
 			});
 

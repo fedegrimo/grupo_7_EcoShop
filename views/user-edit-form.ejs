@@ -18,11 +18,11 @@
                     <div class="formEditUser_grid">
 
                         <div class="formularioUser_item">
-                            <label for="firstname" class="formUser-label">Nombre:</label>
+                            <label for="name" class="formUser-label">Nombre:</label>
                             <input type="text" 
                             name="firstname" 
                             class="formUser-input"
-                            value="<%= userToEdit.dataValues.firstname%>">
+                            value="<%= userToEdit.firstname%>">
                             <% if (locals.errors && errors.firstname) { %>
                                 <div class="text-danger">
                                     <%= errors.firstname.msg %>
@@ -36,7 +36,7 @@
                             <input type="text" 
                             name="lastname" 
                             class="formUser-input"
-                            value="<%= userToEdit.dataValues.lastname %>">
+                            value="<%= userToEdit.lastname %>">
                             <% if (locals.errors && errors.lastname) { %>
                                 <div class="text-danger">
                                     <%= errors.lastname.msg %>
@@ -49,7 +49,7 @@
                             <input type="text" 
                             name="email" 
                             class="formUser-input"
-                            value="<%= userToEdit.dataValues.email %>">
+                            value="<%= userToEdit.email %>">
                             <% if (locals.errors && errors.email) { %>
                                 <div class="text-danger">
                                     <%= errors.email.msg %>
@@ -74,7 +74,7 @@
                             <select class="selectForm" name="role">
                                 <% 
                                     profiles.forEach(element => { 
-                                        if (element.dataValues.id == userToEdit.dataValues.profile_id) {
+                                        if (element.dataValues.id == userToEdit.profile_id) {
 
                                         
                                 %>
@@ -92,8 +92,8 @@
                         <div class="formularioUser_item">
                             <label for="fileImage" class="formUser-label">Foto de perfil:</label>
                             <input type="hidden" name="id" value="<%= userToEdit.id %>"/>
-                            <input type="hidden" name="picture" value="<%= userToEdit.dataValues.images %>"/>
-                            <input type="hidden" name="oldpassword" value="<%= userToEdit.dataValues.password %>"/>
+                            <input type="hidden" name="picture" value="<%= userToEdit.images %>"/>
+                            <input type="hidden" name="oldpassword" value="<%= userToEdit.password %>"/>
                             <input type="file" 
                             id="fileImage"
                             name="fileImage" 

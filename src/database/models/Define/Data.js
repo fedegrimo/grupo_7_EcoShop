@@ -12,55 +12,68 @@ const profileDB = require ('../Define/Profile');
 
 const insertData = async (switchTF) => {
     try {
-        
-            /* Add Category Ofertas */
-            await categoryDB.db.create({
-                name: "Home",
-                active_menu : true
-            });
+            const categoryList = await categoryDB.db.findAll();
+            if (categoryList.length == 0){
+                /* Add Category Ofertas */
+                await categoryDB.db.create({
+                    name: "Home",
+                    active_menu : true
+                });
 
-            /* Add Category Ofertas */
-            await categoryDB.db.create({
-                name: "Ofertas",
-                active_menu : true
-            });
-
+                /* Add Category Ofertas */
+                await categoryDB.db.create({
+                    name: "Ofertas",
+                    active_menu : true
+                });
+            }
+           
+            
             /* Perfiles BackEnd */
-            await profileDB.db.create({
-                name : "administrador",
-                active_menu:true
-            });
-
-            await profileDB.db.create({
-                name : "cliente",
-                active_menu:true
-            });
+            const profilesList = await profileDB.db.findAll();
+            if (profilesList.length == 0){
+                await profileDB.db.create({
+                    name : "administrador",
+                    active_menu:true
+                });
+    
+                await profileDB.db.create({
+                    name : "cliente",
+                    active_menu:true
+                });
+            }
+            
 
             /* Usuario BackEnd */
-            await userDB.db.create({
-                firstname : "Admin",
-                lastname: "Echo",
-                email: "admin@admin.com",
-                password: bcrypt.hashSync("administrador",10),
-                images: "profile.png",
-                profile_id : "1"
-            });
-
-            /*Insert Product  */
-            insertProduct.forEach( async element => {
-                await productDB.db.create({
-                    name: element.title,
-                    price: element.price,
-                    offer: element.discount,
-                    description: element.description,
-                    picture: element.picture,
-                    category_id: 1,
-                    active: true
+            const usersList = await userDB.db.findAll();
+            if(usersList.length == 0){
+                await userDB.db.create({
+                    firstname : "Admin",
+                    lastname: "Echo",
+                    email: "admin@admin.com",
+                    password: bcrypt.hashSync("administrador",10),
+                    images: "profile.png",
+                    profile_id : "1"
                 });
-                
-            });
-        
-      
+            }
+            
+
+            /* Insert Product */
+            const productsList = await productDB.db.findAll();
+            if (productsList.length == 0){
+                insertProduct.forEach( async element => {
+                    await productDB.db.create({
+                        name: element.title,
+                        price: element.price,
+                        offer: element.discount,
+                        description: element.description,
+                        picture: element.picture,
+                        category_id: 1,
+                        active: true
+                    });
+                    
+                });
+            }
+            
     } catch (err) {
         console.log("err syncDB: ", err);
     }
