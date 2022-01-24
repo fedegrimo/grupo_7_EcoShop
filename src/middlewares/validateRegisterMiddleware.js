@@ -35,7 +35,7 @@ const validationsLogin = [
 
   // ************ Validation User Registration ************
 const validationsUserRegistration = [
-    check("name").notEmpty().withMessage('Ingresar nombre'),
+    check("firstname").notEmpty().withMessage('Ingresar nombre'),
     check("lastname").notEmpty().withMessage('Ingresar apellido'),
     check("email").notEmpty().withMessage('Ingresar email').bail().
     isEmail().withMessage("Email inválido"),
@@ -61,7 +61,7 @@ const validationsUserRegistration = [
   ];
 
   const validationsClientRegistration = [
-    check("name").notEmpty().withMessage('Ingresar nombre'),
+    check("firstname").notEmpty().withMessage('Ingresar nombre'),
     check("lastname").notEmpty().withMessage('Ingresar apellido'),
     check("email").notEmpty().withMessage('Ingresar email').bail().
     isEmail().withMessage("Email inválido"),

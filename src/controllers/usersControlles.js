@@ -35,7 +35,6 @@ const controller = {
 	store: (req, res) => {
 		const resultValidation = validationResult(req);
 		const fileImage = req.file;
-		console.log('errores:',resultValidation );
 		if (resultValidation.errors.length > 0){
 			res.render('user-create-form',{ 
 				errors: resultValidation.mapped(),
@@ -43,7 +42,7 @@ const controller = {
 			});
 		} else {
 			userDB.db.create({
-                firstname : req.body.name,
+                firstname : req.body.firstname,
                 lastname: req.body.lastname,
                 email: req.body.email,
                 password: bcrypt.hashSync(req.body.password,10),
@@ -58,21 +57,16 @@ const controller = {
 	edit: async (req, res) => {
 
 		
-		const profile = await profileDB.db.findAll();
+		const profiles = await profileDB.db.findAll({
+			where : {active_menu : 1}
+		});
 		const userToEdit = await db.findByPk(req.params.id);
-		res.render('user-edit-form',{userToEdit,profile,users});
-		/*let showUser = userDB.db.findByPk(req.params.id);
-		let showProfile = profileDB.db.findAll();
-
-		Promise.all([showUser,showProfile])
-			.then ((usersEdit,profile) => {
-				if(req.cookies.login){
-					console.log(users);
-					res.render('user-edit-form',{oldData:usersEdit,users});
-				}else{
-					res.redirect('/backend');
-				}
-			});*/
+		
+		if(req.cookies.login){
+			res.render('user-edit-form',{userToEdit,profiles,users});
+		}else{
+			res.redirect('/backend');
+		}
 		
 	},
 	update: (req, res) => {
@@ -82,20 +76,21 @@ const controller = {
 		if (resultValidation.errors.length > 0){
 			res.render('user-edit-form',{ 
 				errors: resultValidation.mapped(),
-				oldData:req.body
+				userToEdit: req.body,
+				users
 			});
 
 		} else {
 
 			const filename = (fileImage) ? fileImage.filename : req.body.picture;
-			
+			const password = (req.body.password) ? bcrypt.hashSync(req.body.password,10)  : req.body.oldpassword;
 			userDB.db.update({
-                firstname : req.body.name,
+                firstname : req.body.firstname,
                 lastname: req.body.lastname,
                 email: req.body.email,
-                password: bcrypt.hashSync(req.body.password,10),
+                password: password,
                 images: filename,
-                profile_id : req.body.profile_id
+                profile_id : req.body.role
             },
 				{
 					where: {id: req.params.id}

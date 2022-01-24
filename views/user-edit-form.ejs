@@ -18,14 +18,14 @@
                     <div class="formEditUser_grid">
 
                         <div class="formularioUser_item">
-                            <label for="name" class="formUser-label">Nombre:</label>
+                            <label for="firstname" class="formUser-label">Nombre:</label>
                             <input type="text" 
-                            name="name" 
+                            name="firstname" 
                             class="formUser-input"
                             value="<%= userToEdit.dataValues.firstname%>">
-                            <% if (locals.errors && errors.name) { %>
+                            <% if (locals.errors && errors.firstname) { %>
                                 <div class="text-danger">
-                                    <%= errors.name.msg %>
+                                    <%= errors.firstname.msg %>
                                 </div>
                             <% } %>
                            
@@ -58,37 +58,55 @@
                         </div>
 
                         <div class="formularioUser_item">
-                        <label for="password" class="formUser-label">Contraseña:</label>
-                        <input type="password" 
-                        name="password" 
-                        class="formUser-input" value="<%= userToEdit.dataValues.password %>">
-                        <% if (locals.errors && errors.password) { %>
-                            <div class="text-danger">
-                                <%= errors.password.msg %>
-                            </div>
-                        <% } %>
-                        <input type="hidden" 
-                        name="role" 
-                        value="<%= userToEdit.dataValues.profile_id %>">
+                            <label for="password" class="formUser-label">Contraseña:</label>
+                            <input type="password" 
+                            name="password" 
+                            class="formUser-input" value="">
+                            <% if (locals.errors && errors.password) { %>
+                                <div class="text-danger">
+                                    <%= errors.password.msg %>
+                                </div>
+                            <% } %>
+                        </div>
+
+                        <div class="formularioUser_item">
+                            <label for="role" class="form-label">Perfil:</label>
+                            <select class="selectForm" name="role">
+                                <% 
+                                    profiles.forEach(element => { 
+                                        if (element.dataValues.id == userToEdit.dataValues.profile_id) {
+
+                                        
+                                %>
+                                <option value="<%= element.dataValues.id %>" selected> <%= element.dataValues.name %></option>
+                                <% } else { %>
+                                    <option value="<%= element.dataValues.id %>"> <%= element.dataValues.name %></option>
+                                  <%  }});  %> 
+                            </select>
+                            <% if (locals.errors && errors.profile) { %>
+                                <div class="text-danger">
+                                    <%= errors.profile.msg %>
+                                </div>
+                            <% } %>
+                        </div>
+                        <div class="formularioUser_item">
+                            <label for="fileImage" class="formUser-label">Foto de perfil:</label>
+                            <input type="hidden" name="id" value="<%= userToEdit.id %>"/>
+                            <input type="hidden" name="picture" value="<%= userToEdit.dataValues.images %>"/>
+                            <input type="hidden" name="oldpassword" value="<%= userToEdit.dataValues.password %>"/>
+                            <input type="file" 
+                            id="fileImage"
+                            name="fileImage" 
+                            value="">
+                            <% if (locals.errors && errors.fileImage) { %>
+                                <div class="text-danger">
+                                    <%= errors.fileImage.msg %>
+                                </div>
+                            <% } %>
                         </div>
                     </div>
-                    
-                    
 
-                    <div class="formularioUser_item">
-                        <label for="fileImage" class="formUser-label">Foto de perfil:</label>
-                        <input type="hidden" name="id" value="<%= userToEdit.id %>"/>
-                        <input type="hidden" name="picture" value="<%= userToEdit.dataValues.images %>"/>
-                        <input type="file" 
-                        id="fileImage"
-                        name="fileImage" 
-                        value="">
-                        <% if (locals.errors && errors.fileImage) { %>
-                            <div class="text-danger">
-                                <%= errors.fileImage.msg %>
-                            </div>
-                        <% } %>
-                    </div>
+                    
 
                     <div class="formulario_edit-buttonUser">
                         <button type="submit" class="buy-now-buttonUser">Actualizar</button>
@@ -102,9 +120,6 @@
 
     </section>
     <% } %>
-<%- include('./layout/head') %>
-</body>
-</html>
 <%- include('./layout/head') %>
 </body>
 </html>

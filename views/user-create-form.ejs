@@ -16,15 +16,15 @@
                     <div class="formEditUser_grid">
 
                         <div class="formularioUser_item">
-                            <label for="name" class="formUser-label">Nombre:</label>
+                            <label for="firstname" class="formUser-label">Nombre:</label>
                             <input type="text" 
-                            name="name" 
+                            name="firstname" 
                             class="formUser-input"
-                            value="<%= locals.oldData ? oldData.name : null %>">
-                            <% if (locals.errors && errors.name) { %>
+                            value="<%= locals.oldData ? oldData.firstname : null %>">
+                            <% if (locals.errors && errors.firstname) { %>
                         
                                 <div class="text-danger">
-                                    <%= errors.name.msg %>
+                                    <%= errors.firstname.msg %>
                                 </div>
                             <% } %>
                         </div>

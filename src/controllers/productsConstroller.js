@@ -36,16 +36,6 @@ const controller = {
 	// List administration product -trabajar
 	list: async (req, res) => {
 		const products =  await db.findAll();
-		/*productsdb.forEach( product =>{
-			let images = dbImage.findOne({
-				where : {product_id: product.id}
-			}).then((resultado)=>{
-				products.push({
-					product,
-					fileName: resultado
-				})
-			})
-		})*/
 		console.log(products)
 		if(req.cookies.login){
 			res.render('products-list',{products, users});
@@ -104,13 +94,9 @@ const controller = {
 				offer: req.body.discount,
 				description: req.body.description,
 				category_id: req.body.category,
+				picture : fileImage,
 				active: false
 			});
-			
-			/*imageProductDB.db.create({
-				fileName: fileImage.filename,
-				product_id: created._previousDataValues.id
-			});*/
 			
 			res.redirect('/products/list');
 		}
@@ -134,6 +120,7 @@ const controller = {
 	update: async (req, res) => {
 
 		const resultValidation = validationResult(req);
+		const fileImage = req.file;
 		console.log('here/update', resultValidation);
 		if (resultValidation.errors.length > 0){
 			res.render('product-edit-form',{ 
@@ -142,6 +129,7 @@ const controller = {
 				users
 			});
 		} else {
+			const filename = (fileImage) ? fileImage.filename : req.body.picture;
 
 			await productDB.db.update({
                 name : req.body.title,
@@ -149,32 +137,13 @@ const controller = {
                 offer: req.body.discount,
 				description: req.body.description,
 				category_id: req.body.category,
+				picture : filename,
 				active: false
             },
 			{
 				where: {id: req.params.id}
 			}
 			);
-
-			// const {title, price, discount, category, description,picture} = req.body;
-			// const id = req.params.id;
-			// const fileImage = req.file;
-			// const filename = (fileImage) ? fileImage.filename : picture;
-			// const newProducts = [];
-			// products.map(val=>{
-			// 	if (val.id == id){
-			// 		val.title=title;
-			// 		val.price=price;
-			// 		val.discount=discount;
-			// 		val.category=category;
-			// 		val.description=description;
-			// 		val.picture=filename;
-			// 		newProducts.push(val);
-			// 	} else {
-			// 		newProducts.push(val);
-			// 	}
-			// });
-			// fs.writeFileSync(productsFilePath,JSON.stringify(newProducts),'utf-8',' ');
 			res.redirect('/products/list');
 		}
 		
