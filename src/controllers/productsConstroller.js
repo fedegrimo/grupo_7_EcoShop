@@ -1,21 +1,9 @@
-const fs = require('fs');
-const path = require('path');
 const { validationResult } = require ("express-validator");
-const { reset } = require('nodemon');
-const Product = require ('../models/Product');
-
-
-// PRODUCTS
-const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
- const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-
 
 const productDB = require ('../database/models/Define/Product');
 const categoryDB = require ('../database/models/Define/Category');
-const imageProductDB = require ('../database/models/Define/ImageProduct');
 
 const { db } = productDB;
-const{db:dbImage} = imageProductDB;
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 

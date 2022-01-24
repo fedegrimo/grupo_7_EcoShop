@@ -1,14 +1,9 @@
-const fs = require('fs');
-const path = require('path');
 const { validationResult } = require ("express-validator");
 const userDB = require ('../database/models/Define/User');
 const profileDB = require ('../database/models/Define/Profile');
-const { resourceUsage } = require('process');
 const bcrypt = require ('bcryptjs');
 
 const { db } = userDB;
-
-const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 
 const controller = {
@@ -22,23 +17,31 @@ const controller = {
 			res.redirect('/backend');
 		}
 	 },
-	create: (req, res) => {
+	create: async (req, res) => {
 		if(req.cookies.login){
+			const profiles = await profileDB.db.findAll({
+				where : {active_menu : 1}
+			});
 			cookies = req.cookies;
-			res.render('user-create-form',{cookies});
+			res.render('user-create-form',{profiles,cookies});
 		}else{
 			res.redirect('/backend');
 		}
 		
 	},
-	store: (req, res) => {
+	store: async (req, res) => {
 		const resultValidation = validationResult(req);
+		const profiles = await profileDB.db.findAll({
+			where : {active_menu : 1}
+		});
 		const fileImage = req.file;
 		cookies = req.cookies;
 		if (resultValidation.errors.length > 0){
 			res.render('user-create-form',{ 
 				errors: resultValidation.mapped(),
-				oldData: req.body,
+				userToEdit: req.body,
+				profiles,
+				cookies
 			});
 		} else {
 			userDB.db.create({
@@ -49,8 +52,8 @@ const controller = {
                 images: fileImage.filename,
                 profile_id : req.body.profile_id
             });
-			
-			res.render('users',{cookies});
+			const users = await db.findAll();
+			res.redirec('/users',{users,cookies});
 		}
 		
 	},
@@ -81,19 +84,20 @@ const controller = {
 		
 		const fileImage = req.file;
 		cookies = req.cookies;
+		
 		if (resultValidation.errors.length > 0){
 			res.render('user-edit-form',{ 
 				errors: resultValidation.mapped(),
 				userToEdit: req.body,
 				profiles,
-				users
+				cookies
 			});
 
 		} else {
 
 			const filename = (fileImage) ? fileImage.filename : req.body.picture;
 			const password = (req.body.password) ? bcrypt.hashSync(req.body.password,10)  : req.body.oldpassword;
-			userDB.db.update({
+			await userDB.db.update({
                 firstname : req.body.firstname,
                 lastname: req.body.lastname,
                 email: req.body.email,
@@ -105,7 +109,8 @@ const controller = {
 					where: {id: req.params.id}
 				}
 			);
-			res.redirect('/users',{cookies});
+			const users = await db.findAll();
+			res.render('user-list',{users,cookies});
 		}
 		
 	},

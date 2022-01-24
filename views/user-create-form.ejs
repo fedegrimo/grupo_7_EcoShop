@@ -66,28 +66,37 @@
                                 <%= errors.password.msg %>
                             </div>
                         <% } %>
-                        <input type="hidden" 
-                        name="role" 
-                        value="<%= locals.oldData ? oldData.role : 1 %>">
                         
                         </div>
+                        <div class="formularioUser_item">
+                            <label for="role" class="form-label">Perfil:</label>
+                            <select class="selectForm" name="role">
+                                <% 
+                                    profiles.forEach(element => { 
+                                %>
+                                    <option value="<%= element.dataValues.id %>"> <%= element.dataValues.name %></option>
+                                  <%  });  %> 
+                            </select>
+                            <% if (locals.errors && errors.profile) { %>
+                                <div class="text-danger">
+                                    <%= errors.profile.msg %>
+                                </div>
+                            <% } %>
+                        </div>
+                        <div class="formularioUser_item">
+                            <label for="fileImage" class="formUser-label">Foto de perfil:</label>
+                            <input type="file" 
+                            id="fileImage"
+                            name="fileImage" 
+                            value="<%= locals.oldData ? oldData.fileImage : null %>">
+                            <% if (locals.errors && errors.fileImage) { %>
+                                <div class="text-danger">
+                                    <%= errors.fileImage.msg %>
+                                </div>
+                            <% } %>
+                        </div>
                     </div>
-                    
-                    
-
-                    <div class="formularioUser_item">
-                        <label for="fileImage" class="formUser-label">Foto de perfil:</label>
-                        <input type="file" 
-                        id="fileImage"
-                        name="fileImage" 
-                        value="<%= locals.oldData ? oldData.fileImage : null %>">
-                        <% if (locals.errors && errors.fileImage) { %>
-                            <div class="text-danger">
-                                <%= errors.fileImage.msg %>
-                            </div>
-                        <% } %>
-                    </div>
-
+                
                     <div class="formulario_item-buttonUser">
                         <button type="submit" class="buy-now-buttonUser">Guardar</button>
                         <button type="reset" class="buy-now-buttonUser">Borrar</button>
