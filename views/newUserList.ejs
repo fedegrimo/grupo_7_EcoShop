@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./layout/head') %>
+
+<body>
+    <%- include('./layout/newHeaderback') %>
+
+    <%- include('./layout/toggle') %>
+    
+        <div class="details">
+            <div class="recentOrders">
+                <div class="cardHeader">
+                    <h2>Lista de Productos</h2>
+                    <a href="/users/create" class="btn8">Agregar Usuario</a>
+                </div>
+
+                <table>
+                    <% if (cookies) { %>
+        
+                        <% users.forEach(user => { %>
+                
+                    <thead>
+                        <tr>
+                            <td>Foto</td>
+                            <td>Nombre</td>
+                            <td>Apellido</td>
+                            <td>Email</td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        
+                        <tr>
+                            <td> 
+                                <div class="imgProductList" >
+
+                                    <img src="/img/avatars/<%= user.images%>" alt="">
+                                </div>
+                                
+                            </td>
+
+                            <td>
+                                <span class="tittle9"><%= user.firstname%></span>  
+                            </td>
+
+                            <td> 
+                                <span class="tittle9"><%= user.lastname%></span>
+                            </td>
+
+                            <td> 
+                                <p class="tittle9"><%= user.email%></p>
+                            </td>
+
+                            <td>
+                                <div class="btnEdit">
+
+                                    <a href="/users/<%= user.id%>/edit" class="button primary edit" alt="Editar Producto" title="Editar Producto"><i class="fas fa-edit"></i></a>
+
+                                    <form action="/users/<%= user.id %>?_method=DELETE" method="POST">
+                                      <button type="submit" class="button primary delete" alt="Eliminar Producto" title="Eliminar Producto"><i class="fas fa-trash-alt"></i></button>
+                                    </form>
+                                </div>
+                            </td>
+                           
+                        </tr>
+
+                        
+                    </tbody>
+
+                    <% }) %>
+
+            <% } %>
+                </table>
+
+                
+            </div>
+            
+        </div>
+
+    </div>
+
+    <script>
+        function toggleMenu(){
+            let toggle = document.querySelector('.toggle');
+            let navigation = document.querySelector('.navigation');
+            let main = document.querySelector('.main');
+            toggle.classList.toggle('active');
+            navigation.classList.toggle('active');
+            main.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

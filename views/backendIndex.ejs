@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./layout/head') %>
+
+<body>
+    <%- include('./layout/newHeaderback') %>
+
+    <%- include('./layout/toggle') %>
+    
+        <div class="cardBox">
+
+            <div class="card">
+                <div>
+                    <div class="numbers">1,042</div>
+                    <div class="cardName">Daily Views</div>
+                </div>
+
+                <div class="iconBox">
+                    <i class="fas fa-eye"></i>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="numbers">82</div>
+                    <div class="cardName">Sales</div>
+                </div>
+
+                <div class="iconBox">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="numbers">142</div>
+                    <div class="cardName">Comments</div>
+                </div>
+
+                <div class="iconBox">
+                    <i class="fas fa-comments"></i>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="numbers">$1242</div>
+                    <div class="cardName">Earning</div>
+                </div>
+
+                <div class="iconBox">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="details">
+            <div class="recentOrders">
+                <div class="cardHeader">
+                    <h2>Lista de Productos</h2>
+                    <a href="/products/create/" class="btn8">Agregar Producto</a>
+                </div>
+
+                <table>
+                <% if (products) { %>
+        
+                    <% products.forEach(product => { %>
+                
+                    <thead>
+                        <tr>
+                            <td>Imagen</td>
+                            <td>Name</td>
+                            <td>Price</td>
+                            <td>Payment</td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        
+                        <tr>
+                            <td> 
+                                <div class="imgProductList" >
+
+                                    <img  src="/img/products/<%= product.picture %>" alt="<%= product.dataValues.name %>">
+                                </div>
+                                
+                            </td>
+
+                            <td>
+                                <p class="tittle9" title="<%= product.dataValues.name %>"><%= product.dataValues.name %></p>
+                            </td>
+
+                            <td> 
+                                <p class="tittle9">$ <%= product.dataValues.price %></p>
+                            </td>
+
+                            <td>
+                                <div class="btnEdit">
+
+                                    <a href="/products/<%= product.id %>/edit" class="button primary edit" alt="Editar Producto" title="Editar Producto"><i class="fas fa-edit"></i></a>
+
+                                    <form action="/products/<%= product.id %>?_method=DELETE" method="POST">
+                                      <button type="submit" class="button primary delete" alt="Eliminar Producto" title="Eliminar Producto"><i class="fas fa-trash-alt"></i></button>
+                                    </form>
+                                </div>
+                            </td>
+                           
+                        </tr>
+
+                        
+                    </tbody>
+
+                    <% }) %>
+
+            <% } %>
+                </table>
+
+                
+            </div>
+            
+        </div>
+
+    </div>
+
+    <script>
+        function toggleMenu(){
+            let toggle = document.querySelector('.toggle');
+            let navigation = document.querySelector('.navigation');
+            let main = document.querySelector('.main');
+            toggle.classList.toggle('active');
+            navigation.classList.toggle('active');
+            main.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

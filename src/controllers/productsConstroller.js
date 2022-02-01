@@ -18,7 +18,7 @@ const controller = {
 		if(req.cookies.login){
 			let products =  await db.findAll();
 			let cookies = req.cookies;
-			res.render('products-list',{products, cookies});
+			res.render('backendIndex',{products, cookies});
 		}else{
 			res.redirect('/backend');
 		}

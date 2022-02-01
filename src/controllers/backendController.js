@@ -57,7 +57,7 @@ const controller = {
 			});
 			
 			if (verificacion){
-				if (bcrypt.compareSync(req.body.password,verificacion.password)){
+				 if (bcrypt.compareSync(req.body.password,verificacion.password)){
 					req.session.email = req.body.email;
 					req.session.picture = verificacion.images;
 					req.session.recordar = (req.body.recordar == 1) ? true :false;

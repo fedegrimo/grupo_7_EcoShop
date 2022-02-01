@@ -2,7 +2,9 @@
 <html lang="en">
 <%- include('./layout/head') %>
 <body>
-    <%- include('./layout/headerBackend') %>
+    <%- include('./layout/newHeaderback') %>
+
+    <%- include('./layout/toggle') %>
 
 <% if (productToEdit) { %>
 
@@ -92,10 +94,20 @@
     </section>
      
 <% } %>
-
+    </div>
 
 
 
 <%- include('./layout/head') %>
+<script>
+        function toggleMenu(){
+            let toggle = document.querySelector('.toggle');
+            let navigation = document.querySelector('.navigation');
+            let main = document.querySelector('.main');
+            toggle.classList.toggle('active');
+            navigation.classList.toggle('active');
+            main.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>

@@ -10,10 +10,8 @@
         <section class="divider">
             <div class="row">
                 <span><i class="fas fa fa-user"></i></span>
-                <input type="text" 
-                name="firstname" 
-                placeholder="Nombre"
-                value="<%= locals.oldData ? oldData.name : null %>">
+                <input type="text" name="firstname" placeholder="Nombre" value="<%= locals.oldData ? oldData.name : null %>">
+                
                 <% if (locals.errors && errors.name) { %>
                     <div class="text-danger">
                         <%= errors.name.msg %>
@@ -51,10 +49,8 @@
             </div>
             <div class="row">
                 <span><i class="fas fa fa-lock"></i></span>
-                <input type="password" 
-                name="password" 
-                placeholder="Contraseña"
-                value="<%= locals.oldData ? oldData.password : null %>">
+                <input type="password" name="password" placeholder="Contraseña" value="<%= locals.oldData ? oldData.password : null %>">
+
                 <% if (locals.errors && errors.password) { %>
                     <div class="text-danger">
                         <%= errors.password.msg %>

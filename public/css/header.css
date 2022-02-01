@@ -274,6 +274,8 @@ header.sticky {
     font-size: 0.8rem;
     color: #252525;
     text-decoration: none !important;
+    border: 1px solid #111;
+    padding: 20px;
 }
 @media (min-width:768px) { 
     .botonBackend-menu{

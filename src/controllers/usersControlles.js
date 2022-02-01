@@ -12,7 +12,7 @@ const controller = {
 		const users = await db.findAll();
         if(req.cookies.login){
 			cookies = req.cookies;
-			res.render('user-list',{users,cookies});
+			res.render('newUserList',{users,cookies});
 		}else{
 			res.redirect('/backend');
 		}
@@ -53,7 +53,7 @@ const controller = {
                 profile_id : req.body.profile_id
             });
 			const users = await db.findAll();
-			res.render('user-list',{users,cookies});
+			res.render('newUserList',{users,cookies});
 		}
 		
 	},
@@ -110,7 +110,7 @@ const controller = {
 				}
 			);
 			const users = await db.findAll();
-			res.render('user-list',{users,cookies});
+			res.render('newUserList',{users,cookies});
 		}
 		
 	},

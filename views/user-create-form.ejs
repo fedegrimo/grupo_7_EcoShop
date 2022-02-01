@@ -2,7 +2,9 @@
 <html lang="en">
 <%- include('./layout/head') %>
 <body>
-    <%- include('./layout/headerBackend') %>
+    <%- include('./layout/newHeaderback') %>
+
+    <%- include('./layout/toggle') %>
 
 <section class="formularioEditUser">
        
@@ -108,7 +110,16 @@
         </form>
 
     </section>
-
-<%- include('./layout/head') %>
+</div>
+<script>
+        function toggleMenu(){
+            let toggle = document.querySelector('.toggle');
+            let navigation = document.querySelector('.navigation');
+            let main = document.querySelector('.main');
+            toggle.classList.toggle('active');
+            navigation.classList.toggle('active');
+            main.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>

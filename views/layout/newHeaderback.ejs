@@ -1,0 +1,44 @@
+<% if (cookies) { %>
+
+<header>
+    <div class="containerHeader">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="">
+                        <span class="title5"><h2>Eco Shop</h2></span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/users/">
+                        <span class="icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                        <span class="title5">Clientes</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/products/list">
+                        <span class="icon"><i class="fa fa-comments" aria-hidden="true"></i></span>
+                        <span class="title5">Productos</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <form method="post" action="/backend/logout">
+
+                        <button type="submit">
+                                <span class="icon"><i class="fa fa-sign-out-alt"></i></i></span>
+                            <span class="title5">Sign Out</span>
+                        </button>
+                        </form>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</header>
+    
+<% } %>
