@@ -73,11 +73,15 @@ const controller = {
 		const resultValidation = validationResult(req);
 
 		if (resultValidation.errors.length > 0){
-			res.render('register',{ 
-				errors: resultValidation.mapped(),
-				oldData: req.body,
-				login: req.cookies.login
-			});
+			// res.render('register',{ 
+			// 	errors: resultValidation.mapped(),
+			// 	oldData: req.body,
+			// 	login: req.cookies.login
+			// });
+			res.status(400).json({ 
+					errors: resultValidation.mapped(),
+					login: req.cookies.login
+				});
 		} else {
 			await userDB.db.create({
                 firstname : req.body.firstname,

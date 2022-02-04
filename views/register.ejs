@@ -4,71 +4,78 @@
 <body>
     <%- include('./layout/header') %>
 
-<section class="form-register">
-    <form id="frm" method="post">
-        <h1>Registrarse</h1>
-        <section class="divider">
-            <div class="row">
-                <span><i class="fas fa fa-user"></i></span>
-                <input type="text" name="firstname" placeholder="Nombre" value="<%= locals.oldData ? oldData.name : null %>">
-                
-                <% if (locals.errors && errors.name) { %>
-                    <div class="text-danger">
-                        <%= errors.name.msg %>
-                    </div>
-                <% } %>
+    <form method="post" action="" class="formulario" id="formulario">
+        <!-- Grupo: Nombre -->
+        <div class="formulario__grupo" id="grupo__firstname">
+            <label for="firstname" class="formulario__label">Nombre</label>
+            <div class="formulario__grupo-input">
+                <input type="text" class="formulario__input" name="firstname" id="firstname" placeholder="john123">
+                <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
-            <div class="row">
-                <span><i class="fas fa fa-user"></i></span>
-                <input type="text" 
-                name="lastname" 
-                placeholder="Apellido"
-                value="<%= locals.oldData ? oldData.lastname : null %>">
-                <% if (locals.errors && errors.lastname) { %>
-                    <div class="text-danger">
-                        <%= errors.lastname.msg %>
-                    </div>
-                <% } %>
-                <input type="hidden" 
-                name="role" 
-                value="<%= locals.oldData ? oldData.role : 2 %>">
-            </div>
-        </section>
-        <section class="divider">
-            <div class="row">
-                <span><i class="fas fa fa-envelope"></i></span>
-                <input type="email" 
-                name="email" 
-                placeholder="E-mail"
-                value="<%= locals.oldData ? oldData.email : null %>">
-                <% if (locals.errors && errors.email) { %>
-                    <div class="text-danger">
-                        <%= errors.email.msg %>
-                    </div>
-                <% } %>
-            </div>
-            <div class="row">
-                <span><i class="fas fa fa-lock"></i></span>
-                <input type="password" name="password" placeholder="Contraseña" value="<%= locals.oldData ? oldData.password : null %>">
-
-                <% if (locals.errors && errors.password) { %>
-                    <div class="text-danger">
-                        <%= errors.password.msg %>
-                    </div>
-                <% } %>
-            </div>
-        </section>
-        
-        <div class="row">
-            <input type="submit" value="Registrar"/>
+            <p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
         </div>
 
-        <div class="row login">
-            <a href="/login">Login</a>
+        <!-- Grupo: Apellido -->
+        <div class="formulario__grupo" id="grupo__lastname">
+            <label for="lastname" class="formulario__label">Apellido</label>
+            <div class="formulario__grupo-input">
+                <input type="text" class="formulario__input" name="lastname" id="nombre" placeholder="John Doe">
+                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+            </div>
+            <p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
+        </div>
+
+        <!-- Grupo: Contraseña -->
+        <div class="formulario__grupo" id="grupo__password">
+            <label for="password" class="formulario__label">Contraseña</label>
+            <div class="formulario__grupo-input">
+                <input type="password" class="formulario__input" name="password" id="password">
+                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+            </div>
+            <p class="formulario__input-error">La contraseña tiene que ser de 4 a 12 dígitos.</p>
+        </div>
+
+        <!-- Grupo: Contraseña 2 -->
+        <div class="formulario__grupo" id="grupo__password2">
+            <label for="password2" class="formulario__label">Repetir Contraseña</label>
+            <div class="formulario__grupo-input">
+                <input type="password" class="formulario__input" name="password2" id="password2">
+                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+            </div>
+            <p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
+        </div>
+
+        <!-- Grupo: Correo Electronico -->
+        <div class="formulario__grupo" id="grupo__email">
+            <label for="email" class="formulario__label">Correo Electrónico</label>
+            <div class="formulario__grupo-input">
+                <input type="email" class="formulario__input" name="email" id="correo" placeholder="correo@correo.com">
+                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+            </div>
+            <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
+        </div>
+
+       
+        <!-- Grupo: Terminos y Condiciones -->
+        <div class="formulario__grupo" id="grupo__terminos">
+            <label class="formulario__label">
+                <input class="formulario__checkbox" type="checkbox" name="terminos" id="terminos">
+                Acepto los Terminos y Condiciones
+            </label>
+        </div>
+
+        <div class="formulario__mensaje" id="formulario__mensaje">
+            <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+        </div>
+
+        <div class="formulario__grupo formulario__grupo-btn-enviar">
+            <button type="submit" value="Registrar" class="formulario__btn">Enviar</button>
+            <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
         </div>
     </form>
-</section>
 
 <%- include('./layout/head') %>
+
+<script src="/js/formulario.js"></script>
 </body>
 </html>
