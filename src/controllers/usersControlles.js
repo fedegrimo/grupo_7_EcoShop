@@ -34,7 +34,7 @@ const controller = {
 		const profiles = await profileDB.db.findAll({
 			where : {active_menu : 1}
 		});
-		const fileImage = req.file;
+		const fileImage = req.file.filename;
 		cookies = req.cookies;
 		if (resultValidation.errors.length > 0){
 			res.render('user-create-form',{ 

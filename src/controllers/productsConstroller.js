@@ -59,7 +59,7 @@ const controller = {
 	// Create -  Method to store
 	store: async (req, res) => {
 		const resultValidation = validationResult(req);
-		const fileImage = req.file;
+		const fileImage = req.file.filename;
 		if (resultValidation.errors.length > 0){
 
 			res.render('product-create-form',{ 
