@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./layout/head') %>
+<body>
+    <%- include('./layout/navbar') %>
+
+    <%- include('./layout/toggle') %>
+
+<% if (productToEdit) { %>
+
+        <section class="formularioEdit">
+       
+        <h3 class="formularioEdit_title">Estas editando:<%= productToEdit.dataValues.name %></h3>
+        <form action="/products/<%= productToEdit.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+
+            <div class="formulario_contenedor">     
+                
+                <figure class="product_image">
+                    <img src="/img/products/<%= productToEdit.picture %>" alt="<%= productToEdit.dataValues.name %>">
+                </figure> 
+
+                <div class="formulario_contenido">
+
+                <div class="formulario_item">
+                    <label for="title" class="form-label">Nombre del producto:</label>
+                    <input type="text" id="title" name="title" class="form-input" value="<%=productToEdit.dataValues.name%>">
+                    <% if (locals.errors && errors.title) { %>
+                        <div class="text-danger">
+                            <%= errors.title.msg %>
+                        </div>
+                    <% } %>
+                </div>
+
+                <div class="formulario_item">
+                    <label for="price" class="form-label">Precio del producto:</label>
+                    <input type="text" id="price" name="price"class="form-input" value="<%=productToEdit.dataValues.price%>">
+                    <% if (locals.errors && errors.price) { %>
+                        <div class="text-danger">
+                            <%= errors.price.msg %>
+                        </div>
+                    <% } %>
+                </div>
+
+                <div class="formulario_item">
+                    <label for="discount" class="form-label">Descuento:</label>
+                    <input type="text" id="discount" name="discount" class="form-input" value="<%= productToEdit.dataValues.offer %>">
+                </div>
+
+                <div class="formulario_item">
+                    <label for="category" class="form-label">Categoria:</label>
+                    <select class="selectForm" name="category" id="category">
+                        <% 
+                            categorias.forEach(element => { %>
+                                <option value="<%= element.dataValues.id %>" <%= element.dataValues.id === productToEdit.dataValues.category_id ? 'selected' : null %> ><%= element.dataValues.name%></option> 
+                            <%  });
+                            %> 
+                    </select>
+
+                    <% if (locals.errors && errors.category) { %>
+                        <div class="text-danger">
+                            <%= errors.category.msg %>
+                        </div>
+                    <% } %>
+                </div>
+
+            
+                <div class="formulario_item">
+                    <label for="description" class="form-label">Descipción:</label>
+                    <textarea name="description" id="description" class="form-input"><%= productToEdit.description %></textarea>
+
+                </div>
+
+                <div class="formulario_item">
+                    <label for="fileImage" class="form-label">Imagen:</label>
+                    <input type="hidden" name="id" value="<%= productToEdit.id %>"/>
+                    <input type="hidden" name="picture" value="<%= productToEdit.picture %>"/>
+                    <input type="file" id="fileImage" name="fileImage" class="form-input" value="<%= productToEdit.picture %>">
+                    <% if (locals.errors && errors.fileImage) { %>
+                            <div class="text-danger">
+                                <%= errors.fileImage.msg %>
+                            </div>
+                        <% } %>
+                </div>
+
+                <div class="formulario_item-button">
+                    <button type="submit" class="buy-now-button">Actualizar producto</button>
+                    <button type="reset" class="buy-now-button">Borrar</button>
+                </div>
+
+                
+            </div>
+   
+        </form>
+    </section>
+     
+<% } %>
+    </div>
+
+
+
+<%- include('./layout/head') %>
+<script>
+        function toggleMenu(){
+            let toggle = document.querySelector('.toggle');
+            let navigation = document.querySelector('.navigation');
+            let main = document.querySelector('.main');
+            toggle.classList.toggle('active');
+            navigation.classList.toggle('active');
+            main.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
