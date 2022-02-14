@@ -10,54 +10,45 @@
         <div class="details">
             <div class="recentOrders">
                 <div class="cardHeader">
-                    <h2>Lista de Productos</h2>
-                    <a href="/users/create" class="btn8">Agregar Usuario</a>
+                    <h2>Lista de Atributos</h2>
+                    <a href="/products/feature/create" class="btn8">Agregar Atributo</a>
                 </div>
 
                 <table>
                     <% if (cookies) { %>
         
-                        <% users.forEach(user => { %>
+                        <% features.forEach(feature => { %>
                 
                     <thead>
                         <tr>
-                            <td>Foto</td>
-                            <td>Nombre</td>
-                            <td>Apellido</td>
-                            <td>Email</td>
+                            <td>Concepto</td>
+                            <td>Padre</td>
                         </tr>
                     </thead>
 
                     <tbody>
                         
                         <tr>
-                            <td> 
-                                <div class="imgProductList" >
-
-                                    <img src="/img/avatars/<%= user.images%>" alt="">
-                                </div>
-                                
-                            </td>
-
+                        
                             <td>
-                                <span class="tittle9"><%= user.firstname%></span>  
+                                <span class="tittle9"><%= feature.name%></span>  
                             </td>
 
                             <td> 
-                                <span class="tittle9"><%= user.lastname%></span>
+                                <span class="tittle9"><%= feature.parent%></span>
                             </td>
 
                             <td> 
-                                <p class="tittle9"><%= user.email%></p>
+                                <p class="tittle9"><%= feature.active_menu%></p>
                             </td>
 
                             <td>
                                 <div class="btnEdit">
 
-                                    <a href="/users/<%= user.id%>/edit" class="button primary edit" alt="Editar Producto" title="Editar Producto"><i class="fas fa-edit"></i></a>
+                                    <a href="/products/feature/<%= feature.id%>/edit" class="button primary edit" alt="Editar Atributo" title="Editar Atributo"><i class="fas fa-edit"></i></a>
 
-                                    <form action="/users/<%= user.id %>?_method=DELETE" method="POST">
-                                      <button type="submit" class="button primary delete" alt="Eliminar Producto" title="Eliminar Producto"><i class="fas fa-trash-alt"></i></button>
+                                    <form action="/products/feature/<%= feature.id %>?_method=DELETE" method="POST">
+                                      <button type="submit" class="button primary delete" alt="Eliminar Atributo" title="Eliminar Atributo"><i class="fas fa-trash-alt"></i></button>
                                     </form>
                                 </div>
                             </td>

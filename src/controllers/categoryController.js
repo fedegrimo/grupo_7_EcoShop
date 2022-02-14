@@ -4,16 +4,20 @@ const categoryDB = require ('../database/models/Define/Category');
 
 const { db } = categoryDB;
 
-const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+const active_menu = [{id: false, name: "NO"},
+					 {id: true, name: "SI"} ];
 
 const controller = {
-	
+
+	index: (req, res) => {
+		res.render('backend');
+	},
 	// List administration product -trabajar
 	list: async (req, res) => {
 		if(req.cookies.login){
-			let products =  await db.findAll();
+			let categoryAll =  await db.findAll();
 			let cookies = req.cookies;
-			res.render('category-list',{products, cookies});
+			res.render('category-list',{categoryAll, cookies});
 		}else{
 			res.redirect('/backend');
 		}
@@ -23,9 +27,8 @@ const controller = {
 	// Create - Form to create -trabajar
 	create: async (req, res) => {
 		if(req.cookies.login){
-			let categorias = await categoryDB.db.findAll();
 			let cookies = req.cookies;
-			res.render('category-create-form', {categorias, cookies });
+			res.render('category-create-form', {cookies,active_menu });
 
 			
 		}else{
@@ -38,24 +41,18 @@ const controller = {
 	// Create -  Method to store
 	store: async (req, res) => {
 		const resultValidation = validationResult(req);
-		const fileImage = req.file.filename;
 		if (resultValidation.errors.length > 0){
 
 			res.render('category-create-form',{ 
 				errors: resultValidation.mapped(),
 				oldData: req.body,
-				categorias,
+				active_menu,
 				users
 			});
 		} else {
 			await db.create({
-						name : req.body.title,
-						price: req.body.price,
-						offer: req.body.discount,
-						description: req.body.description,
-						category_id: req.body.category,
-						picture : fileImage,
-						active: false
+						name : req.body.name,
+						active_menu: req.body.active_menu
 					});
 			
 			res.redirect('/category/list');
@@ -66,11 +63,9 @@ const controller = {
 	// Update - Form to edit -TRABAJAR
 	edit: async (req, res) => {
 		if(req.cookies.login){
-
-			const categorias = await categoryDB.db.findAll();
-			const productToEdit = await db.findByPk(req.params.id);
+			const categoryToEdit = await db.findByPk(req.params.id);
 			let cookies = req.cookies;
-			res.render('category-edit-form',{productToEdit,categorias,cookies});
+			res.render('category-edit-form',{categoryToEdit,active_menu,cookies});
 		}else{
 			res.redirect('/backend');
 		}
@@ -80,25 +75,19 @@ const controller = {
 	update: async (req, res) => {
 
 		const resultValidation = validationResult(req);
-		const fileImage = req.file;
 
 		if (resultValidation.errors.length > 0){
 			res.render('category-edit-form',{ 
 				errors: resultValidation.mapped(),
-				productToEdit: req.body,
+				categoryToEdit: req.body,
+				active_menu,
 				users
 			});
 		} else {
-			const filename = (fileImage) ? fileImage.filename : req.body.picture;
 
 			await db.update({
-                name : req.body.title,
-                price: req.body.price,
-                offer: req.body.discount,
-				description: req.body.description,
-				category_id: req.body.category,
-				picture : filename,
-				active: false
+                name : req.body.name,
+                active_menu: req.body.active_menu
             },
 			{
 				where: {id: req.params.id}

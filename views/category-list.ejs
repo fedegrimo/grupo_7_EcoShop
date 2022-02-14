@@ -10,54 +10,42 @@
         <div class="details">
             <div class="recentOrders">
                 <div class="cardHeader">
-                    <h2>Lista de Productos</h2>
-                    <a href="/users/create" class="btn8">Agregar Usuario</a>
+                    <h2>Lista de Categorías</h2>
+                    <a href="/products/category/create" class="btn8">Agregar Categoría</a>
                 </div>
 
                 <table>
                     <% if (cookies) { %>
         
-                        <% users.forEach(user => { %>
+                        <% categoryAll.forEach(category => { %>
                 
                     <thead>
                         <tr>
-                            <td>Foto</td>
-                            <td>Nombre</td>
-                            <td>Apellido</td>
-                            <td>Email</td>
+                            <td>Concepto</td>
+                            <td>Menu</td>
                         </tr>
                     </thead>
 
                     <tbody>
                         
                         <tr>
-                            <td> 
-                                <div class="imgProductList" >
-
-                                    <img src="/img/avatars/<%= user.images%>" alt="">
-                                </div>
-                                
-                            </td>
+                           
 
                             <td>
-                                <span class="tittle9"><%= user.firstname%></span>  
+                                <span class="tittle9"><%= category.name%></span>  
                             </td>
 
                             <td> 
-                                <span class="tittle9"><%= user.lastname%></span>
-                            </td>
-
-                            <td> 
-                                <p class="tittle9"><%= user.email%></p>
+                                <span class="tittle9"><%= category.active_menu%></span>
                             </td>
 
                             <td>
                                 <div class="btnEdit">
 
-                                    <a href="/users/<%= user.id%>/edit" class="button primary edit" alt="Editar Producto" title="Editar Producto"><i class="fas fa-edit"></i></a>
+                                    <a href="/products/category/<%= category.id%>/edit" class="button primary edit" alt="Editar Categoría" title="Editar Producto"><i class="fas fa-edit"></i></a>
 
-                                    <form action="/users/<%= user.id %>?_method=DELETE" method="POST">
-                                      <button type="submit" class="button primary delete" alt="Eliminar Producto" title="Eliminar Producto"><i class="fas fa-trash-alt"></i></button>
+                                    <form action="/products/category/<%= category.id %>?_method=DELETE" method="POST">
+                                      <button type="submit" class="button primary delete" alt="Eliminar Categoría" title="Eliminar Categoría"><i class="fas fa-trash-alt"></i></button>
                                     </form>
                                 </div>
                             </td>

@@ -3,9 +3,9 @@ const { check } = require("express-validator");
 
 // ************ Validation Create / Update Product ************
 const validations = [
-    check("title").notEmpty().withMessage('Ingresar el nombre del producto'),
-    check("price").notEmpty().withMessage('Ingresar precio').bail().isFloat().withMessage("Debes ingresar solamente valores numéricos"),
-    check("category").notEmpty().withMessage("Seleccionar categoría")
+    check("name").notEmpty().withMessage('Ingresar concepto'),
+    check("parent").notEmpty().withMessage("Seleccionar padre"),
+    check("active_menu").notEmpty().withMessage("Seleccionar activo")
   ];
 
   module.exports = validations

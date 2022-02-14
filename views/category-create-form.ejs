@@ -8,54 +8,33 @@
 
 <section class="formularioEdit">
        
-        <h3 class="formularioEdit_title">Formulario creacion de productos</h3>
+        <h3 class="formularioEdit_title">Formulario creacion de categoría</h3>
        
-        <form action="/products/create" method="POST" enctype="multipart/form-data">
+        <form action="/products/category/create" method="POST" enctype="multipart/form-data">
 
             <div class="formulario_contenedor formulario_contenedorCreate">   
                 <div class="formulario_contenido">
                     
                     <div class="formEdit_grid">
                         <div class="formulario_item">
-                            <label for="title" class="form-label">Nombre del producto:</label>
+                            <label for="name" class="form-label">Concepto:</label>
                             <input type="text" 
-                            name="title" 
+                            name="name" 
                             class="form-input"
-                            value="<%= locals.oldData ? oldData.title : null %>">
-                            <% if (locals.errors && errors.title) { %>
+                            value="<%= locals.oldData ? oldData.name : null %>">
+                            <% if (locals.errors && errors.name) { %>
                                 <div class="text-danger">
-                                    <%= errors.title.msg %>
+                                    <%= errors.name.msg %>
                                 </div>
                             <% } %>
                         </div>
 
                         <div class="formulario_item">
-                            <label for="price" class="form-label">Precio del producto:</label>
-                            <input type="text" 
-                            name="price" 
-                            class="form-input"
-                            value="<%= locals.oldData ? oldData.price : null %>">
-                            <% if (locals.errors && errors.price) { %>
-                                <div class="text-danger">
-                                    <%= errors.price.msg %>
-                                </div>
-                            <% } %>
-                        </div>
-
-                        <div class="formulario_item">
-                            <label for="discount" class="form-label">Descuento:</label>
-                            <input type="text" 
-                            name="discount" 
-                            class="form-input"
-                            value="<%= locals.oldData ? oldData.discount : null %>">
-                        </div>
-
-                        <div class="formulario_item">
-                            <label for="category" class="form-label">Categoria:</label>
-                            <select class="selectForm" name="category">
+                            <label for="active_menu" class="form-label">Activar Menu:</label>
+                            <select class="selectForm" name="active_menu">
                                 <% 
-                                    categorias.forEach(element => { %>
-                                        <option value="<%= element.dataValues.id %>" <%= locals.oldData && (element.clave === oldData.category) ? 'selected' : null %> ><%= element.dataValues.name %></option> 
+                                    active_menu.forEach(element => { %>
+                                        <option value="<%= element.id %>" <%= locals.oldData && (element.clave === oldData.active_menu) ? 'selected' : null %> ><%= element.name %></option> 
                                   <%  });
                                  %> 
                             </select>
@@ -67,28 +46,9 @@
                         </div>
                     </div>
                     
-                    <div class="formulario_item">
-                        <label for="description" class="form-label">Descipción:</label>
-                        <textarea name="description" 
-                        id="description" 
-                        class="form-input"></textarea>
-                    </div>
-
-                    <div class="formulario_item">
-                        <label for="fileImage" class="form-label">Imagen:</label>
-                        <input type="file" 
-                        id="fileImage"
-                        name="fileImage" 
-                        value="<%= locals.oldData ? oldData.fileImage : null %>">
-                        <% if (locals.errors && errors.fileImage) { %>
-                            <div class="text-danger">
-                                <%= errors.fileImage.msg %>
-                            </div>
-                        <% } %>
-                    </div>
-
+                    
                     <div class="formulario_item-button">
-                        <button type="submit" class="buy-now-button">Guardar producto</button>
+                        <button type="submit" class="buy-now-button">Guardar</button>
                         <button type="reset" class="buy-now-button">Borrar</button>
                     </div>
                 </div>
