@@ -6,22 +6,17 @@
 
     <%- include('./layout/toggle') %>
 
-<section class="formularioEdit">
        
-        <h3 class="formularioEdit_title">Formulario creacion de productos</h3>
+        <h3 class="formularioEditUser_title">Formulario creacion de productos</h3>
        
-        <form action="/products/create" method="POST" enctype="multipart/form-data">
-
-            <div class="formulario_contenedor formulario_contenedorCreate">   
-                <div class="formulario_contenido">
-                    
-                    <div class="formEdit_grid">
-                        <div class="formulario_item">
-                            <label for="title" class="form-label">Nombre del producto:</label>
-                            <input type="text" 
-                            name="title" 
-                            class="form-input"
-                            value="<%= locals.oldData ? oldData.title : null %>">
+        <form class="formulario" action="/products/create" method="POST" enctype="multipart/form-data" id="formulario">
+                        <div class="formulario__grupo" id="grupo__title">
+                            <label for="title" class="formulario__label">Nombre del producto:</label>
+                            <div class="formulario__grupo-input">
+                                <input type="text"  name="title"  class="formulario__input" value="<%= locals.oldData ? oldData.title : null %>">
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            </div>
+                            <p class="formulario__input-error">El nombre del producto debe tener entre 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
                             <% if (locals.errors && errors.title) { %>
                                 <div class="text-danger">
                                     <%= errors.title.msg %>
@@ -29,12 +24,13 @@
                             <% } %>
                         </div>
 
-                        <div class="formulario_item">
-                            <label for="price" class="form-label">Precio del producto:</label>
-                            <input type="text" 
-                            name="price" 
-                            class="form-input"
-                            value="<%= locals.oldData ? oldData.price : null %>">
+                        <div class="formulario__grupo" id="grupo__price">
+                            <label for="price" class="formulario__label">Precio del producto:</label>
+                            <div class="formulario__grupo-input">
+                                <input type="text" name="price" class="formulario__input" value="<%= locals.oldData ? oldData.price : null %>">
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            </div>
+                            <p class="formulario__input-error">El precio solo puede contener numeros y el maximo son 14 dígitos.</p>
                             <% if (locals.errors && errors.price) { %>
                                 <div class="text-danger">
                                     <%= errors.price.msg %>
@@ -42,41 +38,43 @@
                             <% } %>
                         </div>
 
-                        <div class="formulario_item">
-                            <label for="discount" class="form-label">Descuento:</label>
-                            <input type="text" 
-                            name="discount" 
-                            class="form-input"
-                            value="<%= locals.oldData ? oldData.discount : null %>">
+                        <div class="formulario__grupo" id="grupo__discount">
+                            <label for="discount" class="formulario__label">Descuento:</label>
+                            <div class="formulario__grupo-input">
+                                <input type="text" name="discount" class="formulario__input" value="<%= locals.oldData ? oldData.discount : null %>">
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            </div>
+                            <p class="formulario__input-error">El descuento solo puede contener numeros y el maximo son 2 dígitos.</p>
                         </div>
 
-                        <div class="formulario_item">
-                            <label for="category" class="form-label">Categoria:</label>
-                            <select class="selectForm" name="category">
-                                <% 
-                                    categorias.forEach(element => { %>
+                        <div class="formulario__grupo" id="grupo__category">
+                            <label for="category"  class="formulario__label">Categoria:</label>
+                            <div class="formulario__grupo-input">
+                                <select class="selectForm" name="category">
+                                    <% categorias.forEach(element => { %>
                                         <option value="<%= element.dataValues.id %>" <%= locals.oldData && (element.clave === oldData.category) ? 'selected' : null %> ><%= element.dataValues.name %></option> 
-                                  <%  });
-                                 %> 
-                            </select>
+                                    <%  }); %> 
+                                </select>
+                            </div>
                             <% if (locals.errors && errors.category) { %>
                                 <div class="text-danger">
                                     <%= errors.category.msg %>
                                 </div>
                             <% } %>
                         </div>
-                    </div>
                     
-                    <div class="formulario_item">
-                        <label for="description" class="form-label">Descipción:</label>
-                        <textarea name="description" 
-                        id="description" 
-                        class="form-input"></textarea>
+                    
+                    <div class="formulario__grupo" id="grupo__description">
+                        <label for="description" class="formulario__label">Descipción:</label>
+                        <div class="formulario__grupo-input">
+                            <textarea name="description" id="description" class="form-input"></textarea>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
                     </div>
 
-                    <div class="formulario_item">
-                        <label for="fileImage" class="form-label">Imagen:</label>
-                        <input type="file" 
+                    <div class="formulario__grupo" id="grupo__fileImage">
+                        <label for="fileImage" class="formulario__label">Imagen:</label>
+                        <input class="formulario__input" type="file" 
                         id="fileImage"
                         name="fileImage" 
                         value="<%= locals.oldData ? oldData.fileImage : null %>">
@@ -87,19 +85,23 @@
                         <% } %>
                     </div>
 
-                    <div class="formulario_item-button">
-                        <button type="submit" class="buy-now-button">Guardar producto</button>
-                        <button type="reset" class="buy-now-button">Borrar</button>
+                    <div class="formulario__mensaje" id="formulario__mensaje">
+                        <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
                     </div>
-                </div>
-                
-            </div>
-   
+                    
+                    <div class="formulario__grupo formulario__grupo-btn-enviar">
+                        <button type="submit" class="formulario__btn">Guardar producto</button>
+                        <button type="reset" class="formulario__btn">Borrar</button>
+                        <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">El producto a sido creado exitosamente!</p>
+                    </div>
+                       
+                     
+                    
         </form>
 
-    </section>
     </div>
 <%- include('./layout/head') %>
+<script src="/js/productForm.js"></script>
 <script>
         function toggleMenu(){
             let toggle = document.querySelector('.toggle');

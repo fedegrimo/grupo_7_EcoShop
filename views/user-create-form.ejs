@@ -6,72 +6,91 @@
 
     <%- include('./layout/toggle') %>
 
-<section class="formularioEditUser">
+
        
         <h3 class="formularioEditUser_title">Formulario creación de usuarios</h3>
        
-        <form action="/users/create" method="POST" enctype="multipart/form-data">
+        <form action="/users/create" method="POST" enctype="multipart/form-data" id="formulario" class="formulario">
 
-            <div class="formulario_contenedorUser">   
-                <div class="formulario_contenidoUser">
-                    
-                    <div class="formEditUser_grid">
-
-                        <div class="formularioUser_item">
-                            <label for="firstname" class="formUser-label">Nombre:</label>
-                            <input type="text" 
-                            name="firstname" 
-                            class="formUser-input"
-                            value="<%= locals.oldData ? oldData.firstname : null %>">
-                            <% if (locals.errors && errors.firstname) { %>
-                        
-                                <div class="text-danger">
-                                    <%= errors.firstname.msg %>
-                                </div>
-                            <% } %>
+            <div class="formulario__grupo" id="grupo__firstname">
+                <label for="firstname" class="formulario__label">Nombre:</label>
+                    <div class="formulario__grupo-input">
+                        <input type="text"  class="formulario__input" name="firstname" id="firstname" placeholder="Nombre" value="<%= locals.oldData ? oldData.firstname : null %>">
+                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                    </div>
+                    <p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
+                    <% if (locals.errors && errors.firstname) { %>
+                        <div class="text-danger">
+                            <%= errors.firstname.msg %>
                         </div>
+                        <% } %>
+            </div>
 
-                        <div class="formularioUser_item">
-                            <label for="lastname" class="formUser-label">Apellido:</label>
-                            <input type="text" 
-                            name="lastname" 
-                            class="formUser-input"
-                            value="<%= locals.oldData ? oldData.lastname : null %>">
-                            <% if (locals.errors && errors.lastname) { %>
-                                <div class="text-danger">
-                                    <%= errors.lastname.msg %>
-                                </div>
-                            <% } %>
+            <div class="formulario__grupo" id="grupo__lastname">
+                <label for="lastname" class="formulario__label">Apellido:</label>
+                <div class="formulario__grupo-input">
+                    <input type="text" type="text" class="formulario__input" name="lastname" id="nombre" value="<%= locals.oldData ? oldData.lastname : null %>">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
+                <% if (locals.errors && errors.lastname) { %>
+                    <div class="text-danger">
+                        <%= errors.lastname.msg %>
+                    </div>
+              <% } %>
+            </div>
+
+
+            <div class="formulario__grupo" id="grupo__email">
+                <label for="email" class="formulario__label">Correo Electrónico</label>
+                <div class="formulario__grupo-input">
+                    <input type="email" class="formulario__input" name="email" id="correo" placeholder="correo@correo.com" value="<%= locals.oldData ? oldData.email : null %>">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
+                    <% if (locals.errors && errors.email) { %>
+                        <div class="text-danger">
+                            <%= errors.email.msg %>
                         </div>
+                    <% } %>
+            </div>
 
-                        <div class="formularioUser_item">
-                            <label for="email" class="formUser-label">Email:</label>
-                            <input type="text" 
-                            name="email" 
-                            class="formUser-input"
-                            value="<%= locals.oldData ? oldData.email : null %>">
-                            <% if (locals.errors && errors.email) { %>
-                                <div class="text-danger">
-                                    <%= errors.email.msg %>
-                                </div>
-                            <% } %>
-                        </div>
-
-                        <div class="formularioUser_item">
-                        <label for="password" class="formUser-label">Contraseña:</label>
-                        <input type="password" 
-                        name="password" 
-                        class="formUser-input"
-                        value="<%= locals.oldData ? oldData.password : null %>">
+            <div class="formulario__grupo" id="grupo__password">
+                <label  for="password" class="formulario__label">Contraseña:</label>
+                <div class="formulario__grupo-input">
+                    <input type="password" class="formulario__input" name="password" id="password" value="<%= locals.oldData ? oldData.password : null %>">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                    <p class="formulario__input-error">La contraseña tiene que ser de 4 a 12 dígitos.</p>
                         <% if (locals.errors && errors.password) { %>
                             <div class="text-danger">
                                 <%= errors.password.msg %>
                             </div>
                         <% } %>
-                        
-                        </div>
-                        <div class="formularioUser_item">
-                            <label for="role" class="form-label">Perfil:</label>
+            </div>
+
+            <div class="formulario__grupo" id="grupo__password2">
+                <label for="password2" class="formulario__label">Repetir Contraseña</label>
+                <div class="formulario__grupo-input">
+                    <input type="password" class="formulario__input" name="password2" id="password2">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
+            </div>
+
+            <div class="formulario__grupo checked" id="grupo__terminos">
+                <label class="formulario__label">
+                    <input class="formulario__checkbox" checked type="checkbox" name="terminos" id="terminos">
+                    Acepto los Terminos y Condiciones
+                </label>
+            </div>
+
+            <div class="formulario__mensaje" id="formulario__mensaje">
+                <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+            </div>
+
+            <div class="formulario__grupo">
+                            <label for="role" class="formulario__label">Perfil:</label>
                             <select class="selectForm" name="role">
                                 <% 
                                     profiles.forEach(element => { 
@@ -97,20 +116,18 @@
                                 </div>
                             <% } %>
                         </div>
-                    </div>
+                   
                 
-                    <div class="formulario_item-buttonUser">
-                        <button type="submit" class="buy-now-buttonUser">Guardar</button>
-                        <button type="reset" class="buy-now-buttonUser">Borrar</button>
+                    <div class="formulario__grupo formulario__grupo-btn-enviar">
+                        <button type="submit" value="Registrar" class="formulario__btn">Guardar</button>
+                        <button type="reset" class="formulario__btn">Borrar</button>
+                        <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
                     </div>
-                </div>
-                
-            </div>
-   
         </form>
-
-    </section>
 </div>
+
+<script src="/js/formulario.js"></script>
+<script src="/js/form-script.js"></script>
 <script>
         function toggleMenu(){
             let toggle = document.querySelector('.toggle');

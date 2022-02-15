@@ -122,7 +122,9 @@ window.addEventListener("load", function () {
   });
 
   formulario.addEventListener("submit", (e) => {
+
     e.preventDefault();
+    
     const terminos = document.getElementById("terminos");
     if (
       campos.firstname &&
@@ -131,10 +133,6 @@ window.addEventListener("load", function () {
       campos.email &&
       terminos.checked
     ) {
-      console.log(e.target[0].value);
-	  console.log(e.target[1].value);
-	  console.log(e.target[2].value);
-	  console.log(e.target[4].value);
 
 	  const data = {
 		  firstname:e.target[0].value.trim().toLowerCase(),
@@ -158,8 +156,7 @@ window.addEventListener("load", function () {
 	  .catch(error => console.error('Error:', error))
 	  .then(response => console.log('Success:', response));
 
-
-
+    
       formulario.reset();
 
       document
