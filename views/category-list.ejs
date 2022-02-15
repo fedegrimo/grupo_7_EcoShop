@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./layout/head') %>
+
+<body>
+    <%- include('./layout/navbar') %>
+
+    <%- include('./layout/toggle') %>
+    
+        <div class="details">
+            <div class="recentOrders">
+                <div class="cardHeader">
+                    <h2>Lista de Categorías</h2>
+                    <a href="/products/category/create" class="btn8">Agregar Categoría</a>
+                </div>
+
+                <table>
+                    <% if (cookies) { %>
+        
+                        <% categoryAll.forEach(category => { %>
+                
+                    <thead>
+                        <tr>
+                            <td>Concepto</td>
+                            <td>Menu</td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        
+                        <tr>
+                           
+
+                            <td>
+                                <span class="tittle9"><%= category.name%></span>  
+                            </td>
+
+                            <td> 
+                                <span class="tittle9"><%= category.active_menu%></span>
+                            </td>
+
+                            <td>
+                                <div class="btnEdit">
+
+                                    <a href="/products/category/<%= category.id%>/edit" class="button primary edit" alt="Editar Categoría" title="Editar Producto"><i class="fas fa-edit"></i></a>
+
+                                    <form action="/products/category/<%= category.id %>?_method=DELETE" method="POST">
+                                      <button type="submit" class="button primary delete" alt="Eliminar Categoría" title="Eliminar Categoría"><i class="fas fa-trash-alt"></i></button>
+                                    </form>
+                                </div>
+                            </td>
+                           
+                        </tr>
+
+                        
+                    </tbody>
+
+                    <% }) %>
+
+            <% } %>
+                </table>
+
+                
+            </div>
+            
+        </div>
+
+    </div>
+
+    <script src="/js/form-script.js"></script>
+</body>
+</html>

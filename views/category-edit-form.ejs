@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./layout/head') %>
+<body>
+    <%- include('./layout/navbar') %>
+
+    <%- include('./layout/toggle') %>
+
+<% if (categoryToEdit) { %>
+
+        <section class="formularioEdit">
+       
+        <h3 class="formularioEdit_title">Estas editando:<%= categoryToEdit.dataValues.name %></h3>
+        <form action="/products/category/<%= categoryToEdit.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+
+            <div class="formulario_contenedor">     
+            
+                <div class="formulario_contenido">
+
+                <div class="formulario_item">
+                    <label for="name" class="form-label">Concepto:</label>
+                    <input type="text" id="name" name="name" class="form-input" value="<%=categoryToEdit.dataValues.name%>">
+                    <% if (locals.errors && errors.name) { %>
+                        <div class="text-danger">
+                            <%= errors.name.msg %>
+                        </div>
+                    <% } %>
+                </div>
+
+                <div class="formulario_item">
+                    <label for="active_menu" class="form-label">Activar Menu:</label>
+                    <select class="selectForm" name="active_menu" id="active_menu">
+                        <% 
+                            active_menu.forEach(element => { %>
+                                <option value="<%= element.id %>" <%= element.id === categoryToEdit.dataValues.active_menu ? 'selected' : null %> ><%= element.name%></option> 
+                            <%  });
+                            %> 
+                    </select>
+
+                    <% if (locals.errors && errors.active_menu) { %>
+                        <div class="text-danger">
+                            <%= errors.active_menu.msg %>
+                        </div>
+                    <% } %>
+                </div>
+
+                <div class="formulario_item-button">
+                    <button type="submit" class="buy-now-button">Actualizar</button>
+                    <button type="reset" class="buy-now-button">Borrar</button>
+                </div>
+
+                
+            </div>
+   
+        </form>
+    </section>
+     
+<% } %>
+    </div>
+
+
+
+<%- include('./layout/head') %>
+<script>
+        function toggleMenu(){
+            let toggle = document.querySelector('.toggle');
+            let navigation = document.querySelector('.navigation');
+            let main = document.querySelector('.main');
+            toggle.classList.toggle('active');
+            navigation.classList.toggle('active');
+            main.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

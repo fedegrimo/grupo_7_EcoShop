@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./layout/head') %>
+
+<body>
+    <%- include('./layout/navbar') %>
+
+    <%- include('./layout/toggle') %>
+    
+        <div class="details">
+            <div class="recentOrders">
+                <div class="cardHeader">
+                    <h2>Lista de Atributos</h2>
+                    <a href="/products/feature/create" class="btn8">Agregar Atributo</a>
+                </div>
+
+                <table>
+                    <% if (cookies) { %>
+        
+                        <% features.forEach(feature => { %>
+                
+                    <thead>
+                        <tr>
+                            <td>Concepto</td>
+                            <td>Padre</td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        
+                        <tr>
+                        
+                            <td>
+                                <span class="tittle9"><%= feature.name%></span>  
+                            </td>
+
+                            <td> 
+                                <span class="tittle9"><%= feature.parent%></span>
+                            </td>
+
+                            <td> 
+                                <p class="tittle9"><%= feature.active_menu%></p>
+                            </td>
+
+                            <td>
+                                <div class="btnEdit">
+
+                                    <a href="/products/feature/<%= feature.id%>/edit" class="button primary edit" alt="Editar Atributo" title="Editar Atributo"><i class="fas fa-edit"></i></a>
+
+                                    <form action="/products/feature/<%= feature.id %>?_method=DELETE" method="POST">
+                                      <button type="submit" class="button primary delete" alt="Eliminar Atributo" title="Eliminar Atributo"><i class="fas fa-trash-alt"></i></button>
+                                    </form>
+                                </div>
+                            </td>
+                           
+                        </tr>
+
+                        
+                    </tbody>
+
+                    <% }) %>
+
+            <% } %>
+                </table>
+
+                
+            </div>
+            
+        </div>
+
+    </div>
+
+    <script src="/js/form-script.js"></script>
+</body>
+</html>

@@ -40,11 +40,15 @@ server.use('/js',express.static(path.resolve(__dirname,'public/js')));
 
 const mainRouter = require('./src/routes/main'); // Rutas main
 const productsRouter = require('./src/routes/products'); // Rutas /products
+const categoryRouter = require('./src/routes/category'); // Rutas /category
+const featureRouter = require('./src/routes/feature'); // Rutas /feature
 const backendRouter = require('./src/routes/backend'); // Rutas /backend
 const usersRouter = require('./src/routes/users'); // Rutas /backend
 
 server.use('/', mainRouter);
 server.use('/products', productsRouter);
+server.use('/products/category', categoryRouter);
+server.use('/products/feature', featureRouter);
 server.use('/backend', backendRouter);
 server.use('/users',usersRouter);
 
