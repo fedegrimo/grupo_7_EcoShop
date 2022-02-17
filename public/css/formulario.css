@@ -8,12 +8,13 @@ body {
 }
 
 main {
-	max-width: 1000px;
-	width: 100%;
+	max-width: 900px;
+	width: 90%;
 	margin: auto;
 	padding: 40px;
 }
-.formulario {
+.formulario{
+	width:70%;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 20px;
@@ -167,6 +168,7 @@ main {
 /* ----- -----  Mediaqueries ----- ----- */
 @media screen and (max-width: 800px) {
 	.formulario {
+		width: 90%;
 		grid-template-columns: 1fr;
 	}
 

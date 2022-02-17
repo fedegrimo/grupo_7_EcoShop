@@ -59,7 +59,7 @@ window.addEventListener('load', function(){
     const sendData = ( data ) => {
 
         fetch(url, {
-            method: 'POST',
+            method: 'PUT',
             body: JSON.stringify(data),
             headers:{
               'Content-Type': 'application/json'

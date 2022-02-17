@@ -145,10 +145,10 @@
 
 
 .formulario {
-    width: 50%;
+    width: 100%;
     margin: 1rem auto;
 	display: grid;
-	grid-template-columns: 1fr;
+	grid-template-columns: 1fr 1fr;
 	gap: 20px;
 }
 .mg-top{
