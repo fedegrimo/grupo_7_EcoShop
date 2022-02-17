@@ -110,7 +110,7 @@ const controller = {
 				}
 			);
 			const users = await db.findAll();
-			res.render('newUserList',{users,cookies});
+			 res.redirect('/users');
 		}
 		
 	},

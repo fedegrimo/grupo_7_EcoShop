@@ -95,9 +95,9 @@
                         <div class="formularioUser_item">
                             <label for="fileImage" class="formUser-label">Foto de perfil:</label>
                             <input type="hidden" name="id" value="<%= userToEdit.id %>"/>
-                            <input type="hidden" name="picture" value="<%= userToEdit.images %>"/>
+                            <input accept="image/png,image/jpeg,image/bmp,image/gif" type="hidden" name="picture" value="<%= userToEdit.images %>"/>
                             <input type="hidden" name="oldpassword" value="<%= userToEdit.password %>"/>
-                            <input type="file" 
+                            <input  type="file" 
                             id="fileImage"
                             name="fileImage" 
                             value="">
@@ -107,13 +107,15 @@
                                 </div>
                             <% } %>
                         </div>
-                    
+                        <div class="formulario__mensaje" id="formulario__mensaje">
+                            <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+                        </div>
 
                     
 
                     <div  class="formulario__grupo formulario__grupo-btn-enviar">
                         <button type="submit" class="formulario__btn">Actualizar</button>
-                        
+                        <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
                     </div>
                
                 <div class="formulario__mensaje" id="formulario__mensaje">

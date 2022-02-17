@@ -1,7 +1,9 @@
 window.addEventListener('load', function(){
     const formulario = document.querySelectorAll('#formulario');
     const inputs = document.querySelectorAll('#formulario input');
-    const url = `http://localhost:3000/products/create/`
+    const justNum = /(\d+)/g;
+    const [ idUser ] = window.location.pathname.match(justNum);
+    const url = `http://localhost:3000/products/${idUser}`
     const expresiones = {
         letras: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
         precio: /^\d{1,10}$/, // 7 a 14 numeros.

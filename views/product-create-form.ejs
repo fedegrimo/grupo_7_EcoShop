@@ -10,22 +10,25 @@
         <h3 class="formularioEditUser_title">Formulario creacion de productos</h3>
        
         <form class="formulario" action="/products/create" method="POST" enctype="multipart/form-data" id="formulario">
-                        <div class="formulario__grupo" id="grupo__title">
-                            <label for="title" class="formulario__label">Nombre del producto:</label>
+
+                    <div class="formulario__grupo" id="grupo__title">
+                        <label for="title" class="formulario__label">Nombre del producto:</label>
+
                             <div class="formulario__grupo-input">
                                 <input type="text"  name="title"  class="formulario__input" value="<%= locals.oldData ? oldData.title : null %>">
                                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             </div>
                             <p class="formulario__input-error">El nombre del producto debe tener entre 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
-                            <% if (locals.errors && errors.title) { %>
-                                <div class="text-danger">
-                                    <%= errors.title.msg %>
-                                </div>
-                            <% } %>
-                        </div>
 
-                        <div class="formulario__grupo" id="grupo__price">
-                            <label for="price" class="formulario__label">Precio del producto:</label>
+                        <% if (locals.errors && errors.title) { %>
+                            <div class="text-danger">
+                                <%= errors.title.msg %>
+                            </div>
+                        <% } %>
+                    <div>
+
+                    <div class="formulario__grupo" id="grupo__price">
+                        <label for="price" class="formulario__label">Precio del producto:</label>
                             <div class="formulario__grupo-input">
                                 <input type="text" name="price" class="formulario__input" value="<%= locals.oldData ? oldData.price : null %>">
                                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
@@ -67,7 +70,7 @@
                     <div class="formulario__grupo" id="grupo__description">
                         <label for="description" class="formulario__label">Descipción:</label>
                         <div class="formulario__grupo-input">
-                            <textarea name="description" id="description" class="form-input"></textarea>
+                            <textarea name="description" id="description" class="formulario__input textarea"></textarea>
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                         </div>
                     </div>

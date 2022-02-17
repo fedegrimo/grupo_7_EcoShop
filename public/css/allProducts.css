@@ -130,8 +130,8 @@
     letter-spacing: 5px;
   }
   .product_image{
-    width: 20rem;
-    height: 20rem;
+    width: 2rem;
+    height: 2rem;
     margin: 20px auto;
     --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
@@ -139,8 +139,8 @@
     overflow: hidden;
   }
   .product_image img{
-    width: 100%;
-    height: 100%;
+    width: 100px;
+    height: 100px;
   }
   .formulario_contenido{
     width: 90%;
@@ -236,8 +236,8 @@
       width: 100%;
     }
     .product_image{
-      width: 90%;
-      height: 60%;
+      width: 400px;
+      height: 400px;
       margin: 0 auto;
     }
     .product_image img{
