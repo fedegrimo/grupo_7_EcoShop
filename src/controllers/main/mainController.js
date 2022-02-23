@@ -1,7 +1,7 @@
 const { validationResult } = require ("express-validator");
 const bcrypt = require ('bcryptjs');
-const productDB = require ('../database/models/Define/Product');
-const userDB = require ('../database/models/Define/User');
+const productDB = require ('../../database/models/Define/Product');
+const userDB = require ('../../database/models/Define/User');
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 

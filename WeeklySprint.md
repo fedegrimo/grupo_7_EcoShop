@@ -114,3 +114,26 @@
 - Corrección de errores en conjunto y cómo afrontarlos
 - Cerrar los últimos detalles del proyecto para realizar la entrega el 20/01
 - Hablar un poco del sprint siguiente para ver como afrontarlo.
+
+# Weekly Sprint 7
+
+## Weekly 23/12 
+- Lectura y revisión de las consignas del Sprint. 
+- Creación del tablero en trello para asignar las tareas correspondientes a cada uno.
+- División de tareas a realizar para cada integrante del grupo. 
+- Fijar fecha de próxima reunión.
+
+## Weekly 4/01 
+- Revisión de los avances del proyecto y corrección de errores.
+- Puesta en común sobre ideas y maneras de afrontar el Sprint.
+- Búsqueda de resolución de problemas.
+
+## Weekly 13/01
+- Revisión y realización de tareas pendientes. 
+- Mostrar los resultados obtenidos hasta el momento.
+- Corrección de errores.
+
+## Weekly 18/01 
+- Corrección de errores en conjunto y cómo afrontarlos
+- Cerrar los últimos detalles del proyecto para realizar la entrega el 20/01
+- Hablar un poco del sprint siguiente para ver como afrontarlo.

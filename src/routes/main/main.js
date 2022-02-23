@@ -2,10 +2,10 @@
 const express = require('express');
 const router = express.Router();
 const { check } = require('express-validator');
-const {validationsLogin, validationsClientRegistration} = require ('../middlewares/validateRegisterMiddleware');
+const {validationsLogin, validationsClientRegistration} = require ('../../middlewares/validateRegisterMiddleware');
 
 // ************ Controller Require ************
-const mainController = require('../controllers/mainController');
+const mainController = require('../../controllers/main/mainController');
 
 /*** GET HOME ***/ 
 router.get('/', mainController.index); 

@@ -1,19 +1,23 @@
 const { validationResult } = require ("express-validator");
 
-const featureDB = require ('../database/models/Define/Feature');
+const categoryDB = require ('../../database/models/Define/Category');
 
-const { db } = featureDB;
+const { db } = categoryDB;
+
+const active_menu = [{id: false, name: "NO"},
+					 {id: true, name: "SI"} ];
 
 const controller = {
-	index:  (req, res) => {
+
+	index: (req, res) => {
 		res.render('backend');
 	},
 	// List administration product -trabajar
 	list: async (req, res) => {
 		if(req.cookies.login){
-			let features =  await db.findAll();
+			let categoryAll =  await db.findAll();
 			let cookies = req.cookies;
-			res.render('feature-list',{features, cookies});
+			res.render('category-list',{categoryAll, cookies});
 		}else{
 			res.redirect('/backend');
 		}
@@ -24,7 +28,7 @@ const controller = {
 	create: async (req, res) => {
 		if(req.cookies.login){
 			let cookies = req.cookies;
-			res.render('feature-create-form', {cookies });
+			res.render('category-create-form', {cookies,active_menu });
 
 			
 		}else{
@@ -39,20 +43,19 @@ const controller = {
 		const resultValidation = validationResult(req);
 		if (resultValidation.errors.length > 0){
 
-			res.render('feature-create-form',{ 
+			res.render('category-create-form',{ 
 				errors: resultValidation.mapped(),
 				oldData: req.body,
-				categorias,
+				active_menu,
 				users
 			});
 		} else {
 			await db.create({
-                            name : req.body.name,
-                            parent : req.body.parent,
-                            active_menu: req.body.active_menu
+						name : req.body.name,
+						active_menu: req.body.active_menu
 					});
 			
-			res.redirect('/feature/list');
+			res.redirect('/category/list');
 		}
 		
 	},
@@ -60,9 +63,9 @@ const controller = {
 	// Update - Form to edit -TRABAJAR
 	edit: async (req, res) => {
 		if(req.cookies.login){
-			const featureToEdit = await db.findByPk(req.params.id);
+			const categoryToEdit = await db.findByPk(req.params.id);
 			let cookies = req.cookies;
-			res.render('feature-edit-form',{featureToEdit,cookies});
+			res.render('category-edit-form',{categoryToEdit,active_menu,cookies});
 		}else{
 			res.redirect('/backend');
 		}
@@ -74,22 +77,23 @@ const controller = {
 		const resultValidation = validationResult(req);
 
 		if (resultValidation.errors.length > 0){
-			res.render('feature-edit-form',{ 
+			res.render('category-edit-form',{ 
 				errors: resultValidation.mapped(),
-				featureToEdit: req.body,
+				categoryToEdit: req.body,
+				active_menu,
 				users
 			});
 		} else {
+
 			await db.update({
                 name : req.body.name,
-                parent : req.body.parent,
                 active_menu: req.body.active_menu
             },
 			{
 				where: {id: req.params.id}
 			}
 			);
-			res.redirect('/feature/list');
+			res.redirect('/category/list');
 		}
 		
 	},
@@ -102,7 +106,7 @@ const controller = {
 
 		});
 		
-		res.redirect('/feature/list');
+		res.redirect('/category/list');
 	}
 
 };

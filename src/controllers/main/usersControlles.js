@@ -1,6 +1,6 @@
 const { validationResult } = require ("express-validator");
-const userDB = require ('../database/models/Define/User');
-const profileDB = require ('../database/models/Define/Profile');
+const userDB = require ('../../database/models/Define/User');
+const profileDB = require ('../../database/models/Define/Profile');
 const bcrypt = require ('bcryptjs');
 
 const { db } = userDB;

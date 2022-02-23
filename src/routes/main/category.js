@@ -1,11 +1,11 @@
 // ************ Require's ************
 const express = require('express');
 const router = express.Router();
-const validations = require ('../middlewares/validateCategoryMiddleware');
+const validations = require ('../../middlewares/validateCategoryMiddleware');
 
 
 // ************ Controller Require ************
-const categoryController = require('../controllers/categoryController');
+const categoryController = require('../../controllers/main/categoryController');
 
 /*** GET Index ***/ 
 router.get('/', categoryController.index);

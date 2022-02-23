@@ -3,7 +3,7 @@ const path = require('path');
 const { validationResult } = require ("express-validator");
 const { reset } = require('nodemon');
 const bcrypt = require ('bcryptjs');
-const userDB = require ('../database/models/Define/User');
+const userDB = require ('../../database/models/Define/User');
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 

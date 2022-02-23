@@ -2,11 +2,11 @@
 const express = require('express');
 const router = express.Router();
 const { check } = require('express-validator');
-const {uploadAvatar:upload,path} = require ('../middlewares/multerMiddleware');
-const {validationsLogin,validationsUserRegistration} = require ('../middlewares/validateRegisterMiddleware');
+const {uploadAvatar:upload,path} = require ('../../middlewares/multerMiddleware');
+const {validationsLogin,validationsUserRegistration} = require ('../../middlewares/validateRegisterMiddleware');
 
 // ************ Controller Require ************
-const usersController = require('../controllers/usersControlles');
+const usersController = require('../../controllers/main/usersControlles');
 
 /*** BACKEND USERS***/ 
 router.get('/',usersController.list);

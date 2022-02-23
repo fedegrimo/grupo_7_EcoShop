@@ -49,6 +49,14 @@
 - 4 - Hacer menos: Dejar todo para ultimo momento. 
 - 5 - Dejar de hacer: Dejarse estar y hacer todo a ultimo momento.
 
+## Retro Sprint 7
+
+- 1 - Comenzar a hacer: Coreccion de los errores del sprint anterior y avanzar en el actual.
+- 2 - Hacer más: Correcciones de detalles del proyecto 
+- 3 - Continuar haciendo: Reuniones darias o semanales para plantear objetivos y avanzar en el proyecto. 
+- 4 - Hacer menos: Dejar todo para ultimo momento. 
+- 5 - Dejar de hacer: Hacer todo a ultimo momento.
+
 ## Authors
 
 - [Federico Grimolizzi](https://github.com/fedegrimo)

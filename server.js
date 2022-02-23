@@ -38,20 +38,28 @@ server.use('/js',express.static(path.resolve(__dirname,'public/js')));
 // ************ WRITE YOUR CODE FROM HERE ************
 // ************ Route System require and use() ************
 
-const mainRouter = require('./src/routes/main'); // Rutas main
-const productsRouter = require('./src/routes/products'); // Rutas /products
-const categoryRouter = require('./src/routes/category'); // Rutas /category
-const featureRouter = require('./src/routes/feature'); // Rutas /feature
-const backendRouter = require('./src/routes/backend'); // Rutas /backend
-const usersRouter = require('./src/routes/users'); // Rutas /backend
+const mainRouter = require('./src/routes/main/main'); // Rutas main
+const productsRouter = require('./src/routes/main/products'); // Rutas /products
+const categoryRouter = require('./src/routes/main/category'); // Rutas /category
+const featureRouter = require('./src/routes/main/feature'); // Rutas /feature
+const backendRouter = require('./src/routes/main/backend'); // Rutas /backend
+const usersRouter = require('./src/routes/main/users'); // Rutas /backend
 
-server.use('/', mainRouter);
+//API Routes
+const apiProductsRouter = require('./src/routes/api/products');
+const apiUsersRouter = require('./src/routes/api/users');
+
+// MAIN ROUTES
+server.use('/', mainRouter); 
 server.use('/products', productsRouter);
 server.use('/products/category', categoryRouter);
 server.use('/products/feature', featureRouter);
 server.use('/backend', backendRouter);
 server.use('/users',usersRouter);
 
+// API ROUTES
+server.use('/api/products', apiProductsRouter);
+server.use('/api/users', apiUsersRouter);
 //sequelize config
 const db = require("./src/database/models/Define/");
 

@@ -1,7 +1,7 @@
 const { validationResult } = require ("express-validator");
 
-const productDB = require ('../database/models/Define/Product');
-const categoryDB = require ('../database/models/Define/Category');
+const productDB = require ('../../database/models/Define/Product');
+const categoryDB = require ('../../database/models/Define/Category');
 
 const { db } = productDB;
 

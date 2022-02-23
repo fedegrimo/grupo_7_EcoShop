@@ -1,11 +1,11 @@
 // ************ Require's ************
 const express = require('express');
 const router = express.Router();
-const validations = require ('../middlewares/validateFeatureMiddleware');
+const validations = require ('../../middlewares/validateFeatureMiddleware');
 
 
 // ************ Controller Require ************
-const featureController = require('../controllers/featureConstroller');
+const featureController = require('../../controllers/main/featureController');
 
 /*** GET Index ***/ 
 router.get('/', featureController.index);

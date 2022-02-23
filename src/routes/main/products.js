@@ -1,12 +1,12 @@
 // ************ Require's ************
 const express = require('express');
 const router = express.Router();
-const {uploadProduct:upload,path} = require ('../middlewares/multerMiddleware');
-const {validations} = require ('../middlewares/validateRegisterMiddleware');
+const {uploadProduct:upload,path} = require ('../../middlewares/multerMiddleware');
+const {validations} = require ('../../middlewares/validateRegisterMiddleware');
 
 
 // ************ Controller Require ************
-const productsController = require('../controllers/productsConstroller');
+const productsController = require('../../controllers/main/productsController');
 
 /*** GET ALL PRODUCTS ***/ 
 router.get('/', productsController.index); 
