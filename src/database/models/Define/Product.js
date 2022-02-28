@@ -1,4 +1,6 @@
 const {sqlize,Sequelize:dataTypes} = require ('../../config/connection');
+const {db:Category} = require ('./Category'); 
+
 
 const alias = 'Product';
 
@@ -47,13 +49,18 @@ const config = {
  // Creación Tabla Product
  const Product = sqlize.define(alias, cols, config);
 
+
  // Relación Tabla Category
- Product.associate = function(models) {
+ Product.belongsTo(Category,{  
+    as: "category",
+    foreignKey : "category_id"}
+);
+ /*Product.associate = function(models) {
      Product.belongsTo(models.Category, { 
          as: "category",
          foreignKey: "category_id"
      })
- }
+ }*/
 
  /**
  * 

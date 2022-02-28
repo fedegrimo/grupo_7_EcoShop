@@ -48,6 +48,7 @@ const usersRouter = require('./src/routes/main/users'); // Rutas /backend
 //API Routes
 const apiProductsRouter = require('./src/routes/api/products');
 const apiUsersRouter = require('./src/routes/api/users');
+const apiCategoryRouter = require('./src/routes/api/category');
 
 // MAIN ROUTES
 server.use('/', mainRouter); 
@@ -60,6 +61,7 @@ server.use('/users',usersRouter);
 // API ROUTES
 server.use('/api/products', apiProductsRouter);
 server.use('/api/users', apiUsersRouter);
+server.use('/api/category', apiCategoryRouter);
 //sequelize config
 const db = require("./src/database/models/Define/");
 

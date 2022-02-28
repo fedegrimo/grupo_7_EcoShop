@@ -1,4 +1,5 @@
 const {sqlize,Sequelize:dataTypes} = require ('../../config/connection');
+const {db:Products} = require ('./Product'); 
 
 const alias = 'Category';
 
@@ -35,7 +36,7 @@ const config = {
         foreignKey: "category_id"
     })
 }
-
+   
  /**
  * 
  * @param {bool} switchTF

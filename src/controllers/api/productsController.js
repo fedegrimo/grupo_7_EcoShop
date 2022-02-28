@@ -1,12 +1,11 @@
-const productDB = require ('../../database/models/Define/Product');
-const { db } = productDB;
+const {db} = require ('../../database/models/Define/Product');
 const host = 'http://localhost:3000/img/products/';
 
 
 const controller = {
 	// List administration product -trabajar
 	list: async (req, res) => {
-			let products =  await db.findAll({include: ['category']});
+			let products =  await db.findAll();
 
             let apiProducts = products.map(product =>{
                 return({
@@ -14,7 +13,6 @@ const controller = {
                 name: product.name,
                 description: product.description,
                 category_id: product.category_id,
-                category_name:product.category.name,
                 picture: host + product.picture
                 });
             });
