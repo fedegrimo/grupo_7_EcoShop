@@ -13,7 +13,7 @@ const controller = {
 	index: (req, res) => {
 		if(req.cookies.login){
 			users = req.cookies;
-			res.redirect('/products/list',{usersAll: users})
+			res.render('products',{usersAll: users})
 		}else{
 			if (req.cookies.recordar){
 				res.render('backend',{ 

@@ -23,16 +23,19 @@
                 <div class="navegador2">
                     <ul>
                         <li class="dropdown user-acc"> 
-                            <a href="/login" class="icon-acount-container">
+                            
                                 
                                <% if(login){ %>
+                                <a href="/logout" class="icon-acount-container">
                                 <span class="emailSession"><%= login%></span>
-                                <a href="/logout"><i class="fas fa-sign-out-alt"></i></a>
+                                </a>
                                 <% }else{ %>
+                                    <a href="/login" class="icon-acount-container">
                                     <i class="far fa-user hombre"></i>
+                                    </a>
 
                                <% } %>
-                            </a>
+                            
                         </li>
 
                         <li class="dropdown user-acc"> 

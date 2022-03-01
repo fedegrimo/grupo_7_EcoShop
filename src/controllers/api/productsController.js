@@ -13,7 +13,8 @@ const controller = {
                 name: product.name,
                 description: product.description,
                 category_id: product.category_id,
-                picture: host + product.picture
+                picture: host + product.picture,
+                price: product.price
                 });
             });
 
@@ -42,7 +43,8 @@ const controller = {
                 name: rowProduct.name,
                 description: rowProduct.description,
                 category_id: rowProduct.category_id,
-                picture: host + rowProduct.picture
+                picture: host + rowProduct.picture,
+                price: product.price
             }
         }
         res.json(respuesta);
