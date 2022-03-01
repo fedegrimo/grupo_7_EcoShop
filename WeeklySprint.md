@@ -137,3 +137,24 @@
 - Corrección de errores en conjunto y cómo afrontarlos
 - Cerrar los últimos detalles del proyecto para realizar la entrega el 20/01
 - Hablar un poco del sprint siguiente para ver como afrontarlo.
+
+# Weekly Sprint 8
+
+## Weekly 15/02/2022 
+- Lectura y revisión de las consignas del Sprint. 
+- Corrección de errores en conjunto y cómo afrontarlos
+- División de tareas a realizar para cada integrante del grupo. 
+- Fijar fecha de próxima reunión.
+
+## Weekly 17/02/2022 
+- Revisión de los avances del proyecto y corrección de errores.
+- Puesta en común sobre ideas y maneras de afrontar el Sprint.
+- Búsqueda de resolución de problemas.
+
+## Weekly 22/02/2022
+- Finalizando las consignas y correciones de errores para la presentacion final. 
+- Mostrar los resultados obtenidos hasta el momento.
+
+## Weekly 24/02/2022
+- Proyecto finalizado para la presentacion final
+- Mejoras en el sitio y dashboard de react
