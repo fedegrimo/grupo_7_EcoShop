@@ -40,7 +40,11 @@ const controller = {
 	// Create - Form to create -trabajar
 	create: async (req, res) => {
 		if(req.cookies.login){
-			let categorias = await categoryDB.db.findAll();
+			let categorias = await categoryDB.db.findAll({
+				where:{
+					active_menu: 1
+				}
+			});
 			let cookies = req.cookies;
 			res.render('product-create-form', {categorias, cookies });
 
@@ -88,7 +92,11 @@ const controller = {
 	edit: async (req, res) => {
 		if(req.cookies.login){
 
-			const categorias = await categoryDB.db.findAll();
+			const categorias = await categoryDB.db.findAll({
+				where:{
+					active_menu: 1
+				}
+			});
 			const productToEdit = await db.findByPk(req.params.id);
 			let cookies = req.cookies;
 			res.render('product-edit-form',{productToEdit,categorias,cookies});

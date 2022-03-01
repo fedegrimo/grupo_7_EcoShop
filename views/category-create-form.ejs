@@ -10,7 +10,7 @@
        
         <h3 class="formularioEdit_title">Formulario creacion de categoría</h3>
        
-        <form action="/products/category/create" method="POST" enctype="multipart/form-data">
+        <form action="/products/category/create" method="POST">
 
             <div class="formulario_contenedor formulario_contenedorCreate">   
                 <div class="formulario_contenido">
@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="formulario_item">
-                            <label for="active_menu" class="form-label">Activar Menu:</label>
+                            <label for="active_menu" class="form-label">Habilitar:</label>
                             <select class="selectForm" name="active_menu">
                                 <% 
                                     active_menu.forEach(element => { %>

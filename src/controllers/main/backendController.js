@@ -1,11 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const { validationResult } = require ("express-validator");
-const { reset } = require('nodemon');
 const bcrypt = require ('bcryptjs');
 const userDB = require ('../../database/models/Define/User');
-
-const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const usersFilePath = path.join(__dirname, '../data/usersDataBase.json');
 
@@ -13,7 +10,10 @@ const controller = {
 	index: (req, res) => {
 		if(req.cookies.login){
 			users = req.cookies;
-			res.render('products',{usersAll: users})
+			res.render('backend',{loginFail:false,
+								login: req.cookies.login,
+								products:[],
+								usersAll: users})
 		}else{
 			if (req.cookies.recordar){
 				res.render('backend',{ 

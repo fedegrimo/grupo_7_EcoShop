@@ -46,8 +46,7 @@ const controller = {
 			res.render('category-create-form',{ 
 				errors: resultValidation.mapped(),
 				oldData: req.body,
-				active_menu,
-				users
+				active_menu
 			});
 		} else {
 			await db.create({
@@ -55,7 +54,7 @@ const controller = {
 						active_menu: req.body.active_menu
 					});
 			
-			res.redirect('/category/list');
+			res.redirect('/products/category/list');
 		}
 		
 	},
@@ -93,7 +92,7 @@ const controller = {
 				where: {id: req.params.id}
 			}
 			);
-			res.redirect('/category/list');
+			res.redirect('/products/category/list');
 		}
 		
 	},
@@ -106,7 +105,7 @@ const controller = {
 
 		});
 		
-		res.redirect('/category/list');
+		res.redirect('/products/category/list');
 	}
 
 };
