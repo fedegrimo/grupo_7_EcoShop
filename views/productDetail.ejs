@@ -44,7 +44,7 @@
                 <div class="selectores">
     
                     <div class="selector">
-                        <input type="number" name="Cantidad" class="form-input" value="1"/>
+                        <input type="number" id="cartQty" class="form-input" value="1"/>
                     </div>
     
                     <div class="selector-color">
@@ -64,7 +64,11 @@
     
                 <div class="botones">
                     <div class="boton">
-                        <a href="/cart"><button name="addtocart" type="button">Add to cart</button></a>
+                        <button id="addCart" type="button">Agregar Carrito</button>
+                        <input type="hidden" id="cartName" value="<%= rowProduct.name%>" />
+                        <input type="hidden" id="cartPrice" value="<%= rowProduct.price%>" />
+                        <input type="hidden" id="cartOffer" value="<%= rowProduct.offer%>" />
+                        <input type="hidden" id="cartId" value="<%= rowProduct.id%>" />
                     </div>
     
                     <div>
@@ -150,6 +154,6 @@
               </ul>
       </div>
   </section> <!--Section ABOUT US-->
-  <%- include('./layout/head') %>
+  <%- include('./layout/footer') %>
 </body>
 </html>

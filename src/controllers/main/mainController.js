@@ -36,6 +36,9 @@ const controller = {
 	logout:(req, res) => {
 		//usar res
 		res.clearCookie('email');
+		res.clearCookie('usuario');
+		res.clearCookie('firstname');
+		res.clearCookie('lastname');
 		//después de borrar la cookie
 		res.redirect('/login');
 	},
