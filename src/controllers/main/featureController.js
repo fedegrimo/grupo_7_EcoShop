@@ -4,6 +4,9 @@ const featureDB = require ('../../database/models/Define/Feature');
 
 const { db } = featureDB;
 
+const active_menu = [{id: false, name: "NO"},
+					 {id: true, name: "SI"} ];
+
 const controller = {
 	index:  (req, res) => {
 		res.render('backend');
@@ -23,8 +26,13 @@ const controller = {
 	// Create - Form to create -trabajar
 	create: async (req, res) => {
 		if(req.cookies.login){
+			let features = await  db.findAll({
+				where:{
+					parent: 0
+				}
+			});
 			let cookies = req.cookies;
-			res.render('feature-create-form', {cookies });
+			res.render('feature-create-form', {cookies,features,active_menu });
 
 			
 		}else{
@@ -42,8 +50,7 @@ const controller = {
 			res.render('feature-create-form',{ 
 				errors: resultValidation.mapped(),
 				oldData: req.body,
-				categorias,
-				users
+				active_menu
 			});
 		} else {
 			await db.create({
@@ -52,7 +59,7 @@ const controller = {
                             active_menu: req.body.active_menu
 					});
 			
-			res.redirect('/feature/list');
+			res.redirect('/products/feature/list');
 		}
 		
 	},
@@ -62,7 +69,12 @@ const controller = {
 		if(req.cookies.login){
 			const featureToEdit = await db.findByPk(req.params.id);
 			let cookies = req.cookies;
-			res.render('feature-edit-form',{featureToEdit,cookies});
+			const features = await db.findAll({
+				where:{
+					parent: 0
+				}
+			});
+			res.render('feature-edit-form',{featureToEdit,features,active_menu,cookies});
 		}else{
 			res.redirect('/backend');
 		}
@@ -89,7 +101,7 @@ const controller = {
 				where: {id: req.params.id}
 			}
 			);
-			res.redirect('/feature/list');
+			res.redirect('/products/feature/list');
 		}
 		
 	},
@@ -102,7 +114,7 @@ const controller = {
 
 		});
 		
-		res.redirect('/feature/list');
+		res.redirect('/products/feature/list');
 	}
 
 };
