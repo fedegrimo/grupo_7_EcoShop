@@ -62,7 +62,13 @@ const controller = {
 					res.cookie('login', 'true');
 					res.cookie('email', req.session.email); 
 					res.redirect('/');
-				} 
+				} else {
+					res.render('login',{ 
+						errors: {password : {msg: "Contraseña incorrecta"}},
+						oldData: req.body,
+						login: req.cookies.email
+					});
+				}
 			}
 		
 		}

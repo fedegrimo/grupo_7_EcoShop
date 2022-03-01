@@ -6,6 +6,7 @@
 <section class="form-login">
     <form id="frm" method="post">
         <h1>Login</h1>
+        <div class="listErrors text-danger"></div>
         <% if (locals.errorLogin && errorLogin) { %>
             <div class="text-danger">
                 <%= errorLogin %>
@@ -14,6 +15,7 @@
         <div class="row">
             <span><i class="fas fa fa-user"></i></span>
             <input type="text" 
+            id="email"
             name="email" 
             placeholder="E-mail"
             value="<%= locals.oldData ? oldData.email : null %>" />
@@ -26,6 +28,7 @@
         <div class="row">
             <span><i class="fas fa fa-lock"></i></span>
             <input type="password" 
+            id="password"
             name="password" 
             placeholder="Contraseña"
             value="<%= locals.oldData ? oldData.password : null %>" />
@@ -49,3 +52,4 @@
 <%- include('./layout/head') %>
 </body>
 </html>
+<script src="/js/login.js"></script>
