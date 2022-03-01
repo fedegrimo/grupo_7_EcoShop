@@ -13,7 +13,7 @@ const controller = {
 				active: 1
 			}
 		});
-        res.render('index', { products, toThousand,login: req.cookies.email});
+        res.render('index', { products, toThousand,login: req.cookies.usuario});
 	},
 	search: (req, res) => {
 		keywords = req.body.keywords;
@@ -22,16 +22,16 @@ const controller = {
 				return val;
 			}
 		})
-		res.render('results',{keywords,search,login: req.cookies.email});
+		res.render('results',{keywords,search,login: req.cookies.usuario});
 	},
     cart: (req, res) => {
-        res.render('productCart',{login: req.cookies.email});
+        res.render('productCart',{login: req.cookies.usuario, cookies: req.cookies});
 	},
     register: (req, res) => {
-        res.render('register',{login: req.cookies.email});
+        res.render('register',{login: req.cookies.usuario});
 	},
     login: (req,res) => {
-        res.render('login',{login: req.cookies.email});
+        res.render('login',{login: req.cookies.usuario});
     },
 	logout:(req, res) => {
 		//usar res
@@ -45,7 +45,7 @@ const controller = {
 			res.render('login',{ 
 				errors: resultValidation.mapped(),
 				oldData: req.body,
-				login: req.cookies.email
+				login: req.cookies.usuario
 			});
 		} else {
 			let verificacion = await userDB.db.findOne({
@@ -57,16 +57,22 @@ const controller = {
 			
 			if (verificacion){
 				if (bcrypt.compareSync(req.body.password,verificacion.password)){
-					req.session.email = req.body.email;
+					req.session.usuario = verificacion.firstname + " " + verificacion.lastname;
+					req.session.firstname = verificacion.firstname;
+					req.session.lastname = verificacion.lastname;
+					req.session.email = verificacion.email;
 					req.session.admin= false;
 					res.cookie('login', 'true');
+					res.cookie('usuario', req.session.usuario); 
 					res.cookie('email', req.session.email); 
+					res.cookie('firstname', req.session.firstname); 
+					res.cookie('lastname', req.session.lastname); 
 					res.redirect('/');
 				} else {
 					res.render('login',{ 
 						errors: {password : {msg: "Contraseña incorrecta"}},
 						oldData: req.body,
-						login: req.cookies.email
+						login: req.cookies.usuario
 					});
 				}
 			}

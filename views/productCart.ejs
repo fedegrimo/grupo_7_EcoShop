@@ -31,7 +31,7 @@
                     <!-- Name -->
                     <li class="user__info">
                     <label>NOMBRE
-                        <input type="text" name="first-name" value="" placeholder="">
+                        <input type="text" name="first-name" value="<%= cookies.firstname %>" placeholder="">
                     </label>
                     </li>
 
@@ -39,7 +39,7 @@
 
                     <li class="user__info">
                     <label>APELLIDO
-                        <input type="text" name="last-name" value="" placeholder="">
+                        <input type="text" name="last-name" value="<%= cookies.lastname %>" placeholder="">
                     </label>
                     </li>
 
@@ -76,7 +76,7 @@
                     <!-- EMAIL ADDRESS -->
                     <li class="user__info">
                     <label>EMAIL
-                        <input type="text" name="contry-state" value="" placeholder="">
+                        <input type="text" name="contry-state" value="<%= cookies.email %>" placeholder="">
                     </label>
                     </li>
 
@@ -87,9 +87,13 @@
                     </label>
                     </li>
                     
-                    <!-- PHONE -->
+                    <!-- Continue -->
+                    
                     <li class="user__info">
-                    <button type="submit">continue</button>
+                        <label>
+                            <a href="/">CONTINUAR COMPRANDO</a>
+                        </label>
+                    
                     </li>
                     
                 </ul>
@@ -134,9 +138,12 @@
                         <label for="radio4"><span class="metodoPago__texto">PAYPAL</span></label>
                         </div>
                     </li>
+                    <li>
+                        <a href="#" class="btn">COMPRAR</a> </div>
+                    </li>
 
                 </ul>
-                <a href="#." class="btn">COMPRAR</a> </div>
+               
             </div>
 
 

@@ -119,14 +119,15 @@
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
     border-radius: 5px;
 }
-.user__info button{
+.user__info a{
     border: none;
     color: #fff;
     display: inline-block;
     padding: 5px 50px;
     text-transform: uppercase;
+    text-decoration: none;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 1rem;
     border-radius: 0px;
     font-family: 'Montserrat', sans-serif;
     line-height: 46px;
