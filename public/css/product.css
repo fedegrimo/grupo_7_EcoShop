@@ -109,9 +109,9 @@ section .container-producto{
   letter-spacing: 2px;
 }
 .descripcion-producto .on-sale{
-background: #eed735;
+background: #a7c988;;
 height: 50px;
-width: 50px;
+width: 100px;
 text-align: center;
 color: #fff;
 font-weight: bold;

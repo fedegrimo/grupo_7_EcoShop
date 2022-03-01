@@ -31,11 +31,11 @@
            <div class="descripcion-producto">
                 <h4> <%= rowProduct.name %></h4>
                 <span class="precio"><small>$</small><%= toThousand(rowProduct.price) %></span>
-                <div class="on-sale"> <%= rowProduct.discount %>% <span>OFF</span> </div>
+                <div class="on-sale"><%= rowProduct.offer %>% <span>OFF</span> </div>
                 <ul class="item-owner">
                 
                 </ul>
-                <p><% rowProduct.description %></p>
+                <p><%= rowProduct.description %></p>
             </div>
 
             <div class="selectores-botones">
@@ -68,7 +68,7 @@
                     </div>
     
                     <div>
-                        <a href="#." class="like">
+                        <a href="#" class="like">
                         <i class="far fa-heart"></i>
                         </a>
                     </div>
@@ -85,11 +85,9 @@
 
                 <div class="redes">
                     <ul class="social_icons">
-                    <li><a href="#."><i class="fab fa-facebook"></i></a></li>
-                    <li><a href="#."><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#."><i class="fab fa-tumblr"></i></a></li>
-                    <li><a href="#."><i class="fab fa-youtube"></i></a></li>
-                    <li><a href="#."><i class="fab fa-dribbble"></i></a></li>
+                    <li><a href="https://www.facebook.com/EcoShop/<%= rowProduct.name %>"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="https://www.twitter.com/EcoShop/<%= rowProduct.name %>"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://www.youtube.com/EcoShop/<%= rowProduct.name %>"><i class="fab fa-youtube"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -106,7 +104,7 @@
                 </ul>
             </div>
             <div class="descripcion__parrafo">
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias beatae corrupti distinctio officia rem optio, autem quod. Quas, deleniti. Consequatur recusandae mollitia esse tempora officia fuga praesentium. Assumenda, fugit deserunt.</p>
+                <p><%= rowProduct.description %></p>
             </div>
 </section>
 
