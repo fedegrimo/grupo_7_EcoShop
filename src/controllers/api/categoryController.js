@@ -40,7 +40,9 @@ const controller = {
                 name: product.name,
                 description: product.description,
                 category_id: product.category_id,
-                picture: host + product.picture
+                picture: host + product.picture,
+                price: product.price,
+                offer: product.offer
             });
         });
 
